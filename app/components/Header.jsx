@@ -33,18 +33,20 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#about" className="text-gray-700 hover:text-green-600 transition-colors">
-            {t.aboutUs}
-          </a>
-          <a href="#for-farmers" className="text-gray-700 hover:text-green-600 transition-colors">
-            {t.forFarmers}
-          </a>
-          <a href="#for-consumers" className="text-gray-700 hover:text-green-600 transition-colors">
-            {t.forConsumers}
-          </a>
-          
-          <Link href="/dashboard/farmer" className="text-gray-700 hover:text-green-600 transition-colors">
+          <Link href="/about" className="text-gray-600 hover:text-gray-900">
+            About Us
+          </Link>
+          <Link href="/farmer" className="text-gray-600 hover:text-gray-900">
+            For Farmers
+          </Link>
+          <Link href="/consumer" className="text-gray-600 hover:text-gray-900">
+            For Consumers
+          </Link>
+          <Link href="/dashboard/farmer" className="text-gray-600 hover:text-gray-900">
             Farmer Dashboard
+          </Link>
+          <Link href="/dashboard/consumer" className="text-gray-600 hover:text-gray-900">
+            Consumer Dashboard
           </Link>
           
           {/* Language Selector */}
@@ -103,27 +105,27 @@ export default function Header() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white py-2 px-4 shadow-lg">
-          <a
-            href="#about"
+          <Link 
+            href="/about" 
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            {t.aboutUs}
-          </a>
-          <a
-            href="#for-farmers"
+            About Us
+          </Link>
+          <Link 
+            href="/farmer" 
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            {t.forFarmers}
-          </a>
-          <a
-            href="#for-consumers"
+            For Farmers
+          </Link>
+          <Link 
+            href="/consumer" 
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            {t.forConsumers}
-          </a>
+            For Consumers
+          </Link>
           
           <Link 
             href="/dashboard/farmer" 
@@ -131,6 +133,14 @@ export default function Header() {
             onClick={() => setIsMenuOpen(false)}
           >
             Farmer Dashboard
+          </Link>
+          
+          <Link 
+            href="/dashboard/consumer" 
+            className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Consumer Dashboard
           </Link>
           
           {/* Language Selector */}
