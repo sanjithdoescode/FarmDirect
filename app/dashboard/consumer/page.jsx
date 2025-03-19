@@ -198,7 +198,7 @@ export default function ConsumerDashboard() {
                           id="firstName"
                           name="firstName"
                           defaultValue="Raj"
-                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         />
                       </div>
                       
@@ -211,7 +211,7 @@ export default function ConsumerDashboard() {
                           id="lastName"
                           name="lastName"
                           defaultValue="Kumar"
-                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         />
                       </div>
                       
@@ -224,7 +224,7 @@ export default function ConsumerDashboard() {
                           id="email"
                           name="email"
                           defaultValue="raj.kumar@example.com"
-                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         />
                       </div>
                       
@@ -237,7 +237,7 @@ export default function ConsumerDashboard() {
                           id="phone"
                           name="phone"
                           defaultValue="+91 9876543210"
-                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         />
                       </div>
                     </div>
@@ -351,9 +351,9 @@ export default function ConsumerDashboard() {
                     </div>
                   ) : (
                     <div className="text-center py-12">
-                      <FaHistory className="mx-auto h-16 w-16 text-gray-300" />
+                      <FaHistory className="mx-auto h-16 w-16 text-gray-400" />
                       <h3 className="mt-4 text-lg font-medium text-gray-900">No orders yet</h3>
-                      <p className="mt-1 text-sm text-gray-500">Once you place orders, they will appear here.</p>
+                      <p className="mt-1 text-sm text-gray-600">Once you place orders, they will appear here.</p>
                       <div className="mt-6">
                         <Link
                           href="/dashboard/consumer/store"
@@ -410,9 +410,9 @@ export default function ConsumerDashboard() {
                     </div>
                   ) : (
                     <div className="text-center py-12">
-                      <FaHeart className="mx-auto h-16 w-16 text-gray-300" />
+                      <FaHeart className="mx-auto h-16 w-16 text-gray-400" />
                       <h3 className="mt-4 text-lg font-medium text-gray-900">Your wishlist is empty</h3>
-                      <p className="mt-1 text-sm text-gray-500">Save items you like while browsing the store.</p>
+                      <p className="mt-1 text-sm text-gray-600">Save items you like while browsing the store.</p>
                       <div className="mt-6">
                         <Link
                           href="/dashboard/consumer/store"

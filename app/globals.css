@@ -57,3 +57,8 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
+
+/* Ensure form inputs have proper text contrast */
+input, select, textarea {
+  color: rgb(55, 65, 81); /* text-gray-700 equivalent */
+}

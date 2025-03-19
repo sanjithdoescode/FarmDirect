@@ -401,8 +401,8 @@ export default function Store() {
                       </div>
                     ) : (
                       <div className="text-center py-8">
-                        <FaShoppingCart className="mx-auto h-10 w-10 text-gray-300" />
-                        <p className="mt-2 text-gray-500">Your cart is empty</p>
+                        <FaShoppingCart className="mx-auto h-10 w-10 text-gray-400" />
+                        <p className="mt-2 text-gray-600">Your cart is empty</p>
                       </div>
                     )}
                   </div>
@@ -461,7 +461,7 @@ export default function Store() {
                     placeholder="Search for products..."
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                   />
                   <div className="absolute top-3 left-3 text-gray-400">
                     <FaSearch />
@@ -684,7 +684,7 @@ export default function Store() {
               </p>
               <div className="flex items-center">
                 <span className="text-gray-600 mr-2">Sort by:</span>
-                <select className="border rounded-lg px-3 py-1 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                <select className="border rounded-lg px-3 py-1 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700">
                   <option>Newest First</option>
                   <option>Price: Low to High</option>
                   <option>Price: High to Low</option>
@@ -707,7 +707,7 @@ export default function Store() {
                           e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
                         }}
                       />
-                      <button className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-gray-400 shadow-sm hover:text-red-500 transition-colors">
+                      <button className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-gray-500 shadow-sm hover:text-red-500 transition-colors">
                         <FaHeart />
                       </button>
                       {product.organic && (
@@ -765,9 +765,9 @@ export default function Store() {
                 ))
               ) : (
                 <div className="col-span-full text-center py-12">
-                  <FaSearch className="mx-auto h-12 w-12 text-gray-300" />
+                  <FaSearch className="mx-auto h-12 w-12 text-gray-400" />
                   <h3 className="mt-4 text-lg font-medium text-gray-900">No products found</h3>
-                  <p className="mt-1 text-sm text-gray-500">Try adjusting your filters or search term</p>
+                  <p className="mt-1 text-sm text-gray-600">Try adjusting your filters or search term</p>
                   <button
                     onClick={() => {
                       setFilters({

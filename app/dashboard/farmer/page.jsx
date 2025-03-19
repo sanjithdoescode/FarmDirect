@@ -180,7 +180,7 @@ export default function FarmerDashboard() {
                         name="productName"
                         value={formData.productName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         placeholder="e.g. Fresh Organic Tomatoes"
                         required
                       />
@@ -196,7 +196,7 @@ export default function FarmerDashboard() {
                         name="category"
                         value={formData.category}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         required
                       >
                         <option value="vegetables">Vegetables</option>
@@ -224,7 +224,7 @@ export default function FarmerDashboard() {
                             name="price"
                             value={formData.price}
                             onChange={handleInputChange}
-                            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                             placeholder="0.00"
                             min="0"
                             step="0.01"
@@ -242,7 +242,7 @@ export default function FarmerDashboard() {
                           name="unit"
                           value={formData.unit}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                           required
                         >
                           <option value="kg">Kilogram (kg)</option>
@@ -269,7 +269,7 @@ export default function FarmerDashboard() {
                           name="quantity"
                           value={formData.quantity}
                           onChange={handleInputChange}
-                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                           placeholder="0"
                           min="0"
                           required
@@ -290,7 +290,7 @@ export default function FarmerDashboard() {
                           name="availability"
                           value={formData.availability}
                           onChange={handleInputChange}
-                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                           required
                         >
                           <option value="1">1 day</option>
@@ -317,7 +317,7 @@ export default function FarmerDashboard() {
                           name="harvestDate"
                           value={formData.harvestDate}
                           onChange={handleInputChange}
-                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                         />
                       </div>
                     </div>
@@ -362,7 +362,7 @@ export default function FarmerDashboard() {
                           value={formData.description}
                           onChange={handleInputChange}
                           rows="4"
-                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
                           placeholder="Describe your product, including details about quality, taste, and growing methods..."
                           required
                         ></textarea>
@@ -450,9 +450,9 @@ export default function FarmerDashboard() {
                 
                 <div className="p-6">
                   <div className="text-center py-12">
-                    <FaBox className="mx-auto h-16 w-16 text-gray-300" />
+                    <FaBox className="mx-auto h-16 w-16 text-gray-400" />
                     <h3 className="mt-4 text-lg font-medium text-gray-900">No products yet</h3>
-                    <p className="mt-1 text-sm text-gray-500">Get started by adding your first product.</p>
+                    <p className="mt-1 text-sm text-gray-600">Get started by adding your first product.</p>
                     <div className="mt-6">
                       <button
                         onClick={() => setActiveTab('upload')}
@@ -475,9 +475,9 @@ export default function FarmerDashboard() {
                 
                 <div className="p-6">
                   <div className="text-center py-12">
-                    <FaTag className="mx-auto h-16 w-16 text-gray-300" />
+                    <FaTag className="mx-auto h-16 w-16 text-gray-400" />
                     <h3 className="mt-4 text-lg font-medium text-gray-900">No orders yet</h3>
-                    <p className="mt-1 text-sm text-gray-500">Your order history will appear here.</p>
+                    <p className="mt-1 text-sm text-gray-600">Your order history will appear here.</p>
                   </div>
                 </div>
               </div>

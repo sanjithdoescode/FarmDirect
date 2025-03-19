@@ -102,7 +102,7 @@ function LoginForm({ t }) {
         <input
           type="email"
           placeholder={t.email}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -113,7 +113,7 @@ function LoginForm({ t }) {
         <input
           type="password"
           placeholder={t.password}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -146,7 +146,7 @@ function RegisterForm({ t, userType, setUserType }) {
         <input
           type="text"
           placeholder={t.name}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -157,7 +157,7 @@ function RegisterForm({ t, userType, setUserType }) {
         <input
           type="email"
           placeholder={t.email}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -168,7 +168,7 @@ function RegisterForm({ t, userType, setUserType }) {
         <input
           type="tel"
           placeholder={t.phone}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -179,7 +179,7 @@ function RegisterForm({ t, userType, setUserType }) {
         <input
           type="text"
           placeholder={t.address}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -190,7 +190,7 @@ function RegisterForm({ t, userType, setUserType }) {
         <input
           type="password"
           placeholder={t.password}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
@@ -201,7 +201,7 @@ function RegisterForm({ t, userType, setUserType }) {
         <input
           type="password"
           placeholder={t.confirmPassword}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500"
+          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500 text-gray-700"
           required
         />
       </div>
