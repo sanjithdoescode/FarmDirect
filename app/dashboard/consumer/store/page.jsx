@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../../../context/LanguageContext';
 import { FaFilter, FaSearch, FaShoppingCart, FaHeart, FaStar, FaMapMarkerAlt, FaLeaf, FaTruck } from 'react-icons/fa';
 import Link from 'next/link';
-import Header from '../../../components/Header';
-import Footer from '../../../components/Footer';
 
 export default function Store() {
   const { t } = useLanguage();
@@ -331,105 +329,102 @@ export default function Store() {
   const filteredProducts = filterProducts();
   
   return (
-    <>
-      <Header />
-      <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-800">Farm Fresh Store</h1>
-              <p className="text-gray-600 mt-2">Browse fresh produce directly from local farmers</p>
-            </div>
-            <div className="relative">
-              <button 
-                onClick={toggleCart}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center"
-              >
-                <FaShoppingCart className="mr-2" />
-                <span>Cart ({cartItems.length})</span>
-              </button>
-              
-              {/* Cart Dropdown */}
-              {isCartOpen && (
-                <div className="absolute top-full right-0 mt-2 w-96 bg-white rounded-lg shadow-xl z-50">
-                  <div className="p-4 border-b">
-                    <h3 className="font-medium text-gray-800">Your Cart ({cartItems.length})</h3>
-                  </div>
-                  
-                  <div className="max-h-96 overflow-y-auto p-4">
-                    {cartItems.length > 0 ? (
-                      <div className="space-y-4">
-                        {cartItems.map(item => (
-                          <div key={item.id} className="flex items-center space-x-4">
-                            <div className="h-16 w-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden">
-                              <img
-                                src={item.image}
-                                alt={item.name}
-                                className="h-full w-full object-cover"
-                                onError={(e) => {
-                                  e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
-                                }}
-                              />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
-                              <p className="text-sm text-gray-500">₹{item.price} / {item.unit}</p>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <button 
-                                onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
-                                className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
-                              >
-                                -
-                              </button>
-                              <span className="text-sm">{item.quantity}</span>
-                              <button 
-                                onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
-                                className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
-                              >
-                                +
-                              </button>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-sm font-medium">₹{item.price * item.quantity}</p>
-                              <button 
-                                onClick={() => removeFromCart(item.id)}
-                                className="text-xs text-red-500 hover:text-red-700"
-                              >
-                                Remove
-                              </button>
-                            </div>
+    <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-800">Farm Fresh Store</h1>
+            <p className="text-gray-600 mt-2">Browse fresh produce directly from local farmers</p>
+          </div>
+          <div className="relative">
+            <button 
+              onClick={toggleCart}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center"
+            >
+              <FaShoppingCart className="mr-2" />
+              <span>Cart ({cartItems.length})</span>
+            </button>
+            
+            {/* Cart Dropdown */}
+            {isCartOpen && (
+              <div className="absolute top-full right-0 mt-2 w-96 bg-white rounded-lg shadow-xl z-50">
+                <div className="p-4 border-b">
+                  <h3 className="font-medium text-gray-800">Your Cart ({cartItems.length})</h3>
+                </div>
+                
+                <div className="max-h-96 overflow-y-auto p-4">
+                  {cartItems.length > 0 ? (
+                    <div className="space-y-4">
+                      {cartItems.map(item => (
+                        <div key={item.id} className="flex items-center space-x-4">
+                          <div className="h-16 w-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="h-full w-full object-cover"
+                              onError={(e) => {
+                                e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
+                              }}
+                            />
                           </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="text-center py-8">
-                        <FaShoppingCart className="mx-auto h-10 w-10 text-gray-400" />
-                        <p className="mt-2 text-gray-600">Your cart is empty</p>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {cartItems.length > 0 && (
-                    <>
-                      <div className="p-4 border-t">
-                        <div className="flex justify-between font-medium">
-                          <span>Subtotal:</span>
-                          <span>₹{calculateCartTotal()}</span>
+                          <div className="flex-1">
+                            <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
+                            <p className="text-sm text-gray-500">₹{item.price} / {item.unit}</p>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <button 
+                              onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
+                              className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
+                            >
+                              -
+                            </button>
+                            <span className="text-sm">{item.quantity}</span>
+                            <button 
+                              onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
+                              className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm font-medium">₹{item.price * item.quantity}</p>
+                            <button 
+                              onClick={() => removeFromCart(item.id)}
+                              className="text-xs text-red-500 hover:text-red-700"
+                            >
+                              Remove
+                            </button>
+                          </div>
                         </div>
-                        <p className="text-xs text-gray-500 mt-1">Shipping and delivery charges calculated at checkout</p>
-                      </div>
-                      
-                      <div className="p-4 bg-gray-50 rounded-b-lg">
-                        <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
-                          Proceed to Checkout
-                        </button>
-                      </div>
-                    </>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8">
+                      <FaShoppingCart className="mx-auto h-10 w-10 text-gray-400" />
+                      <p className="mt-2 text-gray-600">Your cart is empty</p>
+                    </div>
                   )}
                 </div>
-              )}
-            </div>
+                
+                {cartItems.length > 0 && (
+                  <>
+                    <div className="p-4 border-t">
+                      <div className="flex justify-between font-medium">
+                        <span>Subtotal:</span>
+                        <span>₹{calculateCartTotal()}</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Shipping and delivery charges calculated at checkout</p>
+                    </div>
+                    
+                    <div className="p-4 bg-gray-50 rounded-b-lg">
+                      <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+                        Proceed to Checkout
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -792,7 +787,6 @@ export default function Store() {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 } 
