@@ -3,6 +3,7 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import ProcessSteps from './components/ProcessSteps';
 import Footer from './components/Footer';
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <ProcessSteps />
       <Features />
       <Footer />
     </main>
