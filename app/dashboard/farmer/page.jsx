@@ -80,12 +80,10 @@ export default function FarmerDashboard() {
   };
 
   return (
-    <>
-      <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-gray-800">Farmer Dashboard</h1>
-          <p className="text-gray-600 mt-2">Manage your farm products and sales</p>
-        </div>
+    <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
+      <div className="container mx-auto px-4">
+        <h1 className="text-3xl font-bold text-gray-800">Farmer Dashboard</h1>
+        <p className="text-gray-600 mt-2">Manage your farm products and sales</p>
       </div>
       
       <div className="container mx-auto px-4 py-8">
@@ -485,6 +483,6 @@ export default function FarmerDashboard() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 } 

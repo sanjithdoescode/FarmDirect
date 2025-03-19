@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../../../context/LanguageContext';
 import { FaFilter, FaSearch, FaShoppingCart, FaHeart, FaStar, FaMapMarkerAlt, FaLeaf, FaTruck } from 'react-icons/fa';
 import Link from 'next/link';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 
 export default function Store() {
   const { t } = useLanguage();
@@ -330,6 +332,7 @@ export default function Store() {
   
   return (
     <>
+      <Header />
       <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
@@ -789,6 +792,7 @@ export default function Store() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 } 
