@@ -231,7 +231,7 @@ export default function AboutPage() {
                   
                   <div className="p-6">
                     <p className="text-gray-700 mb-4">
-                      Passionate about transforming agriculture with technology. Leading our team to create sustainable food systems and empower farmers.
+                      Dedicated to building innovative solutions that connect farmers directly with consumers. Expertly handles development and technical implementation.
                     </p>
                     <div className="flex gap-4 justify-center">
                       <a href="#" className="text-gray-500 hover:text-green-600 transition-colors">
@@ -252,19 +252,19 @@ export default function AboutPage() {
                   <div className="h-64 bg-gradient-to-r from-green-400 to-green-600 relative">
                     <img 
                       src="https://images.unsplash.com/photo-1639747280929-e84ef392c69a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                      alt="Kabilan B" 
+                      alt="Roshan V R" 
                       className="w-full h-full object-cover mix-blend-overlay opacity-90"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 p-4 text-white">
-                      <h3 className="text-2xl font-bold">Kabilan B</h3>
+                      <h3 className="text-2xl font-bold">Roshan V R</h3>
                       <p className="text-white/90">Team Member</p>
                     </div>
                   </div>
                   
                   <div className="p-6">
                     <p className="text-gray-700 mb-4">
-                      Dedicated to building innovative solutions that connect farmers directly with consumers. Expertly handles development and technical implementation.
+                      Passionate about transforming agriculture with technology. Leading our team to create sustainable food systems and empower farmers.
                     </p>
                     <div className="flex gap-4 justify-center">
                       <a href="#" className="text-gray-500 hover:text-green-600 transition-colors">
