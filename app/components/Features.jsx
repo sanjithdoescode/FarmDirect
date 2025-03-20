@@ -75,7 +75,7 @@ export default function Features() {
             visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-6'
           }`}>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">From Farm to Table</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               We connect local farmers directly with consumers, creating a more sustainable food system
               that benefits everyone. Fresh produce, fair prices, and a healthier community.
             </p>
@@ -109,7 +109,7 @@ export default function Features() {
           <div className={`mt-24 transition-all duration-1000 delay-600 transform ${
             visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-6'
           }`}>
-            <h3 className="text-2xl font-bold text-center mb-12">How It Works</h3>
+            <h3 className="text-2xl font-bold text-center mb-12 text-gray-900">How It Works</h3>
             
             <div className="relative">
               {/* Connection line */}
@@ -120,28 +120,28 @@ export default function Features() {
                   <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
                     👨‍🌾
                   </div>
-                  <h4 className="text-lg font-semibold mb-2">Farmers list their fresh produce on our platform</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Farmers list their fresh produce on our platform</h4>
                 </div>
                 
                 <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
                   <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
                     🛒
                   </div>
-                  <h4 className="text-lg font-semibold mb-2">Customers browse and order fresh local products</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Customers browse and order fresh local products</h4>
                 </div>
                 
                 <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
                   <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
                     🚚
                   </div>
-                  <h4 className="text-lg font-semibold mb-2">Products are delivered fresh within 24 hours</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Products are delivered fresh within 24 hours</h4>
                 </div>
                 
                 <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
                   <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
                     😋
                   </div>
-                  <h4 className="text-lg font-semibold mb-2">Customers enjoy farm-fresh products</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Customers enjoy farm-fresh products</h4>
                 </div>
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function Features() {
                     <span className="text-green-500 text-4xl mr-3">"</span>
                     <div>
                       <p className="text-sm text-gray-700 italic">FarmDirect has increased my income by 35% while connecting me with customers who value quality produce.</p>
-                      <p className="text-xs font-medium mt-2">- Raj Kumar, Organic Farmer</p>
+                      <p className="text-xs font-medium mt-2 text-gray-800">- Raj Kumar, Organic Farmer</p>
                     </div>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function Features() {
             </div>
             <div className="md:w-1/2">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">For Farmers</h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                 Join our community of local farmers and experience better prices, direct customer relationships,
                 and a streamlined selling process.
               </p>
@@ -257,7 +257,7 @@ export default function Features() {
                     />
                   </div>
                   <div className="text-sm">
-                    <div className="font-medium">Organic Bananas</div>
+                    <div className="font-medium text-gray-800">Organic Bananas</div>
                     <div className="text-green-600">₹80 / dozen</div>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ export default function Features() {
             </div>
             <div className="md:w-1/2">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">For Consumers</h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                 Enjoy farm-fresh produce delivered directly to your doorstep. Better quality, better prices,
                 and the satisfaction of supporting local farmers.
               </p>
@@ -323,7 +323,7 @@ function Feature({ icon, title, description, isAnimated = false, delay = 0 }) {
       <div className="mr-4 text-2xl bg-green-50 p-3 rounded-full">{icon}</div>
       <div>
         <h3 className="font-bold text-gray-800">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-gray-700">{description}</p>
       </div>
     </li>
   );
