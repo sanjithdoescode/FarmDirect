@@ -104,48 +104,6 @@ export default function Features() {
               <p className="text-gray-700">Lower prices for consumers</p>
             </div>
           </div>
-          
-          {/* Process Steps - Visual Journey */}
-          <div className={`mt-24 transition-all duration-1000 delay-600 transform ${
-            visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-6'
-          }`}>
-            <h3 className="text-2xl font-bold text-center mb-12 text-gray-900">How It Works</h3>
-            
-            <div className="relative">
-              {/* Connection line */}
-              <div className="absolute top-1/2 left-0 w-full h-1 bg-green-100 transform -translate-y-1/2 hidden md:block"></div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
-                  <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
-                    👨‍🌾
-                  </div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Farmers list their fresh produce on our platform</h4>
-                </div>
-                
-                <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
-                  <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
-                    🛒
-                  </div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Customers browse and order fresh local products</h4>
-                </div>
-                
-                <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
-                  <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
-                    🚚
-                  </div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Products are delivered fresh within 24 hours</h4>
-                </div>
-                
-                <div className="bg-white rounded-lg p-6 text-center relative z-10 shadow-sm hover:shadow-md transition-shadow hover:scale-105 transform transition-transform">
-                  <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-4xl mx-auto mb-4">
-                    😋
-                  </div>
-                  <h4 className="text-lg font-semibold mb-2 text-gray-800">Customers enjoy farm-fresh products</h4>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
         
         {/* For Farmers Section */}
