@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
+import { PageTransitionProvider } from "./context/PageTransitionContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +30,9 @@ export default function RootLayout({
         className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
         <LanguageProvider>
-          {children}
+          <PageTransitionProvider>
+            {children}
+          </PageTransitionProvider>
         </LanguageProvider>
       </body>
     </html>

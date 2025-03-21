@@ -10,7 +10,7 @@ import PageWrapper from './components/PageWrapper';
 
 export default function Home() {
   return (
-    <React.Fragment>
+    <>
       <Header />
       <PageWrapper transitionType="spring">
         <main className="min-h-screen">
@@ -20,6 +20,6 @@ export default function Home() {
         </main>
       </PageWrapper>
       <Footer />
-    </React.Fragment>
+    </>
   );
-}
+} 
