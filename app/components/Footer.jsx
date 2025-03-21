@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '../context/LanguageContext';
+import Link from 'next/link';
 
 export default function Footer() {
   const { t, language, changeLanguage } = useLanguage();
@@ -44,20 +45,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Explore</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">For Farmers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">For Consumers</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+              <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/farmer" className="text-gray-400 hover:text-white transition-colors">For Farmers</Link></li>
+              <li><Link href="/consumer" className="text-gray-400 hover:text-white transition-colors">For Consumers</Link></li>
             </ul>
           </div>
           

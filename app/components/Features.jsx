@@ -133,7 +133,7 @@ export default function Features() {
                   <div className="flex items-start">
                     <span className="text-green-500 text-4xl mr-3">"</span>
                     <div>
-                      <p className="text-sm text-gray-700 italic">FarmDirect has increased my income by 35% while connecting me with customers who value quality produce.</p>
+                      <p className="text-sm text-gray-700 italic"></p>
                     </div>
                   </div>
                 </div>
