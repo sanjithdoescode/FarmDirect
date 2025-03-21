@@ -31,7 +31,29 @@ export const translations = {
     // Language
     language: "Language",
     english: "English",
-    tamil: "Tamil"
+    tamil: "Tamil",
+    
+    // Traceability
+    productTraceability: "Product Traceability",
+    verifyAuthenticity: "Verify Authenticity",
+    scanQRCode: "Scan this QR code to verify this product's journey",
+    supplyChainJourney: "Supply Chain Journey",
+    farmingPractices: "Farming Practices",
+    carbonFootprint: "Carbon Footprint",
+    farmingMethod: "Farming Method",
+    inputsUsed: "Inputs Used",
+    waterSource: "Water Source",
+    sustainability: "Sustainability Practices",
+    environmentalImpact: "Environmental Impact",
+    verifyProduct: "Verify Product",
+    batchId: "Batch ID",
+    verified: "Verified",
+    totalFootprint: "Total Footprint",
+    farmEmissions: "Farm Emissions",
+    transportEmissions: "Transport Emissions",
+    whatThisMeans: "What This Means",
+    shareInfo: "Share This Information",
+    shareInfoSubtext: "Help spread awareness about sustainable food sources and transparent supply chains."
   },
   ta: {
     // Landing page
@@ -65,6 +87,28 @@ export const translations = {
     // Language
     language: "மொழி",
     english: "ஆங்கிலம்",
-    tamil: "தமிழ்"
+    tamil: "தமிழ்",
+    
+    // Traceability
+    productTraceability: "தயாரிப்பு தடமறியும் தன்மை",
+    verifyAuthenticity: "நம்பகத்தன்மையை சரிபார்க்கவும்",
+    scanQRCode: "இந்த தயாரிப்பின் பயணத்தை சரிபார்க்க இந்த QR குறியீட்டை ஸ்கேன் செய்யவும்",
+    supplyChainJourney: "விநியோக சங்கிலி பயணம்",
+    farmingPractices: "விவசாய நடைமுறைகள்",
+    carbonFootprint: "கார்பன் தடம்",
+    farmingMethod: "விவசாய முறை",
+    inputsUsed: "பயன்படுத்தப்பட்ட உள்ளீடுகள்",
+    waterSource: "நீர் ஆதாரம்",
+    sustainability: "நிலைத்தன்மை நடைமுறைகள்",
+    environmentalImpact: "சுற்றுச்சூழல் தாக்கம்",
+    verifyProduct: "தயாரிப்பைச் சரிபார்க்கவும்",
+    batchId: "தொகுப்பு ID",
+    verified: "சரிபார்க்கப்பட்டது",
+    totalFootprint: "மொத்த கார்பன் தடம்",
+    farmEmissions: "பண்ணை உமிழ்வுகள்",
+    transportEmissions: "போக்குவரத்து உமிழ்வுகள்",
+    whatThisMeans: "இதன் பொருள் என்ன",
+    shareInfo: "இந்த தகவலைப் பகிரவும்",
+    shareInfoSubtext: "நிலையான உணவு ஆதாரங்கள் மற்றும் வெளிப்படையான விநியோக சங்கிலிகள் பற்றிய விழிப்புணர்வைப் பரப்ப உதவுங்கள்."
   }
 }; 
