@@ -73,7 +73,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-40">
+    <header className="sticky top-0 z-40 backdrop-blur-sm bg-white/80 border-b border-gray-100">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
@@ -111,17 +111,17 @@ export default function Header() {
             <AnimatePresence>
               {communityDropdownOpen && (
                 <motion.div
-                  className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 overflow-hidden"
+                  className="absolute left-0 mt-2 w-56 rounded-md backdrop-blur-sm bg-white/90 border border-gray-100 shadow-lg ring-1 ring-black/5 z-50 overflow-hidden"
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                   variants={dropdownVariants}
                 >
-                  <motion.div className="py-1 divide-y divide-gray-100">
+                  <motion.div className="py-1 divide-y divide-gray-100/70">
                     <motion.div variants={itemVariants}>
                       <Link 
                         href="/community/adopt" 
-                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-50/80 transition-colors"
                         onClick={() => setCommunityDropdownOpen(false)}
                       >
                         <span className="w-8 h-8 mr-3 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 group-hover:bg-amber-200 transition-colors">
@@ -137,7 +137,7 @@ export default function Header() {
                     <motion.div variants={itemVariants}>
                       <Link 
                         href="/community/vote" 
-                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-50/80 transition-colors"
                         onClick={() => setCommunityDropdownOpen(false)}
                       >
                         <span className="w-8 h-8 mr-3 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors">
@@ -153,7 +153,7 @@ export default function Header() {
                     <motion.div variants={itemVariants}>
                       <Link 
                         href="/community/csa" 
-                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-50/80 transition-colors"
                         onClick={() => setCommunityDropdownOpen(false)}
                       >
                         <span className="w-8 h-8 mr-3 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 group-hover:bg-emerald-200 transition-colors">
@@ -169,7 +169,7 @@ export default function Header() {
                     <motion.div variants={itemVariants}>
                       <Link 
                         href="/community/events" 
-                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-50/80 transition-colors"
                         onClick={() => setCommunityDropdownOpen(false)}
                       >
                         <span className="w-8 h-8 mr-3 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 group-hover:bg-orange-200 transition-colors">
@@ -257,7 +257,7 @@ export default function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="md:hidden bg-white py-2 px-4 shadow-lg"
+            className="md:hidden backdrop-blur-sm bg-white/95 py-2 px-4 shadow-lg border-t border-gray-100"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
