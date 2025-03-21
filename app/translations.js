@@ -110,5 +110,238 @@ export const translations = {
     whatThisMeans: "இதன் பொருள் என்ன",
     shareInfo: "இந்த தகவலைப் பகிரவும்",
     shareInfoSubtext: "நிலையான உணவு ஆதாரங்கள் மற்றும் வெளிப்படையான விநியோக சங்கிலிகள் பற்றிய விழிப்புணர்வைப் பரப்ப உதவுங்கள்."
+  },
+  // Community & Events translations
+  community: {
+    en: "Community",
+    ta: "சமூகம்"
+  },
+  events: {
+    en: "Events",
+    ta: "நிகழ்வுகள்"
+  },
+  harvestDayEvents: {
+    en: "Harvest Day Events",
+    ta: "அறுவடை தின நிகழ்வுகள்"
+  },
+  cropAdoption: {
+    en: "Crop Adoption Program",
+    ta: "பயிர் தத்தெடுப்பு திட்டம்"
+  },
+  communityVoting: {
+    en: "Community Voting",
+    ta: "சமூக வாக்களிப்பு"
+  },
+  csa: {
+    en: "Community Supported Agriculture",
+    ta: "சமூகம் ஆதரிக்கும் விவசாயம்"
+  },
+  initiatives: {
+    en: "Initiatives",
+    ta: "முன்முயற்சிகள்"
+  },
+  upcomingEvents: {
+    en: "Upcoming Events",
+    ta: "வரவிருக்கும் நிகழ்வுகள்"
+  },
+  impactStats: {
+    en: "Impact",
+    ta: "தாக்கம்"
+  },
+  testimonials: {
+    en: "Testimonials",
+    ta: "பாராட்டுகள்"
+  },
+  joinCommunity: {
+    en: "Join Our Community",
+    ta: "எங்கள் சமூகத்தில் இணையுங்கள்"
+  },
+  farmersInvolved: {
+    en: "Farmers Involved",
+    ta: "ஈடுபட்டுள்ள விவசாயிகள்"
+  },
+  consumersMobilized: {
+    en: "Consumers Mobilized",
+    ta: "அணிதிரட்டப்பட்ட நுகர்வோர்"
+  },
+  eventsHosted: {
+    en: "Events Hosted",
+    ta: "நடத்தப்பட்ட நிகழ்வுகள்"
+  },
+  cropsAdopted: {
+    en: "Crops Adopted",
+    ta: "தத்தெடுக்கப்பட்ட பயிர்கள்"
+  },
+  search: {
+    en: "Search",
+    ta: "தேடல்"
+  },
+  filter: {
+    en: "Filter",
+    ta: "வடிகட்டி"
+  },
+  location: {
+    en: "Location",
+    ta: "இடம்"
+  },
+  date: {
+    en: "Date",
+    ta: "தேதி"
+  },
+  time: {
+    en: "Time",
+    ta: "நேரம்"
+  },
+  rsvp: {
+    en: "RSVP",
+    ta: "பதிவு செய்க"
+  },
+  viewDetails: {
+    en: "View Details",
+    ta: "விவரங்களைக் காண"
+  },
+  resetFilters: {
+    en: "Reset Filters",
+    ta: "வடிகட்டிகளை மீட்டமைக்க"
+  },
+  allLocations: {
+    en: "All Locations",
+    ta: "அனைத்து இடங்களும்"
+  },
+  allMonths: {
+    en: "All Months",
+    ta: "அனைத்து மாதங்களும்"
+  },
+  allTypes: {
+    en: "All Types",
+    ta: "அனைத்து வகைகளும்"
+  },
+  createEvent: {
+    en: "Create an Event",
+    ta: "ஒரு நிகழ்வை உருவாக்கவும்"
+  },
+  noEvents: {
+    en: "No Events Found",
+    ta: "நிகழ்வுகள் எதுவும் கிடைக்கவில்லை"
+  },
+  showAllEvents: {
+    en: "Show All Events",
+    ta: "அனைத்து நிகழ்வுகளையும் காட்டு"
+  },
+  howItWorks: {
+    en: "How It Works",
+    ta: "இது எப்படி செயல்படுகிறது"
+  },
+  adoptACrop: {
+    en: "Adopt a Crop",
+    ta: "ஒரு பயிரை தத்தெடுக்கவும்"
+  },
+  farmer: {
+    en: "Farmer",
+    ta: "விவசாயி"
+  },
+  price: {
+    en: "Price",
+    ta: "விலை"
+  },
+  duration: {
+    en: "Duration",
+    ta: "காலம்"
+  },
+  benefits: {
+    en: "Benefits",
+    ta: "நன்மைகள்"
+  },
+  farmLocation: {
+    en: "Farm Location",
+    ta: "பண்ணை இடம்"
+  },
+  cropType: {
+    en: "Crop Type",
+    ta: "பயிர் வகை"
+  },
+  adoptNow: {
+    en: "Adopt Now",
+    ta: "இப்போது தத்தெடுக்கவும்"
+  },
+  noCrops: {
+    en: "No Crops Found",
+    ta: "பயிர்கள் எதுவும் கிடைக்கவில்லை"
+  },
+  showAllCrops: {
+    en: "Show All Crops",
+    ta: "அனைத்து பயிர்களையும் காட்டு"
+  },
+  vote: {
+    en: "Vote",
+    ta: "வாக்களிக்கவும்"
+  },
+  ongoingVotes: {
+    en: "Ongoing Votes",
+    ta: "நடைபெற்றுக்கொண்டிருக்கும் வாக்கெடுப்புகள்"
+  },
+  pastResults: {
+    en: "Past Results",
+    ta: "கடந்த முடிவுகள்"
+  },
+  deadline: {
+    en: "Deadline",
+    ta: "காலக்கெடு"
+  },
+  participation: {
+    en: "Participation",
+    ta: "பங்கேற்பு"
+  },
+  winner: {
+    en: "Winner",
+    ta: "வெற்றியாளர்"
+  },
+  runnerUp: {
+    en: "Runner-up",
+    ta: "இரண்டாம் இடம்"
+  },
+  outcome: {
+    en: "Outcome",
+    ta: "விளைவு"
+  },
+  implemented: {
+    en: "Implemented",
+    ta: "செயல்படுத்தப்பட்டது"
+  },
+  farmerUpdate: {
+    en: "Farmer Update",
+    ta: "விவசாயி புதுப்பிப்பு"
+  },
+  createVote: {
+    en: "Create a Vote",
+    ta: "ஒரு வாக்கெடுப்பை உருவாக்கவும்"
+  },
+  csaPrograms: {
+    en: "CSA Programs",
+    ta: "CSA திட்டங்கள்"
+  },
+  subscribeNow: {
+    en: "Subscribe Now",
+    ta: "இப்போது சந்தா செய்யுங்கள்"
+  },
+  learnMore: {
+    en: "Learn More",
+    ta: "மேலும் அறிய"
+  },
+  startDate: {
+    en: "Start Date",
+    ta: "தொடக்க தேதி"
+  },
+  frequency: {
+    en: "Frequency",
+    ta: "அலைவெண்"
+  },
+  shareSize: {
+    en: "Share Size",
+    ta: "பங்கு அளவு"
+  },
+  whatsIncluded: {
+    en: "What's Included",
+    ta: "என்ன சேர்க்கப்பட்டுள்ளது"
   }
 }; 
