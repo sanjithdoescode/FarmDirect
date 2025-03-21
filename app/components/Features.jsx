@@ -134,7 +134,6 @@ export default function Features() {
                     <span className="text-green-500 text-4xl mr-3">"</span>
                     <div>
                       <p className="text-sm text-gray-700 italic">FarmDirect has increased my income by 35% while connecting me with customers who value quality produce.</p>
-                      <p className="text-xs font-medium mt-2 text-gray-800">- Raj Kumar, Organic Farmer</p>
                     </div>
                   </div>
                 </div>
