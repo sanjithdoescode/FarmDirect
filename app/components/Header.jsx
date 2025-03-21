@@ -34,19 +34,19 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="/about" className="text-gray-600 hover:text-gray-900">
-            About Us
+            {t.aboutUs}
           </Link>
           <Link href="/farmer" className="text-gray-600 hover:text-gray-900">
-            For Farmers
+            {t.forFarmers}
           </Link>
           <Link href="/consumer" className="text-gray-600 hover:text-gray-900">
-            For Consumers
+            {t.forConsumers}
           </Link>
           <Link href="/dashboard/farmer" className="text-gray-600 hover:text-gray-900">
-            Farmer Dashboard
+            {t.farmerDashboard}
           </Link>
           <Link href="/dashboard/consumer" className="text-gray-600 hover:text-gray-900">
-            Consumer Dashboard
+            {t.consumerDashboard}
           </Link>
           
           {/* Language Selector */}
@@ -110,21 +110,21 @@ export default function Header() {
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            About Us
+            {t.aboutUs}
           </Link>
           <Link 
             href="/farmer" 
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            For Farmers
+            {t.forFarmers}
           </Link>
           <Link 
             href="/consumer" 
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            For Consumers
+            {t.forConsumers}
           </Link>
           
           <Link 
@@ -132,7 +132,7 @@ export default function Header() {
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Farmer Dashboard
+            {t.farmerDashboard}
           </Link>
           
           <Link 
@@ -140,7 +140,7 @@ export default function Header() {
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"
             onClick={() => setIsMenuOpen(false)}
           >
-            Consumer Dashboard
+            {t.consumerDashboard}
           </Link>
           
           {/* Language Selector */}

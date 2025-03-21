@@ -12,15 +12,21 @@ export const LanguageProvider = ({ children }) => {
   const [t, setT] = useState(translations.en);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setLanguage(savedLanguage);
-    setT(translations[savedLanguage]);
+    // Safely check if we're in a browser environment
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('language') || 'en';
+      setLanguage(savedLanguage);
+      setT(translations[savedLanguage]);
+    }
   }, []);
 
   const changeLanguage = (lang) => {
     setLanguage(lang);
     setT(translations[lang]);
-    localStorage.setItem('language', lang);
+    // Only attempt to use localStorage in browser environment
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+    }
   };
 
   return (

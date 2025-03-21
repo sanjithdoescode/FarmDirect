@@ -28,29 +28,38 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row items-center">
           {/* Left Column: Text content with fade-in animation */}
           <div 
-            className={`md:w-1/2 mb-12 md:mb-0 md:pr-12 transition-all duration-1000 transform ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-80 translate-x-0'
-            }`}
+            className={`w-full md:w-1/2 text-center md:text-left ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-1000`}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Fresh From Farm <br/><span className="text-green-600">To Your Table</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-green-800 mb-4">
+              {t.welcome}
             </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Connect directly with local farmers for the freshest produce. Support local agriculture and enjoy farm-fresh quality.
+            <p className="text-xl text-gray-700 mb-8 max-w-lg mx-auto md:mx-0">
+              {t.tagline}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform"
+                className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
               >
                 {t.getStarted}
               </button>
               <a
-                href="#about"
-                className="px-8 py-3 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium text-center transform hover:scale-105 transition-transform"
+                href="#features"
+                className="px-8 py-3 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors font-medium"
               >
-                {t.aboutUs}
+                {t.learnMore}
               </a>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-6 text-center">
+              <div className="p-4 bg-white shadow-md rounded-lg transform hover:scale-105 transition-transform duration-300">
+                <p className="text-2xl font-bold text-green-600">{t.farmerStats}</p>
+                <p className="text-gray-600">{t.joinNow}</p>
+              </div>
+              <div className="p-4 bg-white shadow-md rounded-lg transform hover:scale-105 transition-transform duration-300">
+                <p className="text-2xl font-bold text-green-600">{t.consumerStats}</p>
+                <p className="text-gray-600">{t.freshFromFarm}</p>
+              </div>
             </div>
           </div>
 
