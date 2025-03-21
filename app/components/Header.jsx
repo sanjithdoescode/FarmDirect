@@ -10,6 +10,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [initialAuthTab, setInitialAuthTab] = useState('login');
+  const [communityDropdownOpen, setCommunityDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,6 +19,10 @@ export default function Header() {
   const openAuthModal = (tab) => {
     setInitialAuthTab(tab);
     setIsAuthModalOpen(true);
+  };
+
+  const toggleCommunityDropdown = () => {
+    setCommunityDropdownOpen(!communityDropdownOpen);
   };
 
   return (
@@ -36,6 +41,53 @@ export default function Header() {
           <Link href="/about" className="text-gray-600 hover:text-gray-900">
             About Us
           </Link>
+          
+          {/* Community Dropdown */}
+          <div className="relative inline-block">
+            <button 
+              className="text-gray-600 hover:text-gray-900 flex items-center"
+              onClick={toggleCommunityDropdown}
+            >
+              Community
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={communityDropdownOpen ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
+              </svg>
+            </button>
+            
+            {communityDropdownOpen && (
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 z-50">
+                <Link 
+                  href="/community/adopt" 
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => setCommunityDropdownOpen(false)}
+                >
+                  Crop Adoption
+                </Link>
+                <Link 
+                  href="/community/vote" 
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => setCommunityDropdownOpen(false)}
+                >
+                  Community Voting
+                </Link>
+                <Link 
+                  href="/community/csa" 
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => setCommunityDropdownOpen(false)}
+                >
+                  CSA Programs
+                </Link>
+                <Link 
+                  href="/community/events" 
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => setCommunityDropdownOpen(false)}
+                >
+                  Harvest Events
+                </Link>
+              </div>
+            )}
+          </div>
+          
           <Link href="/farmer" className="text-gray-600 hover:text-gray-900">
             For Farmers
           </Link>
@@ -112,6 +164,53 @@ export default function Header() {
           >
             About Us
           </Link>
+          
+          {/* Community Section */}
+          <div className="py-2">
+            <button 
+              className="flex items-center justify-between w-full text-left text-gray-700 hover:text-green-600 transition-colors"
+              onClick={() => setCommunityDropdownOpen(!communityDropdownOpen)}
+            >
+              <span>Community</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={communityDropdownOpen ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
+              </svg>
+            </button>
+            
+            {communityDropdownOpen && (
+              <div className="pl-4 mt-2 space-y-2">
+                <Link 
+                  href="/community/adopt" 
+                  className="block py-1 text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Crop Adoption
+                </Link>
+                <Link 
+                  href="/community/vote" 
+                  className="block py-1 text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Community Voting
+                </Link>
+                <Link 
+                  href="/community/csa" 
+                  className="block py-1 text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  CSA Programs
+                </Link>
+                <Link 
+                  href="/community/events" 
+                  className="block py-1 text-gray-700 hover:text-green-600 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Harvest Events
+                </Link>
+              </div>
+            )}
+          </div>
+          
           <Link 
             href="/farmer" 
             className="block py-2 text-gray-700 hover:text-green-600 transition-colors"

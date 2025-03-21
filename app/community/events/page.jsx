@@ -5,16 +5,17 @@ import { useLanguage } from '../../context/LanguageContext';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
-import { FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaFilter, FaSearch } from 'react-icons/fa';
+import { FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaSearch, FaFilter, FaRegHeart, FaHeart, FaRegClock } from 'react-icons/fa';
 
 export default function EventsPage() {
   const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
-    city: 'all',
+    location: 'all',
     month: 'all',
-    eventType: 'all'
+    type: 'all'
   });
+  const [favorites, setFavorites] = useState([]);
   
   // Mock events data
   const events = [
@@ -24,13 +25,13 @@ export default function EventsPage() {
       date: "July 15, 2023",
       time: "9:00 AM - 2:00 PM",
       location: "Central Market, Coimbatore",
-      city: "Coimbatore",
-      month: "July",
-      type: "market",
       image: "https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      farmers: 12,
+      type: "festival",
+      description: "Join us for a celebration of summer crops with over 20 local farmers. Sample fresh produce, enjoy cooking demonstrations, and participate in family-friendly activities.",
+      farmers: 22,
+      activities: ["Farm-to-table tasting", "Live cooking demos", "Children's planting workshop", "Local music performances"],
       attendees: 250,
-      description: "Join us for a celebration of summer's bounty. Meet 12 local farmers and taste the freshest seasonal produce."
+      isFree: true
     },
     {
       id: 2,
@@ -38,13 +39,14 @@ export default function EventsPage() {
       date: "July 22, 2023",
       time: "10:00 AM - 12:00 PM",
       location: "Green Earth Farm, Salem",
-      city: "Salem",
-      month: "July",
-      type: "workshop",
       image: "https://images.unsplash.com/photo-1595508064774-5ff825885dc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      type: "workshop",
+      description: "Learn natural pest control techniques and soil health management in this hands-on workshop led by experienced organic farmers.",
       farmers: 5,
+      activities: ["Hands-on composting", "Organic pest control demonstration", "Q&A with farmers"],
       attendees: 40,
-      description: "Learn organic farming techniques directly from experienced farmers. Hands-on activities included."
+      isFree: false,
+      price: "₹200"
     },
     {
       id: 3,
@@ -52,56 +54,58 @@ export default function EventsPage() {
       date: "July 29, 2023",
       time: "8:00 AM - 3:00 PM",
       location: "Paddy Organics, Thanjavur",
-      city: "Thanjavur",
-      month: "July",
-      type: "market",
       image: "https://images.unsplash.com/photo-1553279768-865429fa0078?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      type: "festival",
+      description: "Experience the sweetness of the season with a mango-centric event featuring 15+ varieties of mangoes from local orchards.",
       farmers: 8,
+      activities: ["Mango tasting", "Mango recipe contest", "Orchard tours", "Mango eating competition"],
       attendees: 180,
-      description: "Celebrate the mango harvest with tastings of 15+ varieties, direct purchases from farmers, and cooking demonstrations."
+      isFree: true
     },
     {
       id: 4,
-      title: "Farm-to-Table Dinner",
+      title: "Seed Saving Workshop",
       date: "August 5, 2023",
-      time: "6:00 PM - 9:00 PM",
-      location: "Heritage Gardens, Chennai",
-      city: "Chennai",
-      month: "August",
-      type: "dining",
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      farmers: 6,
-      attendees: 80,
-      description: "An exclusive dinner featuring ingredients sourced from local farms within 30km. Meet the farmers who grew your food."
+      time: "9:00 AM - 11:00 AM",
+      location: "Heritage Farms, Thanjavur",
+      image: "https://images.unsplash.com/photo-1512584744979-9f9f8b43693f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      type: "workshop",
+      description: "Learn traditional seed saving techniques to preserve heirloom varieties. Each participant will take home seeds to start their own garden.",
+      farmers: 3,
+      activities: ["Seed collection demonstration", "Seed storage techniques", "Seed exchange", "Heritage seed stories"],
+      attendees: 35,
+      isFree: false,
+      price: "₹150"
     },
     {
       id: 5,
-      title: "Children's Farm Day",
+      title: "Farm-to-Table Dinner",
       date: "August 12, 2023",
-      time: "9:00 AM - 1:00 PM",
-      location: "Happy Acres, Madurai",
-      city: "Madurai",
-      month: "August",
-      type: "educational",
-      image: "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      time: "6:00 PM - 9:00 PM",
+      location: "Sunrise Organics, Madurai",
+      image: "https://images.unsplash.com/photo-1568685002001-1017b6b99e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      type: "dining",
+      description: "Enjoy a five-course meal prepared with ingredients harvested the same day from our farm. Meet the farmers who grew your food.",
       farmers: 4,
-      attendees: 120,
-      description: "A family-friendly event where children can learn about farming, participate in planting activities, and meet farm animals."
+      activities: ["Guided farm tour", "Five-course meal", "Wine pairing", "Chef's cooking demonstration"],
+      attendees: 60,
+      isFree: false,
+      price: "₹1500"
     },
     {
       id: 6,
-      title: "Weekly Farmers Market",
-      date: "Every Saturday",
-      time: "7:00 AM - 12:00 PM",
-      location: "Community Center, Coimbatore",
-      city: "Coimbatore",
-      month: "Recurring",
-      type: "market",
-      image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      farmers: 15,
-      attendees: 300,
-      description: "Our weekly farmers market featuring seasonal produce, homemade goods, and direct interaction with local farmers."
-    }
+      title: "Monsoon Planting Day",
+      date: "August 19, 2023",
+      time: "8:00 AM - 1:00 PM",
+      location: "Community Garden, Coimbatore",
+      image: "https://images.unsplash.com/photo-1574276597656-11986751071d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      type: "community",
+      description: "Help us plant the community garden for the monsoon season. All ages welcome - come learn how to grow your own food!",
+      farmers: 6,
+      activities: ["Planting workshop", "Soil preparation", "Companion planting guide", "Free seedlings"],
+      attendees: 100,
+      isFree: true
+    },
   ];
   
   // Filter events based on search and filters
@@ -110,16 +114,19 @@ export default function EventsPage() {
                           event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           event.location.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesCity = filters.city === 'all' || event.city === filters.city;
-    const matchesMonth = filters.month === 'all' || event.month === filters.month;
-    const matchesType = filters.eventType === 'all' || event.type === filters.eventType;
+    const matchesLocation = filters.location === 'all' || event.location.includes(filters.location);
     
-    return matchesSearch && matchesCity && matchesMonth && matchesType;
+    const eventMonth = new Date(event.date).toLocaleString('en-US', { month: 'long' });
+    const matchesMonth = filters.month === 'all' || eventMonth.toLowerCase() === filters.month.toLowerCase();
+    
+    const matchesType = filters.type === 'all' || event.type === filters.type;
+    
+    return matchesSearch && matchesLocation && matchesMonth && matchesType;
   });
   
-  // Get unique cities, months, and event types for filter options
-  const cities = [...new Set(events.map(event => event.city))];
-  const months = [...new Set(events.map(event => event.month))];
+  // Get unique locations, months and event types for filter options
+  const locations = [...new Set(events.map(event => event.location.split(',')[1].trim()))];
+  const months = [...new Set(events.map(event => new Date(event.date).toLocaleString('en-US', { month: 'long' })))];
   const eventTypes = [...new Set(events.map(event => event.type))];
   
   const handleFilterChange = (filter, value) => {
@@ -129,16 +136,24 @@ export default function EventsPage() {
     }));
   };
   
+  const toggleFavorite = (eventId) => {
+    if (favorites.includes(eventId)) {
+      setFavorites(favorites.filter(id => id !== eventId));
+    } else {
+      setFavorites([...favorites, eventId]);
+    }
+  };
+  
   return (
     <>
       <Header />
       <main className="bg-gray-50 min-h-screen">
         {/* Hero Section */}
-        <section className="relative bg-green-600 text-white py-16">
+        <section className="relative bg-orange-500 text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold mb-4">Harvest Day Events</h1>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Connect with local farmers at our community events, from markets to workshops, and experience the freshest produce directly from the source.
+              Connect with local farmers, learn sustainable practices, and celebrate seasonal harvests at community events across Tamil Nadu.
             </p>
             
             {/* Search Bar */}
@@ -148,8 +163,8 @@ export default function EventsPage() {
               </div>
               <input
                 type="text"
-                className="w-full pl-10 pr-4 py-3 rounded-lg text-gray-800 focus:ring-2 focus:ring-green-500 focus:outline-none"
-                placeholder="Search events, locations, or activities..."
+                className="w-full pl-10 pr-4 py-3 rounded-lg text-gray-800 focus:ring-2 focus:ring-orange-600 focus:outline-none"
+                placeholder="Search events by name, location, or description..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -157,29 +172,29 @@ export default function EventsPage() {
           </div>
         </section>
         
-        {/* Filters and Event Listings */}
+        {/* Events Section */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="lg:flex">
               {/* Filters Sidebar */}
               <div className="lg:w-1/4 mb-8 lg:mb-0 lg:pr-8">
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex items-center mb-4">
-                    <FaFilter className="text-green-600 mr-2" />
+                <div className="bg-white rounded-lg shadow-md p-6 sticky top-8">
+                  <div className="flex items-center justify-between mb-6">
                     <h2 className="text-xl font-bold text-gray-900">Filters</h2>
+                    <FaFilter className="text-gray-500" />
                   </div>
                   
-                  {/* City Filter */}
+                  {/* Location Filter */}
                   <div className="mb-6">
-                    <label className="block text-gray-700 font-medium mb-2">City</label>
+                    <label className="block text-gray-700 font-medium mb-2">Location</label>
                     <select 
-                      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
-                      value={filters.city}
-                      onChange={(e) => handleFilterChange('city', e.target.value)}
+                      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                      value={filters.location}
+                      onChange={(e) => handleFilterChange('location', e.target.value)}
                     >
-                      <option value="all">All Cities</option>
-                      {cities.map((city, index) => (
-                        <option key={index} value={city}>{city}</option>
+                      <option value="all">All Locations</option>
+                      {locations.map((location, index) => (
+                        <option key={index} value={location}>{location}</option>
                       ))}
                     </select>
                   </div>
@@ -188,7 +203,7 @@ export default function EventsPage() {
                   <div className="mb-6">
                     <label className="block text-gray-700 font-medium mb-2">Month</label>
                     <select 
-                      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
                       value={filters.month}
                       onChange={(e) => handleFilterChange('month', e.target.value)}
                     >
@@ -203,9 +218,9 @@ export default function EventsPage() {
                   <div className="mb-6">
                     <label className="block text-gray-700 font-medium mb-2">Event Type</label>
                     <select 
-                      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
-                      value={filters.eventType}
-                      onChange={(e) => handleFilterChange('eventType', e.target.value)}
+                      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                      value={filters.type}
+                      onChange={(e) => handleFilterChange('type', e.target.value)}
                     >
                       <option value="all">All Types</option>
                       {eventTypes.map((type, index) => (
@@ -217,23 +232,23 @@ export default function EventsPage() {
                   {/* Reset Filters */}
                   <button 
                     className="w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
-                    onClick={() => setFilters({ city: 'all', month: 'all', eventType: 'all' })}
+                    onClick={() => setFilters({ location: 'all', month: 'all', type: 'all' })}
                   >
                     Reset Filters
                   </button>
                 </div>
                 
-                {/* Create Event CTA for Farmers */}
-                <div className="mt-6 bg-green-50 rounded-lg shadow-md p-6 border border-green-100">
+                {/* Farmer CTA */}
+                <div className="mt-6 bg-orange-50 rounded-lg shadow-md p-6 border border-orange-100">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Are You a Farmer?</h3>
                   <p className="text-gray-700 mb-4">
-                    List your own harvest day event and connect directly with consumers.
+                    Host your own harvest event or workshop to connect with consumers and share your farming practices.
                   </p>
                   <Link 
                     href="/dashboard/farmer/events/create" 
-                    className="block w-full px-4 py-2 bg-green-600 text-white text-center rounded-lg hover:bg-green-700 transition-colors"
+                    className="block w-full px-4 py-2 bg-orange-600 text-white text-center rounded-lg hover:bg-orange-700 transition-colors"
                   >
-                    Create Event
+                    Host an Event
                   </Link>
                 </div>
               </div>
@@ -256,10 +271,10 @@ export default function EventsPage() {
                       Try adjusting your search or filters to find events.
                     </p>
                     <button 
-                      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
                       onClick={() => {
                         setSearchTerm('');
-                        setFilters({ city: 'all', month: 'all', eventType: 'all' });
+                        setFilters({ location: 'all', month: 'all', type: 'all' });
                       }}
                     >
                       Show All Events
@@ -269,49 +284,83 @@ export default function EventsPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {filteredEvents.map(event => (
                       <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                        <div className="h-48 overflow-hidden">
+                        <div className="relative h-48 overflow-hidden">
                           <img 
                             src={event.image} 
                             alt={event.title} 
                             className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                           />
+                          <button 
+                            onClick={() => toggleFavorite(event.id)}
+                            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center transition-colors hover:bg-gray-100"
+                            aria-label={favorites.includes(event.id) ? "Remove from favorites" : "Add to favorites"}
+                          >
+                            {favorites.includes(event.id) ? (
+                              <FaHeart className="text-red-500" />
+                            ) : (
+                              <FaRegHeart className="text-gray-400" />
+                            )}
+                          </button>
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <div className="text-white font-medium text-sm">
+                              {event.isFree ? (
+                                <span className="bg-green-600 px-2 py-1 rounded-full">Free</span>
+                              ) : (
+                                <span className="bg-blue-600 px-2 py-1 rounded-full">{event.price}</span>
+                              )}
+                            </div>
+                          </div>
                         </div>
                         <div className="p-6">
-                          <div className="flex items-start justify-between mb-2">
+                          <div className="flex justify-between mb-2">
                             <h3 className="text-xl font-bold text-gray-900">{event.title}</h3>
-                            <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full capitalize">
-                              {event.type}
-                            </span>
                           </div>
                           
-                          <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                          <div className="flex items-center text-gray-600 mb-2">
+                            <FaCalendarAlt className="mr-2 flex-shrink-0" />
+                            <span>{event.date}</span>
+                          </div>
                           
-                          <div className="flex flex-col space-y-2 mb-4">
-                            <div className="flex items-center text-gray-600">
-                              <FaCalendarAlt className="mr-2 flex-shrink-0" />
-                              <span>{event.date} • {event.time}</span>
-                            </div>
-                            <div className="flex items-center text-gray-600">
-                              <FaMapMarkerAlt className="mr-2 flex-shrink-0" />
-                              <span>{event.location}</span>
-                            </div>
-                            <div className="flex items-center text-gray-600">
-                              <FaUsers className="mr-2 flex-shrink-0" />
-                              <span>{event.farmers} Farmers • {event.attendees} Attendees</span>
+                          <div className="flex items-center text-gray-600 mb-2">
+                            <FaRegClock className="mr-2 flex-shrink-0" />
+                            <span>{event.time}</span>
+                          </div>
+                          
+                          <div className="flex items-center text-gray-600 mb-3">
+                            <FaMapMarkerAlt className="mr-2 flex-shrink-0" />
+                            <span>{event.location}</span>
+                          </div>
+                          
+                          <p className="text-gray-700 mb-4 line-clamp-2">{event.description}</p>
+                          
+                          <div className="mb-4">
+                            <h4 className="font-semibold text-gray-900 mb-2">Activities:</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {event.activities.slice(0, 3).map((activity, index) => (
+                                <span key={index} className="px-2 py-1 bg-orange-100 text-orange-800 rounded-full text-xs">
+                                  {activity}
+                                </span>
+                              ))}
+                              {event.activities.length > 3 && (
+                                <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">
+                                  +{event.activities.length - 3} more
+                                </span>
+                              )}
                             </div>
                           </div>
                           
-                          <div className="flex justify-between items-center">
+                          <div className="flex items-center text-gray-600 mb-4">
+                            <FaUsers className="mr-2 flex-shrink-0" />
+                            <span>{event.farmers} Farmers • {event.attendees} Expected Attendees</span>
+                          </div>
+                          
+                          <div className="mt-4 flex justify-end">
                             <Link 
                               href={`/community/events/${event.id}`} 
-                              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                              className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
                             >
-                              View Details
+                              RSVP & Details
                             </Link>
-                            
-                            <button className="px-4 py-2 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors">
-                              RSVP
-                            </button>
                           </div>
                         </div>
                       </div>
@@ -323,23 +372,53 @@ export default function EventsPage() {
           </div>
         </section>
         
-        {/* Host Your Own Event CTA */}
-        <section className="py-16 bg-green-50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Looking for More Events?</h2>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
-              Our network of farmers hosts new events every week. Check back often or subscribe to our newsletter for updates.
-            </p>
-            <div className="max-w-md mx-auto flex">
-              <input 
-                type="email" 
-                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Your email address"
-              />
-              <button className="px-6 py-3 bg-green-600 text-white rounded-r-lg hover:bg-green-700 transition-colors">
-                Subscribe
-              </button>
+        {/* How It Works Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How Harvest Events Work</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
+                  <FaCalendarAlt className="text-orange-600 text-2xl" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Find an Event</h3>
+                <p className="text-gray-600">Browse upcoming harvest celebrations, workshops, and farm events happening near you.</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
+                  <FaRegHeart className="text-orange-600 text-2xl" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">RSVP to Attend</h3>
+                <p className="text-gray-600">Reserve your spot for free or paid events to connect with farmers and celebrate local food.</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
+                  <FaUsers className="text-orange-600 text-2xl" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Participate & Learn</h3>
+                <p className="text-gray-600">Join in activities, learn new skills, taste fresh produce, and build relationships with local farmers.</p>
+              </div>
             </div>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="py-16 bg-orange-500 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">Join Our Next Harvest Day</h2>
+            <p className="text-xl max-w-2xl mx-auto mb-8">
+              Experience the joy of seasonal harvests, learn sustainable farming practices, and connect with the people who grow your food.
+            </p>
+            <Link 
+              href="#" 
+              className="px-8 py-3 bg-white text-orange-600 rounded-lg hover:bg-gray-100 transition-colors text-lg font-medium inline-block"
+              onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+            >
+              Find Upcoming Events
+            </Link>
           </div>
         </section>
       </main>
