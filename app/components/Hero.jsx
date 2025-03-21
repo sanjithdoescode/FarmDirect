@@ -80,7 +80,7 @@ export default function Hero() {
                 />
               </div>
               
-              <div className="absolute -top-5 right-24 w-28 h-28 rounded-lg overflow-hidden shadow-lg transform -rotate-3 hover:rotate-0 transition-transform float-animation" style={{ animationDelay: "1s" }}>
+              <div className="absolute -top-5 -right-5 w-28 h-28 rounded-lg overflow-hidden shadow-lg transform -rotate-3 hover:rotate-0 transition-transform float-animation" style={{ animationDelay: "1s" }}>
                 <img
                   src="https://images.unsplash.com/photo-1603046891744-c307019ed0ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   alt="Fresh strawberries"
@@ -95,7 +95,7 @@ export default function Hero() {
                     <span className="text-xl">🚜</span>
                   </div>
                   <div>
-                    <p className="font-medium">1000+</p>
+                    <p className="font-medium text-gray-800">1000+</p>
                     <p className="text-sm text-gray-600">Local Farmers</p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export default function Hero() {
                     <span className="text-xl">🥕</span>
                   </div>
                   <div>
-                    <p className="font-medium">5000+</p>
+                    <p className="font-medium text-gray-800">5000+</p>
                     <p className="text-sm text-gray-600">Fresh Products</p>
                   </div>
                 </div>
@@ -127,7 +127,7 @@ export default function Hero() {
               <span className="text-xl">🌿</span>
             </div>
             <div>
-              <p className="font-medium">100% Organic</p>
+              <p className="font-medium text-gray-800">100% Organic</p>
             </div>
           </div>
           
@@ -136,7 +136,7 @@ export default function Hero() {
               <span className="text-xl">🚚</span>
             </div>
             <div>
-              <p className="font-medium">Fast Delivery</p>
+              <p className="font-medium text-gray-800">Fast Delivery</p>
             </div>
           </div>
           
@@ -145,7 +145,7 @@ export default function Hero() {
               <span className="text-xl">💯</span>
             </div>
             <div>
-              <p className="font-medium">Quality Guarantee</p>
+              <p className="font-medium text-gray-800">Quality Guarantee</p>
             </div>
           </div>
         </div>
