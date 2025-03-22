@@ -29,7 +29,7 @@ export default function CropAdoptionPage() {
       currency: "₹",
       duration: "6 months",
       cropType: "fruit",
-      image: "https://images.unsplash.com/photo-1605027085825-d8b7221be9df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://www.agrifarming.in/wp-content/uploads/How-to-Grow-Miyazaki-Mango1-768x768.jpg",
       description: "Adopt this 5-year-old Alphonso mango tree and receive its delicious fruits directly from our farm to your doorstep during the harvest season.",
       benefits: [
         "Monthly progress photos & updates",
@@ -50,7 +50,7 @@ export default function CropAdoptionPage() {
       currency: "₹",
       duration: "3 months",
       cropType: "vegetable",
-      image: "https://images.unsplash.com/photo-1592841200221-a6c88c428966?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1594975620064-bad38e1c9e30?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Adopt a 50 sq ft plot of organic cherry tomatoes. Perfect for those who love fresh tomatoes and want to support sustainable farming practices.",
       benefits: [
         "Weekly harvest updates with photos",
@@ -71,7 +71,7 @@ export default function CropAdoptionPage() {
       currency: "₹",
       duration: "12 months",
       cropType: "beverage",
-      image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1611330556082-0ba06d2780d0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Adopt a cluster of Arabica coffee plants and follow their journey from flower to cup. Receive your own batch of freshly roasted coffee from your adopted plants.",
       benefits: [
         "Quarterly photo updates",
@@ -92,7 +92,7 @@ export default function CropAdoptionPage() {
       currency: "₹",
       duration: "4 months",
       cropType: "grain",
-      image: "https://images.unsplash.com/photo-1504198322253-cfa87a0ff60f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Adopt a traditional paddy field where we grow heritage rice varieties using time-honored organic methods. Support biodiversity while receiving premium rice.",
       benefits: [
         "Monthly growth updates",
@@ -113,7 +113,7 @@ export default function CropAdoptionPage() {
       currency: "₹",
       duration: "12 months",
       cropType: "fruit",
-      image: "https://images.unsplash.com/photo-1593359863503-f598684c806f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1610020909765-c3d3ffe88f45?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Adopt a mature coconut palm and receive fresh coconuts, coconut oil, and other products derived from your tree throughout the year.",
       benefits: [
         "Bi-monthly updates",
@@ -134,7 +134,7 @@ export default function CropAdoptionPage() {
       currency: "₹",
       duration: "8 months",
       cropType: "spice",
-      image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1683525869484-4575d47a5f37?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description: "Adopt a plot in our cardamom plantation and receive premium grade cardamom directly from your adopted plants. Experience the journey of this prized spice.",
       benefits: [
         "Monthly growth and harvest updates",
