@@ -57,20 +57,29 @@ FarmDirect fundamentally transcends the concept of being "just another marketpla
 ## Technical Approach and Tech Stack
 
 ### Frontend Technologies:
-- **Next.js**: React framework for building the user interface with server-side rendering capabilities
-- **React**: JavaScript library for building the user interface components
-- **TailwindCSS**: Utility-first CSS framework for custom, responsive design
-- **Framer Motion**: Library for animations and transitions
-- **React Icons**: Icon library for visual elements
-- **Next-themes**: For theme management (light/dark mode)
-- **Next-intl**: For internationalization and multi-language support
-- **TypeScript**: For type safety and better development experience
+- **Next.js**: A React framework for building the user interface with server-side rendering (SSR) and static site generation (SSG), optimized for performance and deployed on Vercel.
+- **React**: JavaScript library for creating dynamic and interactive UI components.
+- **TailwindCSS**: A utility-first CSS framework for rapid and customizable styling.
+- **Framer Motion**: For implementing smooth animations and transitions.
+- **React Icons**: For rich, context-sensitive iconography across the application.
+- **Next-themes & Next-intl**: For managing themes (e.g., dark mode) and internationalization, ensuring a personalized user experience.
+- **TypeScript**: Enhances code reliability and maintainability with static typing.
+
+### Backend and API Integration:
+- **Serverless Functions/API Routes**: Leveraging Next.js API routes (e.g., Vercel Functions) to build a scalable backend.
+- **Gemini API Integration**: Incorporating the Gemini API to power advanced AI-driven features such as image-based plant identification, quality assurance, intelligent recommendations, AI-powered chatbots, and forecasting/inventory insights.
+- **REST/GraphQL Endpoints**: For managing user data, order processing, and community interactions.
+- **Database**: Integration with modern databases (e.g., PostgreSQL or MySQL) through ORM tools like Prisma (if applicable) for persistent data management.
 
 ### Architecture:
-- The application follows a modern component-based architecture with clean separation of concerns
-- Responsive design that works across all device types
-- Role-based access with separate interfaces for farmers and consumers
-- Real-time updates and interactive elements for engaging user experience
+- A modern, component-based design ensuring a clear separation of concerns.
+- Responsive design tailored for different devices.
+- Role-based access with dedicated interfaces for farmers, consumers, and community members.
+- Real-time interactivity through efficient state management and API communications.
+
+### Additional Integrations & Infrastructure:
+- **Third-Party Services**: Utilizing cloud storage, logging, monitoring, and analytics services.
+- **Security & Performance**: Adoption of HTTPS, caching strategies, and Next.js optimizations to ensure fast load times and secure data transmission.
 
 ### Key Features Implementation:
 - **Authentication System**: Registration and login for both farmers and consumers
