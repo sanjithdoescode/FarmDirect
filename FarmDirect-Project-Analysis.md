@@ -40,6 +40,20 @@ FarmDirect fundamentally transcends the concept of being "just another marketpla
 
 - **Systemic Change**: By integrating marketplace functionality with community building, FarmDirect doesn't just provide an alternative distribution channel—it creates the foundation for a fundamentally reimagined food system centered on fairness, sustainability, and human connection.
 
+### Advanced AI-Driven Features (Gemini API Integration)
+
+- **Image-Based Plant Identification**: Users can upload images of plants or produce, and the integrated Gemini API will identify the plant species, subsequently linking consumers to local farmers who grow that specific crop.
+
+- **Intelligent Recommendations and Discovery**: The platform offers tailored recommendations including nutritional benefits, recipes, and seasonal availability based on the identified produce.
+
+- **AI-Powered Chatbot & Virtual Assistant**: An interactive chatbot provides guidance on farming practices, produce quality inquiries, and sustainable usage tips, enhancing both consumer and farmer engagement.
+
+- **Quality Assurance & Authenticity Verification**: Image analysis validates produce freshness and quality, adding an extra layer of trust and quality assurance for consumers.
+
+- **Enhanced Community Engagement**: AI-driven content generation for community forums, farm stories, events, and workshops promotes deeper engagement and knowledge sharing among users.
+
+- **Forecasting & Inventory Insights**: Advanced analytics from image data can help farmers forecast demand, optimize harvest timing, and manage inventory more efficiently.
+
 ## Technical Approach and Tech Stack
 
 ### Frontend Technologies:
