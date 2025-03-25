@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // Updated here
       console.log('Using text model for search');
       
-      const enhancedPrompt = `Search for agricultural products: ${prompt}. Provide details about price, availability, and quality.`;
+      const enhancedPrompt = `Search for agricultural products: ${prompt}. Provide details about price, availability, and quality.`; //Prompt to be updated
       const result = await model.generateContent(enhancedPrompt);
       
       const response = await result.response.text();
