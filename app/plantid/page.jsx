@@ -9,8 +9,8 @@ import { FaCamera, FaLeaf, FaUpload, FaSeedling, FaSpinner, FaInfoCircle, FaTime
 import Link from 'next/link';
 
 // Placeholder for Gemini API key - should be loaded from environment variable or secure storage
-const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || 'AIzaSyA1sAoxqI6T5SCu_ycyXNianl6QN1X9qz4';
-const GEMINI_API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:generateContent';
+const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || 'YOUR_GEMINI_API_KEY';
+const GEMINI_FLASH_API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash:generateContent';
 
 export default function PlantIdentificationPage() {
   const { t } = useLanguage();
@@ -110,7 +110,7 @@ export default function PlantIdentificationPage() {
           {
             parts: [
               {
-                text: "Identify this plant or crop in the image. Provide detailed information including: scientific name, common name, category (fruit/vegetable/grain/etc), nutritional benefits, growing regions in India, seasonality, and common culinary uses. Format the response as a JSON object with the following fields: plantName (including scientific name in parentheses), confidence (a decimal between 0 and 1), category, description, nutritionalBenefits (array), growingRegions (array), seasonality, cookingUses."
+                text: "You are a plant and crop identification expert. Identify this plant/crop and provide detailed information in JSON format. Include: scientific name, common name, category (fruit/vegetable/grain/spice/etc), a brief description, nutritional benefits (as an array), growing regions in India, seasonality, and common culinary uses.\n\nFormat your response as a clean JSON object with these fields: plantName (with scientific name in parentheses), confidence (a value between 0-1), category, description, nutritionalBenefits (array), growingRegions (array), seasonality, cookingUses. Only return the JSON object, no other text."
               },
               {
                 inline_data: {
@@ -122,14 +122,16 @@ export default function PlantIdentificationPage() {
           }
         ],
         generation_config: {
-          temperature: 0.4,
-          top_p: 0.95,
-          top_k: 40
+          temperature: 0.2,
+          top_p: 0.8,
+          top_k: 40,
+          max_output_tokens: 1024,
+          response_mime_type: "application/json"
         }
       };
 
       // Make API call to Gemini
-      const response = await fetch(`${GEMINI_API_ENDPOINT}?key=${GEMINI_API_KEY}`, {
+      const response = await fetch(`${GEMINI_FLASH_API_ENDPOINT}?key=${GEMINI_API_KEY}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -152,30 +154,36 @@ export default function PlantIdentificationPage() {
       }
 
       // Parse the JSON response from Gemini
-      // Note: We need to handle the case where Gemini might not return proper JSON
       let plantData;
       try {
-        // Extract JSON from the response if it's embedded in text
-        const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          plantData = JSON.parse(jsonMatch[0]);
-        } else {
-          throw new Error('Could not extract JSON from response');
-        }
-      } catch (jsonError) {
-        console.error('Failed to parse JSON response:', jsonError, textResponse);
+        // First try direct JSON parsing
+        plantData = JSON.parse(textResponse);
+      } catch (directJsonError) {
+        console.error('Failed to parse direct JSON:', directJsonError);
         
-        // Fallback: Try to extract information in a more forgiving way
-        plantData = {
-          plantName: extractField(textResponse, 'plantName', 'Plant') || 'Unknown Plant',
-          confidence: extractConfidence(textResponse) || 0.7,
-          category: extractField(textResponse, 'category', 'Category') || 'Unknown',
-          description: extractField(textResponse, 'description', 'Description') || 'No description available',
-          nutritionalBenefits: extractArray(textResponse, 'nutritionalBenefits', 'Nutritional Benefits') || ['Information not available'],
-          growingRegions: extractArray(textResponse, 'growingRegions', 'Growing Regions') || ['Information not available'],
-          seasonality: extractField(textResponse, 'seasonality', 'Seasonality') || 'Year-round',
-          cookingUses: extractField(textResponse, 'cookingUses', 'Cooking Uses') || 'Various culinary applications'
-        };
+        // Then try to extract JSON from text if embedded
+        try {
+          const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            plantData = JSON.parse(jsonMatch[0]);
+          } else {
+            throw new Error('Could not extract JSON from response');
+          }
+        } catch (jsonError) {
+          console.error('Failed to parse extracted JSON:', jsonError, textResponse);
+          
+          // Fallback: Extract information in a more forgiving way
+          plantData = {
+            plantName: extractField(textResponse, 'plantName', 'Plant') || 'Unknown Plant',
+            confidence: extractConfidence(textResponse) || 0.7,
+            category: extractField(textResponse, 'category', 'Category') || 'Unknown',
+            description: extractField(textResponse, 'description', 'Description') || 'No description available',
+            nutritionalBenefits: extractArray(textResponse, 'nutritionalBenefits', 'Nutritional Benefits') || ['Information not available'],
+            growingRegions: extractArray(textResponse, 'growingRegions', 'Growing Regions') || ['Information not available'],
+            seasonality: extractField(textResponse, 'seasonality', 'Seasonality') || 'Year-round',
+            cookingUses: extractField(textResponse, 'cookingUses', 'Cooking Uses') || 'Various culinary applications'
+          };
+        }
       }
       
       setResult(plantData);
@@ -316,20 +324,22 @@ export default function PlantIdentificationPage() {
           {
             parts: [
               {
-                text: `Provide detailed information about the plant or crop "${searchQuery}". Include scientific name, common name, category (fruit/vegetable/grain/etc), nutritional benefits, growing regions in India, seasonality, and common culinary uses. Format the response as a JSON object with the following fields: plantName (including scientific name in parentheses), confidence (set to 0.98 since this is a text search), category, description, nutritionalBenefits (array), growingRegions (array), seasonality, cookingUses.`
+                text: `You are a plant and crop information expert. Provide detailed information about "${searchQuery}" in JSON format. Include: scientific name, common name, category (fruit/vegetable/grain/spice/etc), a detailed description, nutritional benefits (as an array), growing regions in India, seasonality, and common culinary uses.\n\nFormat your response as a clean JSON object with these fields: plantName (with scientific name in parentheses), confidence (set to 0.98 for text searches), category, description, nutritionalBenefits (array), growingRegions (array), seasonality, cookingUses. Only return the JSON object, no other text.`
               }
             ]
           }
         ],
         generation_config: {
-          temperature: 0.4,
-          top_p: 0.95,
-          top_k: 40
+          temperature: 0.2,
+          top_p: 0.8,
+          top_k: 40,
+          max_output_tokens: 1024,
+          response_mime_type: "application/json"
         }
       };
 
-      // Make API call to Gemini text model
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+      // Make API call to Gemini Flash model
+      const response = await fetch(`${GEMINI_FLASH_API_ENDPOINT}?key=${GEMINI_API_KEY}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -351,28 +361,37 @@ export default function PlantIdentificationPage() {
         throw new Error('No response received from the API');
       }
 
-      // Parse the JSON response from Gemini (with same fallback as image analysis)
+      // Parse the JSON response from Gemini
       let plantData;
       try {
-        const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          plantData = JSON.parse(jsonMatch[0]);
-        } else {
-          throw new Error('Could not extract JSON from response');
-        }
-      } catch (jsonError) {
-        console.error('Failed to parse JSON response:', jsonError, textResponse);
+        // First try direct JSON parsing
+        plantData = JSON.parse(textResponse);
+      } catch (directJsonError) {
+        console.error('Failed to parse direct JSON:', directJsonError);
         
-        plantData = {
-          plantName: extractField(textResponse, 'plantName', 'Plant') || `${searchQuery} (Unknown scientific name)`,
-          confidence: 0.98, // High confidence for text search
-          category: extractField(textResponse, 'category', 'Category') || 'Unknown',
-          description: extractField(textResponse, 'description', 'Description') || 'No description available',
-          nutritionalBenefits: extractArray(textResponse, 'nutritionalBenefits', 'Nutritional Benefits') || ['Information not available'],
-          growingRegions: extractArray(textResponse, 'growingRegions', 'Growing Regions') || ['Information not available'],
-          seasonality: extractField(textResponse, 'seasonality', 'Seasonality') || 'Year-round',
-          cookingUses: extractField(textResponse, 'cookingUses', 'Cooking Uses') || 'Various culinary applications'
-        };
+        // Then try to extract JSON from text if embedded
+        try {
+          const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            plantData = JSON.parse(jsonMatch[0]);
+          } else {
+            throw new Error('Could not extract JSON from response');
+          }
+        } catch (jsonError) {
+          console.error('Failed to parse extracted JSON:', jsonError, textResponse);
+          
+          // Fallback method
+          plantData = {
+            plantName: extractField(textResponse, 'plantName', 'Plant') || `${searchQuery} (Unknown scientific name)`,
+            confidence: 0.98, // High confidence for text search
+            category: extractField(textResponse, 'category', 'Category') || 'Unknown',
+            description: extractField(textResponse, 'description', 'Description') || 'No description available',
+            nutritionalBenefits: extractArray(textResponse, 'nutritionalBenefits', 'Nutritional Benefits') || ['Information not available'],
+            growingRegions: extractArray(textResponse, 'growingRegions', 'Growing Regions') || ['Information not available'],
+            seasonality: extractField(textResponse, 'seasonality', 'Seasonality') || 'Year-round',
+            cookingUses: extractField(textResponse, 'cookingUses', 'Cooking Uses') || 'Various culinary applications'
+          };
+        }
       }
       
       setResult(plantData);
@@ -491,7 +510,7 @@ export default function PlantIdentificationPage() {
                       className="min-h-60 md:min-h-80 flex flex-col items-center justify-center p-6 cursor-pointer"
                       onClick={triggerFileInput}
                     >
-                      <FaUpload className="text-green-500 text-3xl mb-4" />
+                      <FaCamera className="text-green-500 text-3xl mb-4" />
                       <p className="text-gray-600 mb-2 text-center">
                         Drag & drop an image here, or click to browse
                       </p>
