@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import AuthModal from './AuthModal';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaLeaf, FaCamera } from 'react-icons/fa';
 
 export default function Header() {
   const { t, language, changeLanguage } = useLanguage();
@@ -187,6 +188,16 @@ export default function Header() {
             </AnimatePresence>
           </div>
           
+          <Link 
+            href="/plantid" 
+            className="text-gray-600 hover:text-gray-900 flex items-center group"
+          >
+            <span className="bg-green-100 text-green-600 p-1 rounded-full mr-2 group-hover:bg-green-200 transition-colors">
+              <FaCamera size={14} />
+            </span>
+            Plant ID
+          </Link>
+
           <Link href="/farmer" className="text-gray-600 hover:text-gray-900">
             For Farmers
           </Link>
@@ -360,6 +371,17 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </div>
+            
+            <Link 
+              href="/plantid" 
+              className="flex items-center py-2 text-gray-700 hover:text-green-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <span className="w-6 h-6 mr-2 bg-green-100 rounded-full flex items-center justify-center">
+                <FaCamera className="text-green-600 text-xs" />
+              </span>
+              Plant Identification
+            </Link>
             
             <Link 
               href="/farmer" 

@@ -53,7 +53,17 @@ export const translations = {
     transportEmissions: "Transport Emissions",
     whatThisMeans: "What This Means",
     shareInfo: "Share This Information",
-    shareInfoSubtext: "Help spread awareness about sustainable food sources and transparent supply chains."
+    shareInfoSubtext: "Help spread awareness about sustainable food sources and transparent supply chains.",
+    searchPlants: "Search for a plant or crop (e.g., tomato, rice, mango)",
+    searchByName: "Search by Name",
+    uploadOrSearch: "Upload or Search",
+    identifyByImage: "Identify by Image",
+    searchingDatabase: "Searching plant database...",
+    uploadOrSearchText: "Take a photo of any plant or search by name to identify it.",
+    orUploadImage: "Or Upload an Image",
+    takePhotoLet: "Take a photo of a plant and let our AI identify it for you",
+    searchForPlantOrUpload: "Search for a plant name or upload an image",
+    uploadImageOrSearchName: "Upload an image or search by name to identify plants and connect with local farmers who grow them."
   },
   ta: {
     // Landing page
@@ -109,7 +119,17 @@ export const translations = {
     transportEmissions: "போக்குவரத்து உமிழ்வுகள்",
     whatThisMeans: "இதன் பொருள் என்ன",
     shareInfo: "இந்த தகவலைப் பகிரவும்",
-    shareInfoSubtext: "நிலையான உணவு ஆதாரங்கள் மற்றும் வெளிப்படையான விநியோக சங்கிலிகள் பற்றிய விழிப்புணர்வைப் பரப்ப உதவுங்கள்."
+    shareInfoSubtext: "நிலையான உணவு ஆதாரங்கள் மற்றும் வெளிப்படையான விநியோக சங்கிலிகள் பற்றிய விழிப்புணர்வைப் பரப்ப உதவுங்கள்.",
+    searchPlants: "ஒரு தாவரம் அல்லது பயிரைத் தேடுங்கள் (எ.கா., தக்காளி, அரிசி, மாம்பழம்)",
+    searchByName: "பெயரால் தேடுங்கள்",
+    uploadOrSearch: "பதிவேற்றவும் அல்லது தேடவும்",
+    identifyByImage: "படத்தால் அடையாளம் காணுங்கள்",
+    searchingDatabase: "தாவர தரவுத்தளத்தைத் தேடுகிறது...",
+    uploadOrSearchText: "எந்த தாவரத்தையும் புகைப்படம் எடுக்கவும் அல்லது பெயரால் தேடி அடையாளம் காணவும்.",
+    orUploadImage: "அல்லது ஒரு படத்தைப் பதிவேற்றவும்",
+    takePhotoLet: "ஒரு தாவரத்தின் புகைப்படத்தை எடுத்து எங்கள் AI அதை உங்களுக்காக அடையாளம் காண அனுமதிக்கவும்",
+    searchForPlantOrUpload: "ஒரு தாவர பெயரைத் தேடுங்கள் அல்லது ஒரு படத்தைப் பதிவேற்றவும்",
+    uploadImageOrSearchName: "தாவரங்களை அடையாளம் காணவும், அவற்றை வளர்க்கும் உள்ளூர் விவசாயிகளுடன் இணையவும் ஒரு படத்தைப் பதிவேற்றவும் அல்லது பெயரால் தேடவும்."
   },
   // Community & Events translations
   community: {
@@ -343,5 +363,126 @@ export const translations = {
   whatsIncluded: {
     en: "What's Included",
     ta: "என்ன சேர்க்கப்பட்டுள்ளது"
+  },
+  // Plant ID translations
+  plantId: {
+    en: "Plant ID",
+    ta: "தாவர அடையாளம்"
+  },
+  plantIdentification: {
+    en: "Plant Identification",
+    ta: "தாவர அடையாளம் காணல்"
+  },
+  uploadImage: {
+    en: "Upload Plant Image",
+    ta: "தாவர படத்தை பதிவேற்றவும்"
+  },
+  dragDrop: {
+    en: "Drag & drop an image here, or click to browse",
+    ta: "படத்தை இங்கே இழுத்து விடவும், அல்லது உலாவ கிளிக் செய்யவும்"
+  },
+  supportedFormats: {
+    en: "Supported formats: JPG, PNG, WEBP",
+    ta: "ஆதரிக்கப்படும் வடிவங்கள்: JPG, PNG, WEBP"
+  },
+  identifyPlant: {
+    en: "Identify Plant",
+    ta: "தாவரத்தை அடையாளம் காணவும்"
+  },
+  analyzingImage: {
+    en: "Analyzing Image...",
+    ta: "படத்தை ஆய்வு செய்கிறது..."
+  },
+  identificationResults: {
+    en: "Identification Results",
+    ta: "அடையாளம் காணும் முடிவுகள்"
+  },
+  uploadToStart: {
+    en: "Upload an image and click \"Identify Plant\" to get started",
+    ta: "தொடங்க படத்தை பதிவேற்றி \"தாவரத்தை அடையாளம் காணவும்\" என்பதை கிளிக் செய்யவும்"
+  },
+  aiWillIdentify: {
+    en: "Our AI will identify the plant and show you local farmers who grow it",
+    ta: "எங்கள் AI தாவரத்தை அடையாளம் கண்டு, அதை வளர்க்கும் உள்ளூர் விவசாயிகளைக் காட்டும்"
+  },
+  match: {
+    en: "Match",
+    ta: "பொருத்தம்"
+  },
+  category: {
+    en: "Category",
+    ta: "வகை"
+  },
+  seasonality: {
+    en: "Seasonality",
+    ta: "பருவகாலம்"
+  },
+  growingRegions: {
+    en: "Growing Regions",
+    ta: "வளரும் பகுதிகள்"
+  },
+  nutritionalBenefits: {
+    en: "Nutritional Benefits",
+    ta: "ஊட்டச்சத்து நன்மைகள்"
+  },
+  localFarmers: {
+    en: "Local Farmers Growing This Plant",
+    ta: "இந்த தாவரத்தை வளர்க்கும் உள்ளூர் விவசாயிகள்"
+  },
+  viewAllSellers: {
+    en: "View All Available Sellers",
+    ta: "கிடைக்கும் அனைத்து விற்பனையாளர்களையும் காண்க"
+  },
+  farmersGrowing: {
+    en: "Farmers Growing",
+    ta: "விவசாயிகள் வளர்க்கிறார்கள்"
+  },
+  organic: {
+    en: "Organic",
+    ta: "இயற்கை"
+  },
+  varietiesAvailable: {
+    en: "Varieties Available",
+    ta: "கிடைக்கும் வகைகள்"
+  },
+  viewFarm: {
+    en: "View Farm",
+    ta: "பண்ணையைக் காண்க"
+  },
+  uploadAnImage: {
+    en: "Upload an Image",
+    ta: "படத்தை பதிவேற்றவும்"
+  },
+  takePhoto: {
+    en: "Take a clear photo of any plant, vegetable, fruit, or herb you want to identify.",
+    ta: "நீங்கள் அடையாளம் காண விரும்பும் எந்த தாவரம், காய்கறி, பழம் அல்லது மூலிகையின் தெளிவான படத்தை எடுக்கவும்."
+  },
+  aiIdentifiesIt: {
+    en: "AI Identifies It",
+    ta: "AI அதை அடையாளம் காண்கிறது"
+  },
+  geminiTechnology: {
+    en: "Our Gemini AI technology analyzes the image and provides detailed information about the plant.",
+    ta: "எங்கள் Gemini AI தொழில்நுட்பம் படத்தை ஆய்வு செய்து தாவரத்தைப் பற்றிய விரிவான தகவல்களை வழங்குகிறது."
+  },
+  connectWithFarmers: {
+    en: "Connect with Farmers",
+    ta: "விவசாயிகளுடன் இணையுங்கள்"
+  },
+  discoverFarmers: {
+    en: "Discover local farmers who grow the identified plant and purchase directly from them.",
+    ta: "அடையாளம் காணப்பட்ட தாவரத்தை வளர்க்கும் உள்ளூர் விவசாயிகளைக் கண்டறிந்து நேரடியாக அவர்களிடமிருந்து வாங்குங்கள்."
+  },
+  discoverLocalProduce: {
+    en: "Discover Local Produce",
+    ta: "உள்ளூர் விளைபொருட்களைக் கண்டறியுங்கள்"
+  },
+  usePlantId: {
+    en: "Use our plant identification tool to learn about the plants around you and find local farmers growing them.",
+    ta: "உங்களைச் சுற்றியுள்ள தாவரங்களைப் பற்றி அறிய எங்கள் தாவர அடையாளங்காணும் கருவியைப் பயன்படுத்தி, அவற்றை வளர்க்கும் உள்ளூர் விவசாயிகளைக் கண்டறியுங்கள்."
+  },
+  identifyPlantNow: {
+    en: "Identify a Plant Now",
+    ta: "இப்போது ஒரு தாவரத்தை அடையாளம் காணுங்கள்"
   }
 }; 
