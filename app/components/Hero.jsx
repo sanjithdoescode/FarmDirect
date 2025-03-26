@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AuthModal from './AuthModal';
+import Link from 'next/link';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -45,12 +46,12 @@ export default function Hero() {
               >
                 {t.getStarted}
               </button>
-              <a
-                href="#about"
+              <Link
+                href="/about"
                 className="px-8 py-3 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium text-center transform hover:scale-105 transition-transform"
               >
                 {t.aboutUs}
-              </a>
+              </Link>
             </div>
           </div>
 
