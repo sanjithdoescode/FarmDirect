@@ -333,9 +333,9 @@ export default function PlantIdentificationPage() {
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-green-600 to-green-500 py-16 md:py-20 text-white">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{t.plantIdentification.en}</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{t.plantIdentification}</h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8">
-              {t.uploadImageOrSearchName.en}
+              {t.uploadImageOrSearchName}
             </p>
             
             {/* Search Bar in Hero */}
@@ -344,7 +344,7 @@ export default function PlantIdentificationPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t.searchPlants.en}
+                placeholder={t.searchPlants}
                 className="w-full px-5 py-3 pl-12 rounded-full text-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-green-500"
               />
               <button 
@@ -382,14 +382,14 @@ export default function PlantIdentificationPage() {
         <section className="py-12 md:py-16">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="mb-10 text-center">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.orUploadImage.en}</h2>
-              <p className="text-gray-600">{t.takePhotoLet.en}</p>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.orUploadImage}</h2>
+              <p className="text-gray-600">{t.takePhotoLet}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {/* Image Upload Area */}
               <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.uploadImage.en}</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.uploadImage}</h2>
                 
                 <div 
                   className={`relative border-2 border-dashed rounded-lg mb-6 transition-colors ${
@@ -455,12 +455,12 @@ export default function PlantIdentificationPage() {
                   {isAnalyzing ? (
                     <>
                       <FaSpinner className="animate-spin mr-2" />
-                      <span>{t.analyzingImage.en}</span>
+                      <span>{t.analyzingImage}</span>
                     </>
                   ) : (
                     <>
                       <FaLeaf className="mr-2" />
-                      <span>{t.identifyPlant.en}</span>
+                      <span>{t.identifyPlant}</span>
                     </>
                   )}
                 </button>
@@ -468,7 +468,7 @@ export default function PlantIdentificationPage() {
               
               {/* Results Area */}
               <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.identificationResults.en}</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">{t.identificationResults}</h2>
                 
                 {isAnalyzing || isSearching ? (
                   <div className="py-12 flex flex-col items-center justify-center">
@@ -477,7 +477,7 @@ export default function PlantIdentificationPage() {
                       <FaSpinner className="text-green-600 text-6xl animate-spin absolute" />
                     </div>
                     <p className="text-gray-600 mt-4 text-center">
-                      {isAnalyzing ? t.analyzingImage.en : t.searchingDatabase.en}
+                      {isAnalyzing ? t.analyzingImage : t.searchingDatabase}
                     </p>
                   </div>
                 ) : result ? (
@@ -490,7 +490,7 @@ export default function PlantIdentificationPage() {
                       <div className="flex items-start justify-between mb-2">
                         <h3 className="text-xl font-bold text-gray-800">{result.plantName}</h3>
                         <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                          {Math.round(result.confidence * 100)}% {t.match.en}
+                          {Math.round(result.confidence * 100)}% {t.match}
                         </span>
                       </div>
                       
@@ -498,17 +498,17 @@ export default function PlantIdentificationPage() {
                       
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                          <h4 className="font-medium text-gray-800 mb-1">{t.category.en}</h4>
+                          <h4 className="font-medium text-gray-800 mb-1">{t.category}</h4>
                           <p className="text-gray-600">{result.category}</p>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-800 mb-1">{t.seasonality.en}</h4>
+                          <h4 className="font-medium text-gray-800 mb-1">{t.seasonality}</h4>
                           <p className="text-gray-600">{result.seasonality}</p>
                         </div>
                       </div>
                       
                       <div className="mb-4">
-                        <h4 className="font-medium text-gray-800 mb-1">{t.growingRegions.en}</h4>
+                        <h4 className="font-medium text-gray-800 mb-1">{t.growingRegions}</h4>
                         <div className="flex flex-wrap gap-1">
                           {result.growingRegions.map((region, idx) => (
                             <span 
@@ -522,7 +522,7 @@ export default function PlantIdentificationPage() {
                       </div>
                       
                       <div>
-                        <h4 className="font-medium text-gray-800 mb-1">{t.nutritionalBenefits.en}</h4>
+                        <h4 className="font-medium text-gray-800 mb-1">{t.nutritionalBenefits}</h4>
                         <ul className="list-disc pl-5 text-gray-600">
                           {result.nutritionalBenefits.map((benefit, idx) => (
                             <li key={idx}>{benefit}</li>
@@ -535,7 +535,7 @@ export default function PlantIdentificationPage() {
                       <div>
                         <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
                           <FaUser className="mr-2 text-green-600" />
-                          {t.localFarmers.en}
+                          {t.localFarmers}
                         </h3>
                         
                         <div className="space-y-3">
@@ -543,7 +543,7 @@ export default function PlantIdentificationPage() {
                             href={`/store?search=${encodeURIComponent(result.plantName.split('(')[0].trim())}`}
                             className="block text-center py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors mb-3"
                           >
-                            {t.viewAllSellers.en}
+                            {t.viewAllSellers}
                           </Link>
                         </div>
                       </div>
@@ -552,8 +552,8 @@ export default function PlantIdentificationPage() {
                 ) : (
                   <div className="py-12 flex flex-col items-center justify-center text-center">
                     <FaSeedling className="text-green-200 text-6xl mb-4" />
-                    <p className="text-gray-600 mb-2">{t.searchForPlantOrUpload.en}</p>
-                    <p className="text-gray-500 text-sm">{t.aiWillIdentify.en}</p>
+                    <p className="text-gray-600 mb-2">{t.searchForPlantOrUpload}</p>
+                    <p className="text-gray-500 text-sm">{t.aiWillIdentify}</p>
                   </div>
                 )}
               </div>
@@ -566,7 +566,7 @@ export default function PlantIdentificationPage() {
           <section className="py-12 bg-gray-50">
             <div className="container mx-auto px-4 max-w-5xl">
               <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-                {t.farmersGrowing.en} {result?.plantName.split('(')[0].trim()}
+                {t.farmersGrowing} {result?.plantName.split('(')[0].trim()}
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -591,7 +591,7 @@ export default function PlantIdentificationPage() {
                         <h3 className="font-bold text-gray-800">{farmer.name}</h3>
                         {farmer.organic && (
                           <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                            {t.organic.en}
+                            {t.organic}
                           </span>
                         )}
                       </div>
@@ -614,7 +614,7 @@ export default function PlantIdentificationPage() {
                       </div>
                       
                       <div className="mb-4">
-                        <h4 className="font-medium text-gray-800 mb-1 text-sm">{t.varietiesAvailable.en}:</h4>
+                        <h4 className="font-medium text-gray-800 mb-1 text-sm">{t.varietiesAvailable}:</h4>
                         <div className="flex flex-wrap gap-1">
                           {farmer.varieties.map((variety, idx) => (
                             <span 
@@ -633,7 +633,7 @@ export default function PlantIdentificationPage() {
                           href={`/store/${farmer.id}`}
                           className="py-1 px-4 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition-colors"
                         >
-                          {t.viewFarm.en}
+                          {t.viewFarm}
                         </Link>
                       </div>
                     </div>
@@ -647,16 +647,16 @@ export default function PlantIdentificationPage() {
         {/* How It Works Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 max-w-5xl">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">{t.howItWorks.en}</h2>
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">{t.howItWorks}</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
                   <FaCamera className="text-green-600 text-2xl" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{t.uploadOrSearch.en}</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{t.uploadOrSearch}</h3>
                 <p className="text-gray-600">
-                  {t.uploadOrSearchText.en}
+                  {t.uploadOrSearchText}
                 </p>
               </div>
               
@@ -664,9 +664,9 @@ export default function PlantIdentificationPage() {
                 <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
                   <FaLeaf className="text-green-600 text-2xl" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{t.aiIdentifiesIt.en}</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{t.aiIdentifiesIt}</h3>
                 <p className="text-gray-600">
-                  {t.geminiTechnology.en}
+                  {t.geminiTechnology}
                 </p>
               </div>
               
@@ -674,9 +674,9 @@ export default function PlantIdentificationPage() {
                 <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
                   <FaUser className="text-green-600 text-2xl" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{t.connectWithFarmers.en}</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{t.connectWithFarmers}</h3>
                 <p className="text-gray-600">
-                  {t.discoverFarmers.en}
+                  {t.discoverFarmers}
                 </p>
               </div>
             </div>
@@ -686,9 +686,9 @@ export default function PlantIdentificationPage() {
         {/* CTA Section */}
         <section className="py-16 bg-gradient-to-r from-green-600 to-green-500 text-white">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">{t.discoverLocalProduce.en}</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.discoverLocalProduce}</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              {t.usePlantId.en}
+              {t.usePlantId}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button
@@ -696,7 +696,7 @@ export default function PlantIdentificationPage() {
                 className="px-6 py-3 bg-white text-green-600 rounded-lg hover:bg-gray-100 transition-colors text-lg font-medium inline-flex items-center justify-center"
               >
                 <FaCamera className="mr-2" />
-                {t.identifyByImage.en}
+                {t.identifyByImage}
               </button>
               <Link
                 href="#search"
@@ -707,7 +707,7 @@ export default function PlantIdentificationPage() {
                 }}
               >
                 <FaSearch className="mr-2" />
-                {t.searchByName.en}
+                {t.searchByName}
               </Link>
             </div>
           </div>
