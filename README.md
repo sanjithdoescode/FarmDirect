@@ -21,7 +21,7 @@ A backend API for the FarmDirect platform, connecting farmers directly with cons
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/farmdirect.git
+   git clone https://github.com/sanjithdoescode/farmdirect.git
    cd farmdirect
    ```
 
