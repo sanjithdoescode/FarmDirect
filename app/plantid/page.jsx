@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 // Placeholder for Gemini API key - should be loaded from environment variable or secure storage
 const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || 'AIzaSyA1sAoxqI6T5SCu_ycyXNianl6QN1X9qz4';
-const GEMINI_FLASH_API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash:generateContent';
+const GEMINI_FLASH_API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-vision-pro:generateContent';
 
 export default function PlantIdentificationPage() {
   const { t } = useLanguage();
