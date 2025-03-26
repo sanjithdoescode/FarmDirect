@@ -82,7 +82,7 @@ export default function ConsumerPage() {
               Experience the freshest produce directly from local farmers. Better quality, better prices, 
               and the satisfaction of supporting your local farming community.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Link 
                 href="/dashboard/consumer/store"
                 className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
@@ -90,12 +90,6 @@ export default function ConsumerPage() {
                 <FaShoppingBasket className="mr-2" />
                 Start Shopping
               </Link>
-              <a 
-                href="#learn-more"
-                className="px-8 py-4 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
-              >
-                Learn More
-              </a>
             </div>
           </div>
           
@@ -373,7 +367,7 @@ export default function ConsumerPage() {
                 Join thousands of happy customers who enjoy fresh, local produce delivered to their doorstep.
                 Start your farm-to-table journey today!
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <Link 
                   href="/dashboard/consumer/store"
                   className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
@@ -381,12 +375,6 @@ export default function ConsumerPage() {
                   <FaShoppingBasket className="mr-2" />
                   Start Shopping
                 </Link>
-                <a 
-                  href="#learn-more"
-                  className="px-8 py-4 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
-                >
-                  View All Products
-                </a>
               </div>
             </div>
           </div>
