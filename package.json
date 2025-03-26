@@ -9,8 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "clsx": "^2.1.0",
+    "cookie": "^1.0.2",
     "framer-motion": "^12.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.0",
     "next": "15.2.3",
     "next-intl": "^3.7.0",
     "next-themes": "^0.2.1",
