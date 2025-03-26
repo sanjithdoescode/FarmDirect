@@ -8,6 +8,10 @@ import { motion } from 'framer-motion';
 import { FaCamera, FaLeaf, FaUpload, FaSeedling, FaSpinner, FaInfoCircle, FaTimesCircle, FaCheckCircle, FaUser, FaMapMarkerAlt, FaStar, FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 
+// Placeholder for Gemini API key - should be loaded from environment variable or secure storage
+const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || 'AIzaSyA1sAoxqI6T5SCu_ycyXNianl6QN1X9qz4';
+const GEMINI_API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:generateContent';
+
 export default function PlantIdentificationPage() {
   const { t } = useLanguage();
   const fileInputRef = useRef(null);
@@ -75,6 +79,16 @@ export default function PlantIdentificationPage() {
       setImageUrl(URL.createObjectURL(file));
     }
   };
+
+  // Convert image file to base64
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = error => reject(error);
+    });
+  };
   
   // Analyze the image with Gemini API
   const analyzeImage = async () => {
@@ -87,81 +101,196 @@ export default function PlantIdentificationPage() {
     setError('');
     
     try {
-      // In a real implementation, this would be an API call to your backend
-      // which would then call the Gemini API with the image
-      // For now, we'll simulate the response after a delay
+      // Convert image to base64
+      const base64Image = await getBase64(image);
       
-      setTimeout(() => {
-        // Mock result - in a real implementation this would come from Gemini API
-        const mockResult = {
-          plantName: 'Tomato (Solanum lycopersicum)',
-          confidence: 0.94,
-          category: 'Vegetable/Fruit',
-          description: 'The tomato is the edible berry of the plant Solanum lycopersicum. Tomatoes are a significant source of umami flavor and are a widely grown crop, with thousands of cultivars.',
-          nutritionalBenefits: [
-            'Rich in vitamin C',
-            'Good source of potassium',
-            'Contains antioxidant lycopene',
-            'Low in calories'
-          ],
-          growingRegions: ['Southern India', 'Tamil Nadu', 'Karnataka', 'Andhra Pradesh'],
-          seasonality: 'Year-round with peak in summer',
-          cookingUses: 'Used in curries, salads, chutneys, and many other dishes.'
-        };
-        
-        setResult(mockResult);
-        
-        // Mock farmers who grow this crop
-        const mockFarmers = [
+      // Prepare the request payload for Gemini API
+      const payload = {
+        contents: [
           {
-            id: 1,
-            name: 'Annamalai Farms',
-            farmer: 'Rajesh Annamalai',
-            location: 'Coimbatore, Tamil Nadu',
-            distance: '12 km',
-            rating: 4.8,
-            reviews: 124,
-            organic: true,
-            price: '₹60/kg',
-            image: 'https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-            varieties: ['Cherry Tomato', 'Beefsteak Tomato', 'Roma Tomato']
-          },
-          {
-            id: 2,
-            name: 'Green Harvest Collective',
-            farmer: 'Priya Venkatesh',
-            location: 'Madurai, Tamil Nadu',
-            distance: '18 km',
-            rating: 4.6,
-            reviews: 89,
-            organic: true,
-            price: '₹55/kg',
-            image: 'https://images.unsplash.com/photo-1592878850834-7f7fb6e5f393?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-            varieties: ['Heirloom Tomato', 'Roma Tomato']
-          },
-          {
-            id: 3,
-            name: 'Nallur Family Farm',
-            farmer: 'Karthik Nallur',
-            location: 'Salem, Tamil Nadu',
-            distance: '25 km',
-            rating: 4.5,
-            reviews: 67,
-            organic: false,
-            price: '₹52/kg',
-            image: 'https://images.unsplash.com/photo-1561504935-4e5d607da631?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-            varieties: ['Beefsteak Tomato', 'Cherry Tomato']
+            parts: [
+              {
+                text: "Identify this plant or crop in the image. Provide detailed information including: scientific name, common name, category (fruit/vegetable/grain/etc), nutritional benefits, growing regions in India, seasonality, and common culinary uses. Format the response as a JSON object with the following fields: plantName (including scientific name in parentheses), confidence (a decimal between 0 and 1), category, description, nutritionalBenefits (array), growingRegions (array), seasonality, cookingUses."
+              },
+              {
+                inline_data: {
+                  mime_type: image.type,
+                  data: base64Image
+                }
+              }
+            ]
           }
-        ];
+        ],
+        generation_config: {
+          temperature: 0.4,
+          top_p: 0.95,
+          top_k: 40
+        }
+      };
+
+      // Make API call to Gemini
+      const response = await fetch(`${GEMINI_API_ENDPOINT}?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || 'Failed to analyze image');
+      }
+
+      const data = await response.json();
+      
+      // Extract the text response from Gemini
+      const textResponse = data.candidates[0]?.content?.parts[0]?.text;
+      
+      if (!textResponse) {
+        throw new Error('No response received from the API');
+      }
+
+      // Parse the JSON response from Gemini
+      // Note: We need to handle the case where Gemini might not return proper JSON
+      let plantData;
+      try {
+        // Extract JSON from the response if it's embedded in text
+        const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          plantData = JSON.parse(jsonMatch[0]);
+        } else {
+          throw new Error('Could not extract JSON from response');
+        }
+      } catch (jsonError) {
+        console.error('Failed to parse JSON response:', jsonError, textResponse);
         
-        setFarmerResults(mockFarmers);
-        setIsAnalyzing(false);
-      }, 3000); // Simulate 3 second delay for API call
+        // Fallback: Try to extract information in a more forgiving way
+        plantData = {
+          plantName: extractField(textResponse, 'plantName', 'Plant') || 'Unknown Plant',
+          confidence: extractConfidence(textResponse) || 0.7,
+          category: extractField(textResponse, 'category', 'Category') || 'Unknown',
+          description: extractField(textResponse, 'description', 'Description') || 'No description available',
+          nutritionalBenefits: extractArray(textResponse, 'nutritionalBenefits', 'Nutritional Benefits') || ['Information not available'],
+          growingRegions: extractArray(textResponse, 'growingRegions', 'Growing Regions') || ['Information not available'],
+          seasonality: extractField(textResponse, 'seasonality', 'Seasonality') || 'Year-round',
+          cookingUses: extractField(textResponse, 'cookingUses', 'Cooking Uses') || 'Various culinary applications'
+        };
+      }
+      
+      setResult(plantData);
+      
+      // Now fetch farmers who grow this crop
+      await fetchFarmers(plantData.plantName.split('(')[0].trim());
       
     } catch (err) {
-      console.error(err);
-      setError('Failed to analyze image. Please try again.');
+      console.error('Error analyzing image:', err);
+      setError(err.message || 'Failed to analyze image. Please try again.');
+    } finally {
       setIsAnalyzing(false);
+    }
+  };
+  
+  // Helper functions to extract information from text if JSON parsing fails
+  const extractField = (text, fieldName, altFieldName) => {
+    const regex = new RegExp(`"${fieldName}"\\s*:\\s*"([^"]*)"`, 'i');
+    const altRegex = new RegExp(`${altFieldName}\\s*:\\s*([^\n]*)`, 'i');
+    
+    const match = text.match(regex) || text.match(altRegex);
+    return match ? match[1].trim() : null;
+  };
+  
+  const extractConfidence = (text) => {
+    const regex = /"confidence"\s*:\s*(0\.\d+)/i;
+    const match = text.match(regex);
+    return match ? parseFloat(match[1]) : null;
+  };
+  
+  const extractArray = (text, fieldName, altFieldName) => {
+    // Try to extract JSON array format first
+    const regex = new RegExp(`"${fieldName}"\\s*:\\s*\\[(.*?)\\]`, 'is');
+    const match = text.match(regex);
+    
+    if (match) {
+      const arrayText = match[1];
+      const items = arrayText.split(',').map(item => {
+        return item.replace(/"/g, '').trim();
+      });
+      return items.filter(item => item);
+    }
+    
+    // Try to extract bullet point format
+    const altRegex = new RegExp(`${altFieldName}\\s*:([^\\n]*(?:\\n\\s*-[^\\n]*)*)`, 'i');
+    const altMatch = text.match(altRegex);
+    
+    if (altMatch) {
+      const listText = altMatch[1];
+      const items = listText.split('-').map(item => item.trim()).filter(item => item);
+      return items;
+    }
+    
+    return null;
+  };
+  
+  // Fetch farmers who grow the identified crop
+  const fetchFarmers = async (cropName) => {
+    try {
+      // In a real implementation, this would be an API call to your backend
+      // For now, we'll use mock data but simulate the API call structure
+      
+      // Example API call (commented out)
+      // const response = await fetch(`/api/farmers?crop=${encodeURIComponent(cropName)}`);
+      // const data = await response.json();
+      // setFarmerResults(data.farmers);
+      
+      // Mock farmer data based on crop
+      const mockFarmers = [
+        {
+          id: 1,
+          name: 'Annamalai Farms',
+          farmer: 'Rajesh Annamalai',
+          location: 'Coimbatore, Tamil Nadu',
+          distance: '12 km',
+          rating: 4.8,
+          reviews: 124,
+          organic: true,
+          price: '₹60/kg',
+          image: 'https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+          varieties: [cropName]
+        },
+        {
+          id: 2,
+          name: 'Green Harvest Collective',
+          farmer: 'Priya Venkatesh',
+          location: 'Madurai, Tamil Nadu',
+          distance: '18 km',
+          rating: 4.6,
+          reviews: 89,
+          organic: true,
+          price: '₹55/kg',
+          image: 'https://images.unsplash.com/photo-1592878850834-7f7fb6e5f393?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+          varieties: [cropName]
+        },
+        {
+          id: 3,
+          name: 'Nallur Family Farm',
+          farmer: 'Karthik Nallur',
+          location: 'Salem, Tamil Nadu',
+          distance: '25 km',
+          rating: 4.5,
+          reviews: 67,
+          organic: false,
+          price: '₹52/kg',
+          image: 'https://images.unsplash.com/photo-1561504935-4e5d607da631?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+          varieties: [cropName]
+        }
+      ];
+      
+      setFarmerResults(mockFarmers);
+      
+    } catch (err) {
+      console.error('Error fetching farmers:', err);
+      // Don't show error to user for this part, just log it
     }
   };
   
@@ -181,129 +310,80 @@ export default function PlantIdentificationPage() {
     setError('');
     
     try {
-      // Simulate API call with mock data
-      setTimeout(() => {
-        // Different mock data based on search query
-        let mockResult;
-        
-        if (searchQuery.toLowerCase().includes('tom')) {
-          mockResult = {
-            plantName: 'Tomato (Solanum lycopersicum)',
-            confidence: 0.98,
-            category: 'Vegetable/Fruit',
-            description: 'The tomato is the edible berry of the plant Solanum lycopersicum. Tomatoes are a significant source of umami flavor and are a widely grown crop, with thousands of cultivars.',
-            nutritionalBenefits: [
-              'Rich in vitamin C',
-              'Good source of potassium',
-              'Contains antioxidant lycopene',
-              'Low in calories'
-            ],
-            growingRegions: ['Southern India', 'Tamil Nadu', 'Karnataka', 'Andhra Pradesh'],
-            seasonality: 'Year-round with peak in summer',
-            cookingUses: 'Used in curries, salads, chutneys, and many other dishes.'
-          };
-        } else if (searchQuery.toLowerCase().includes('rice')) {
-          mockResult = {
-            plantName: 'Rice (Oryza sativa)',
-            confidence: 0.99,
-            category: 'Grain',
-            description: 'Rice is the seed of the grass species Oryza sativa. As a cereal grain, it is the most widely consumed staple food for a large part of the world\'s human population, especially in Asia.',
-            nutritionalBenefits: [
-              'Good source of energy',
-              'Contains essential carbohydrates',
-              'Low in fat',
-              'Gluten-free grain option'
-            ],
-            growingRegions: ['Tamil Nadu', 'West Bengal', 'Andhra Pradesh', 'Punjab'],
-            seasonality: 'Mainly kharif (monsoon) crop, some varieties in rabi season',
-            cookingUses: 'Staple food prepared in countless dishes, from biryani to idli to kheer.'
-          };
-        } else if (searchQuery.toLowerCase().includes('mango')) {
-          mockResult = {
-            plantName: 'Mango (Mangifera indica)',
-            confidence: 0.97,
-            category: 'Fruit',
-            description: 'Mango is a juicy stone fruit produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera. Mangoes are native to South Asia and have been cultivated for thousands of years.',
-            nutritionalBenefits: [
-              'Rich in vitamin A and C',
-              'Contains digestive enzymes',
-              'Good source of fiber',
-              'Has antioxidant properties'
-            ],
-            growingRegions: ['Andhra Pradesh', 'Uttar Pradesh', 'Karnataka', 'Tamil Nadu'],
-            seasonality: 'Summer fruit (March to July)',
-            cookingUses: 'Eaten fresh, used in desserts, pickles, juices, and chutneys.'
-          };
-        } else {
-          mockResult = {
-            plantName: 'Spinach (Spinacia oleracea)',
-            confidence: 0.91,
-            category: 'Leafy Green Vegetable',
-            description: 'Spinach is a leafy green flowering plant native to central and western Asia. It is of the order Caryophyllales, family Amaranthaceae. Its leaves are a common edible vegetable consumed either fresh, or after storage using preservation techniques.',
-            nutritionalBenefits: [
-              'Very high in vitamin K',
-              'Rich in iron and calcium',
-              'Good source of antioxidants',
-              'Contains vitamins A and C'
-            ],
-            growingRegions: ['Maharashtra', 'Uttar Pradesh', 'Karnataka', 'Tamil Nadu'],
-            seasonality: 'Winter crop (October to March)',
-            cookingUses: 'Used in curries, stir-fries, salads, and smoothies.'
-          };
-        }
-        
-        setResult(mockResult);
-        
-        // Mock farmers who grow this crop
-        const mockFarmers = [
+      // Prepare the request payload for Gemini API (text-only)
+      const payload = {
+        contents: [
           {
-            id: 1,
-            name: 'Annamalai Farms',
-            farmer: 'Rajesh Annamalai',
-            location: 'Coimbatore, Tamil Nadu',
-            distance: '12 km',
-            rating: 4.8,
-            reviews: 124,
-            organic: true,
-            price: '₹60/kg',
-            image: 'https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-            varieties: [`${mockResult.plantName.split('(')[0].trim()}`]
-          },
-          {
-            id: 2,
-            name: 'Green Harvest Collective',
-            farmer: 'Priya Venkatesh',
-            location: 'Madurai, Tamil Nadu',
-            distance: '18 km',
-            rating: 4.6,
-            reviews: 89,
-            organic: true,
-            price: '₹55/kg',
-            image: 'https://images.unsplash.com/photo-1592878850834-7f7fb6e5f393?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-            varieties: [`${mockResult.plantName.split('(')[0].trim()}`]
-          },
-          {
-            id: 3,
-            name: 'Nallur Family Farm',
-            farmer: 'Karthik Nallur',
-            location: 'Salem, Tamil Nadu',
-            distance: '25 km',
-            rating: 4.5,
-            reviews: 67,
-            organic: false,
-            price: '₹52/kg',
-            image: 'https://images.unsplash.com/photo-1561504935-4e5d607da631?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-            varieties: [`${mockResult.plantName.split('(')[0].trim()}`]
+            parts: [
+              {
+                text: `Provide detailed information about the plant or crop "${searchQuery}". Include scientific name, common name, category (fruit/vegetable/grain/etc), nutritional benefits, growing regions in India, seasonality, and common culinary uses. Format the response as a JSON object with the following fields: plantName (including scientific name in parentheses), confidence (set to 0.98 since this is a text search), category, description, nutritionalBenefits (array), growingRegions (array), seasonality, cookingUses.`
+              }
+            ]
           }
-        ];
+        ],
+        generation_config: {
+          temperature: 0.4,
+          top_p: 0.95,
+          top_k: 40
+        }
+      };
+
+      // Make API call to Gemini text model
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || 'Failed to search');
+      }
+
+      const data = await response.json();
+      
+      // Extract the text response from Gemini
+      const textResponse = data.candidates[0]?.content?.parts[0]?.text;
+      
+      if (!textResponse) {
+        throw new Error('No response received from the API');
+      }
+
+      // Parse the JSON response from Gemini (with same fallback as image analysis)
+      let plantData;
+      try {
+        const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          plantData = JSON.parse(jsonMatch[0]);
+        } else {
+          throw new Error('Could not extract JSON from response');
+        }
+      } catch (jsonError) {
+        console.error('Failed to parse JSON response:', jsonError, textResponse);
         
-        setFarmerResults(mockFarmers);
-        setIsSearching(false);
-      }, 2000);
+        plantData = {
+          plantName: extractField(textResponse, 'plantName', 'Plant') || `${searchQuery} (Unknown scientific name)`,
+          confidence: 0.98, // High confidence for text search
+          category: extractField(textResponse, 'category', 'Category') || 'Unknown',
+          description: extractField(textResponse, 'description', 'Description') || 'No description available',
+          nutritionalBenefits: extractArray(textResponse, 'nutritionalBenefits', 'Nutritional Benefits') || ['Information not available'],
+          growingRegions: extractArray(textResponse, 'growingRegions', 'Growing Regions') || ['Information not available'],
+          seasonality: extractField(textResponse, 'seasonality', 'Seasonality') || 'Year-round',
+          cookingUses: extractField(textResponse, 'cookingUses', 'Cooking Uses') || 'Various culinary applications'
+        };
+      }
+      
+      setResult(plantData);
+      
+      // Fetch farmers who grow this crop
+      await fetchFarmers(plantData.plantName.split('(')[0].trim());
       
     } catch (err) {
-      console.error(err);
-      setSearchError('Failed to search. Please try again.');
+      console.error('Error searching:', err);
+      setSearchError(err.message || 'Failed to search. Please try again.');
+    } finally {
       setIsSearching(false);
     }
   };
