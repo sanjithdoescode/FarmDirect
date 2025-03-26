@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '../../../context/LanguageContext';
 import { FaFilter, FaSearch, FaShoppingCart, FaHeart, FaStar, FaMapMarkerAlt, FaLeaf, FaTruck } from 'react-icons/fa';
 import Link from 'next/link';
+import ProductCard from '../../../components/ProductCard';
 
 export default function Store() {
   const { t } = useLanguage();
@@ -329,102 +330,104 @@ export default function Store() {
   const filteredProducts = filterProducts();
   
   return (
-    <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800">Farm Fresh Store</h1>
-            <p className="text-gray-600 mt-2">Browse fresh produce directly from local farmers</p>
-          </div>
-          <div className="relative">
-            <button 
-              onClick={toggleCart}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center"
-            >
-              <FaShoppingCart className="mr-2" />
-              <span>Cart ({cartItems.length})</span>
-            </button>
-            
-            {/* Cart Dropdown */}
-            {isCartOpen && (
-              <div className="absolute top-full right-0 mt-2 w-96 bg-white rounded-lg shadow-xl z-50">
-                <div className="p-4 border-b">
-                  <h3 className="font-medium text-gray-800">Your Cart ({cartItems.length})</h3>
-                </div>
-                
-                <div className="max-h-96 overflow-y-auto p-4">
-                  {cartItems.length > 0 ? (
-                    <div className="space-y-4">
-                      {cartItems.map(item => (
-                        <div key={item.id} className="flex items-center space-x-4">
-                          <div className="h-16 w-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden">
-                            <img
-                              src={item.image}
-                              alt={item.name}
-                              className="h-full w-full object-cover"
-                              onError={(e) => {
-                                e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
-                              }}
-                            />
+    <div className="min-h-screen bg-gray-50 pb-12">
+      <div className="bg-gradient-to-r from-green-50 to-green-100 py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800">Farm Fresh Store</h1>
+              <p className="text-gray-600 mt-2">Browse fresh produce directly from local farmers</p>
+            </div>
+            <div className="relative">
+              <button 
+                onClick={toggleCart}
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center"
+              >
+                <FaShoppingCart className="mr-2" />
+                <span>Cart ({cartItems.length})</span>
+              </button>
+              
+              {/* Cart Dropdown */}
+              {isCartOpen && (
+                <div className="absolute top-full right-0 mt-2 w-96 bg-white rounded-lg shadow-xl z-50">
+                  <div className="p-4 border-b">
+                    <h3 className="font-medium text-gray-800">Your Cart ({cartItems.length})</h3>
+                  </div>
+                  
+                  <div className="max-h-96 overflow-y-auto p-4">
+                    {cartItems.length > 0 ? (
+                      <div className="space-y-4">
+                        {cartItems.map(item => (
+                          <div key={item.id} className="flex items-center space-x-4">
+                            <div className="h-16 w-16 flex-shrink-0 bg-gray-200 rounded overflow-hidden">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="h-full w-full object-cover"
+                                onError={(e) => {
+                                  e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
+                                }}
+                              />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
+                              <p className="text-sm text-gray-500">₹{item.price} / {item.unit}</p>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <button 
+                                onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
+                                className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
+                              >
+                                -
+                              </button>
+                              <span className="text-sm">{item.quantity}</span>
+                              <button 
+                                onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
+                                className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
+                              >
+                                +
+                              </button>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-sm font-medium">₹{item.price * item.quantity}</p>
+                              <button 
+                                onClick={() => removeFromCart(item.id)}
+                                className="text-xs text-red-500 hover:text-red-700"
+                              >
+                                Remove
+                              </button>
+                            </div>
                           </div>
-                          <div className="flex-1">
-                            <h4 className="text-sm font-medium text-gray-800">{item.name}</h4>
-                            <p className="text-sm text-gray-500">₹{item.price} / {item.unit}</p>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <button 
-                              onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
-                              className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
-                            >
-                              -
-                            </button>
-                            <span className="text-sm">{item.quantity}</span>
-                            <button 
-                              onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
-                              className="w-6 h-6 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
-                            >
-                              +
-                            </button>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-sm font-medium">₹{item.price * item.quantity}</p>
-                            <button 
-                              onClick={() => removeFromCart(item.id)}
-                              className="text-xs text-red-500 hover:text-red-700"
-                            >
-                              Remove
-                            </button>
-                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-center py-8">
+                        <FaShoppingCart className="mx-auto h-10 w-10 text-gray-400" />
+                        <p className="mt-2 text-gray-600">Your cart is empty</p>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {cartItems.length > 0 && (
+                    <>
+                      <div className="p-4 border-t">
+                        <div className="flex justify-between font-medium">
+                          <span>Subtotal:</span>
+                          <span>₹{calculateCartTotal()}</span>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-8">
-                      <FaShoppingCart className="mx-auto h-10 w-10 text-gray-400" />
-                      <p className="mt-2 text-gray-600">Your cart is empty</p>
-                    </div>
+                        <p className="text-xs text-gray-500 mt-1">Shipping and delivery charges calculated at checkout</p>
+                      </div>
+                      
+                      <div className="p-4 bg-gray-50 rounded-b-lg">
+                        <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+                          Proceed to Checkout
+                        </button>
+                      </div>
+                    </>
                   )}
                 </div>
-                
-                {cartItems.length > 0 && (
-                  <>
-                    <div className="p-4 border-t">
-                      <div className="flex justify-between font-medium">
-                        <span>Subtotal:</span>
-                        <span>₹{calculateCartTotal()}</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-1">Shipping and delivery charges calculated at checkout</p>
-                    </div>
-                    
-                    <div className="p-4 bg-gray-50 rounded-b-lg">
-                      <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
-                        Proceed to Checkout
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -692,95 +695,22 @@ export default function Store() {
             </div>
             
             {/* Products */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                    <div className="h-48 w-full bg-gray-200 relative">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
-                        }}
-                      />
-                      <button className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-gray-500 shadow-sm hover:text-red-500 transition-colors">
-                        <FaHeart />
-                      </button>
-                      {product.organic && (
-                        <span className="absolute top-2 left-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full flex items-center">
-                          <FaLeaf className="mr-1" /> Organic
-                        </span>
-                      )}
-                    </div>
-                    
-                    <div className="p-4 flex-grow">
-                      <div className="flex items-center">
-                        <div className="flex text-yellow-400 text-xs">
-                          {[...Array(5)].map((_, i) => (
-                            <FaStar key={i} className={i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'} />
-                          ))}
-                        </div>
-                        <span className="text-xs text-gray-500 ml-1">({product.reviews})</span>
-                      </div>
-                      
-                      <h3 className="font-medium text-gray-900 mt-1">{product.name}</h3>
-                      
-                      <div className="flex items-center mt-1 text-xs text-gray-500">
-                        <span>by {product.farmer.name}</span>
-                      </div>
-                      
-                      <div className="mt-2 flex items-center">
-                        <FaMapMarkerAlt className="text-gray-400 mr-1" />
-                        <span className="text-xs text-gray-500">{product.farmer.location}</span>
-                      </div>
-                      
-                      <p className="mt-2 text-xs text-gray-600 line-clamp-2">{product.description}</p>
-                      
-                      <div className="mt-3 flex items-center justify-between">
-                        <div>
-                          <span className="font-bold text-gray-900">₹{product.price}</span>
-                          <span className="text-xs text-gray-500 ml-1">/ {product.unit}</span>
-                        </div>
-                        {product.freeDelivery && (
-                          <span className="text-xs text-green-600 flex items-center">
-                            <FaTruck className="mr-1" /> Free Delivery
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    
-                    <div className="p-4 border-t">
-                      <button
-                        onClick={() => addToCart(product)}
-                        className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredProducts.map(product => (
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onAddToCart={addToCart}
+                />
+              ))}
+              
+              {filteredProducts.length === 0 && (
+                <div className="col-span-full py-12 text-center">
+                  <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 mx-auto mb-4">
+                    <FaSearch size={24} />
                   </div>
-                ))
-              ) : (
-                <div className="col-span-full text-center py-12">
-                  <FaSearch className="mx-auto h-12 w-12 text-gray-400" />
-                  <h3 className="mt-4 text-lg font-medium text-gray-900">No products found</h3>
-                  <p className="mt-1 text-sm text-gray-600">Try adjusting your filters or search term</p>
-                  <button
-                    onClick={() => {
-                      setFilters({
-                        category: 'all',
-                        priceRange: 'all',
-                        organic: false,
-                        freeDelivery: false,
-                        rating: 'all',
-                      });
-                      setSearchQuery('');
-                    }}
-                    className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                  >
-                    Clear All Filters
-                  </button>
+                  <h3 className="text-lg font-medium text-gray-900 mb-1">No products found</h3>
+                  <p className="text-gray-600">Try adjusting your filters or search terms</p>
                 </div>
               )}
             </div>
