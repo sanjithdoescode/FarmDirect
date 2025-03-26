@@ -72,13 +72,6 @@ export default function AboutPage() {
             <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Connecting local farmers directly with consumers for fresher produce, better prices, and a more sustainable food system.
             </p>
-            
-            {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <svg className="w-6 h-6 text-gray-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-              </svg>
-            </div>
           </div>
           
           {/* Wave separator */}
