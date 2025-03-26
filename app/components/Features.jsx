@@ -2,6 +2,7 @@
 
 import { useLanguage } from '../context/LanguageContext';
 import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 
 export default function Features() {
   const { t } = useLanguage();
@@ -257,8 +258,10 @@ export default function Features() {
                 />
               </ul>
               
-              <button className="mt-8 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform">
-                Start Shopping
+              <button 
+                className="mt-8 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform"
+              >
+                <Link href="/dashboard/consumer/store">Start Shopping</Link>
               </button>
             </div>
           </div>
