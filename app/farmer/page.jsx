@@ -369,7 +369,7 @@ export default function FarmerPage() {
                 Join thousands of successful farmers who are already growing their business with FarmDirect.
                 Start selling directly to consumers today!
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <button 
                   onClick={() => setIsAuthModalOpen(true)}
                   className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
@@ -377,12 +377,6 @@ export default function FarmerPage() {
                   <FaTractor className="mr-2" />
                   Join as a Farmer
                 </button>
-                <a 
-                  href="#learn-more"
-                  className="px-8 py-4 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
-                >
-                  Contact Sales Team
-                </a>
               </div>
             </div>
           </div>
