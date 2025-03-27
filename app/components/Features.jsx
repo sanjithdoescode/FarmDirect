@@ -3,9 +3,11 @@
 import { useLanguage } from '../context/LanguageContext';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import AuthModal from './AuthModal';
 
 export default function Features() {
   const { t } = useLanguage();
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   // Initialize all sections to true so content is visible by default
   const [visibleSections, setVisibleSections] = useState({
     about: true,
@@ -177,7 +179,10 @@ export default function Features() {
                 />
               </ul>
               
-              <button className="mt-8 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform">
+              <button 
+                className="mt-8 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform"
+                onClick={() => setIsAuthModalOpen(true)}
+              >
                 Join as a Farmer
               </button>
             </div>
@@ -267,6 +272,13 @@ export default function Features() {
           </div>
         </section>
       </div>
+      {isAuthModalOpen && (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+          initialTab="register"
+        />
+      )}
     </div>
   );
 }
