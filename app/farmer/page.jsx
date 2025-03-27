@@ -6,9 +6,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useState, useEffect, useRef } from 'react';
 import { FaLeaf, FaChartLine, FaHandshake, FaMobileAlt, FaTractor, FaSeedling, FaUsers, FaMoneyBillWave } from 'react-icons/fa';
+import AuthModal from '../components/AuthModal';
 
 export default function FarmerPage() {
   const { t } = useLanguage();
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState({
     hero: true,
     benefits: false,
@@ -82,7 +84,7 @@ export default function FarmerPage() {
               Join our community of successful farmers who earn more by selling directly to consumers. 
               No middlemen, better prices, and complete control over your business.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Link 
                 href="/dashboard/farmer"
                 className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
@@ -90,12 +92,6 @@ export default function FarmerPage() {
                 <FaTractor className="mr-2" />
                 Start Selling Today
               </Link>
-              <a 
-                href="#learn-more"
-                className="px-8 py-4 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
-              >
-                Learn More
-              </a>
             </div>
           </div>
           
@@ -373,26 +369,21 @@ export default function FarmerPage() {
                 Join thousands of successful farmers who are already growing their business with FarmDirect.
                 Start selling directly to consumers today!
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/dashboard/farmer"
+              <div className="flex justify-center">
+                <button 
+                  onClick={() => setIsAuthModalOpen(true)}
                   className="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
                 >
                   <FaTractor className="mr-2" />
-                  Create Your Farmer Account
-                </Link>
-                <a 
-                  href="#learn-more"
-                  className="px-8 py-4 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-lg font-medium transform hover:scale-105 transition-transform inline-flex items-center justify-center"
-                >
-                  Contact Sales Team
-                </a>
+                  Join as a Farmer
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
       <Footer />
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} initialTab="register" />
     </>
   );
 } 

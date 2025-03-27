@@ -23,10 +23,10 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="m-auto bg-white rounded-lg shadow-xl w-full max-w-md overflow-auto" style={{maxHeight: 'calc(100vh - 40px)'}}>
         {/* Modal Header */}
-        <div className="flex border-b">
+        <div className="flex border-b sticky top-0 bg-white z-10">
           <button
             className={`flex-1 py-4 font-medium ${
               activeTab === 'login' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-500'

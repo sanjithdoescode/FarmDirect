@@ -683,15 +683,6 @@ export default function Store() {
               <p className="text-gray-600">
                 Showing <span className="font-medium">{filteredProducts.length}</span> products
               </p>
-              <div className="flex items-center">
-                <span className="text-gray-600 mr-2">Sort by:</span>
-                <select className="border rounded-lg px-3 py-1 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700">
-                  <option>Newest First</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Rating: High to Low</option>
-                </select>
-              </div>
             </div>
             
             {/* Products */}
