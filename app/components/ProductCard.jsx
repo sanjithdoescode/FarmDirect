@@ -31,10 +31,13 @@ export default function ProductCard({ product, onAddToCart }) {
       {/* Product Image */}
       <div className="relative aspect-square">
         <img 
-          src={`${product.image}?w=400&h=400&fit=crop&crop=faces&auto=compress`} 
+          src={product.image} 
           alt={product.name} 
           className="w-full h-full object-cover"
           loading="lazy"
+          onError={(e) => {
+            e.target.src = 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3';
+          }}
         />
         
         {/* Wishlist button */}
