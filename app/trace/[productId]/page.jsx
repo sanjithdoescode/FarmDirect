@@ -46,6 +46,48 @@ export default function ProductTracePage() {
     }, 1000);
   }, [productId]);
   
+  // Generate deterministic carbon footprint values based on product ID and category
+  const generateCarbonData = (productId) => {
+    // Parse the product ID and use it as a seed
+    const id = parseInt(productId) || 1;
+    
+    // Create a pseudo-random seed based on product ID
+    const seed = (id * 9301 + 49297) % 233280;
+    
+    // Use product category to influence emissions (different products have different profiles)
+    let categoryFactor = 1.0;
+    if (product.category === 'vegetables') categoryFactor = 0.8;
+    if (product.category === 'fruits') categoryFactor = 0.9;
+    if (product.category === 'dairy') categoryFactor = 1.4;
+    if (product.category === 'grains') categoryFactor = 1.2;
+    
+    // Apply organic factor (organic products have lower footprint)
+    const organicFactor = product.organic ? 0.7 : 1.0;
+    
+    // Calculate base farm emissions (range 3-15)
+    const farmBase = 3 + (seed % 13);
+    const farmEmissions = Math.round(farmBase * categoryFactor * organicFactor);
+    
+    // Calculate transport emissions (range 5-25)
+    // Products with free delivery often have efficient distribution
+    const deliveryFactor = product.freeDelivery ? 0.85 : 1.1;
+    const transportBase = 5 + ((seed * 7) % 21);
+    const transportEmissions = Math.round(transportBase * deliveryFactor);
+    
+    // Calculate total and comparison values
+    const totalFootprint = farmEmissions + transportEmissions;
+    
+    // Create a varied but deterministic comparison percentage (30-75%)
+    const comparisonToAverage = 30 + ((seed * id) % 46);
+    
+    return {
+      farmEmissions,
+      transportEmissions,
+      totalFootprint,
+      comparisonToAverage,
+    };
+  };
+  
   // Mock data for supply chain journey
   const supplyChainData = product ? {
     journey: [
@@ -89,12 +131,7 @@ export default function ProductTracePage() {
       certification: product.organic ? 'Organic Certified' : 'Standard Quality Certification',
       sustainability: 'Practices soil conservation and biodiversity protection'
     },
-    carbon: {
-      farmEmissions: Math.floor(Math.random() * 10) + 5, // Random value between 5-15
-      transportEmissions: Math.floor(Math.random() * 20) + 10, // Random value between 10-30
-      totalFootprint: Math.floor(Math.random() * 30) + 15, // Random value between 15-45
-      comparisonToAverage: Math.floor(Math.random() * 40) + 20, // Random % between 20-60% lower
-    }
+    carbon: generateCarbonData(product.id)
   } : null;
   
   if (loading) {
