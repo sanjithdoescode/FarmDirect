@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../lib/utils/database';
+import connectToDatabase from '../../lib/utils/database.js';
 import ForumPost from '../../lib/models/ForumPost';
 import User from '../../lib/models/User'; // Needed for populating user info
 import { getUserFromToken } from '../../lib/utils/auth';
-import dbConnect from '@/lib/dbConnect'; // Assuming you have a db connection utility
 
 /**
  * Handler for fetching forum posts with pagination, sorting, and filtering
@@ -83,8 +82,8 @@ export async function GET(request) {
  */
 export async function POST(request) {
   try {
-    // 1. Connect to Database
-    await dbConnect();
+    // 1. Connect to Database (using the correct function name)
+    await connectToDatabase();
 
     // 2. Parse Request Body
     const body = await request.json();
@@ -104,7 +103,7 @@ export async function POST(request) {
       title: title.trim(),
       content: content.trim(),
       userId: userId, // Directly use the provided userId for now
-      voteScore: 0, // Initialize vote score
+      // voteScore is a virtual, cannot be set directly. It will be calculated.
       // Add tags or other fields if necessary
     });
 
