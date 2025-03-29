@@ -1,4 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+MONGODB_URI=mongodb://localhost:27017/farmdirect
+JWT_SECRET=your-secret-key-hereecho "MONGODB_URI=mongodb://localhost:27017/farmdirect" > .env
+echo "JWT_SECRET=your-secret-key-here" >> .env# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules

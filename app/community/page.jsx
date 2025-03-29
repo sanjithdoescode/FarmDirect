@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Link from 'next/link';
-import { FaSeedling, FaVoteYea, FaCalendarAlt, FaHandsHelping, FaUsers, FaLeaf, FaHeart, FaChartBar } from 'react-icons/fa';
+import { FaSeedling, FaVoteYea, FaCalendarAlt, FaHandsHelping, FaUsers, FaLeaf, FaHeart, FaChartBar, FaComments } from 'react-icons/fa';
 
 export default function CommunityHub() {
   const { t } = useLanguage();
@@ -73,7 +73,7 @@ export default function CommunityHub() {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">Our Community Initiatives</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {/* Crop Adoption */}
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="h-48 bg-amber-500 flex items-center justify-center">
@@ -169,6 +169,32 @@ export default function CommunityHub() {
                   </Link>
                 </div>
               </div>
+
+              {/* Discussion Forum Card - NEW */}
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 bg-purple-600 flex items-center justify-center">
+                  <FaComments className="text-white text-6xl" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Discussion Forum</h3>
+                  <p className="text-gray-700 mb-6">
+                    Connect with fellow farmers and consumers. Ask questions, share knowledge, and discuss topics related to local agriculture and FarmDirect.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Share Knowledge</span>
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Ask Questions</span>
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Build Connections</span>
+                  </div>
+                  <Link 
+                    href="/community/forum" 
+                    className="inline-block px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  >
+                    Go to Forum
+                  </Link>
+                </div>
+              </div>
+              {/* End Discussion Forum Card */}
+
             </div>
           </div>
         </section>
