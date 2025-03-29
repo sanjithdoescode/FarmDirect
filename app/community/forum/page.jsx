@@ -57,10 +57,10 @@ export default function ForumPage() {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Discussion Forum</h1>
-        {/* TODO: Add Link to /community/forum/new or toggle a form */}
-        <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition-colors">
+        {/* Link the button to the new post page */}
+        <Link href="/community/forum/new" className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition-colors">
           <FaPlus className="mr-2" /> New Post
-        </button>
+        </Link>
       </div>
 
       {/* TODO: Add filtering/sorting controls */} 

@@ -3,6 +3,7 @@ import { connectToDatabase } from '../../lib/utils/database';
 import ForumPost from '../../lib/models/ForumPost';
 import User from '../../lib/models/User'; // Needed for populating user info
 import { getUserFromToken } from '../../lib/utils/auth';
+import dbConnect from '@/lib/dbConnect'; // Assuming you have a db connection utility
 
 /**
  * Handler for fetching forum posts with pagination, sorting, and filtering
@@ -82,44 +83,46 @@ export async function GET(request) {
  */
 export async function POST(request) {
   try {
-    await connectToDatabase();
+    // 1. Connect to Database
+    await dbConnect();
 
-    const decoded = getUserFromToken(request);
-    if (!decoded) {
-      return NextResponse.json({ error: 'Authentication required to create a post' }, { status: 401 });
-    }
-
+    // 2. Parse Request Body
     const body = await request.json();
-    const { title, content, tags } = body;
+    const { title, content, userId } = body;
 
-    if (!title || !content) {
-      return NextResponse.json({ error: 'Missing required fields: title and content' }, { status: 400 });
+    // 3. Validate Input (Basic)
+    if (!title || !content || !userId) {
+      return NextResponse.json({ error: 'Missing required fields (title, content, userId)' }, { status: 400 });
     }
+    
+    // TODO: Add more robust validation (e.g., length checks, sanitization)
+    // TODO: Validate userId existence (e.g., check against User collection or auth context)
+    // For now, we trust the placeholder userId from the client
 
+    // 4. Create New Post
     const newPost = new ForumPost({
-      userId: decoded.id,
-      title,
-      content,
-      tags: tags || [], // Ensure tags is an array
+      title: title.trim(),
+      content: content.trim(),
+      userId: userId, // Directly use the provided userId for now
+      voteScore: 0, // Initialize vote score
+      // Add tags or other fields if necessary
     });
 
-    await newPost.save();
+    // 5. Save to Database
+    const savedPost = await newPost.save();
 
-    // Populate user details for the response
-    const populatedPost = await ForumPost.findById(newPost._id)
-        .populate('userId', 'fullName profilePicture');
-
-    return NextResponse.json({
-      message: 'Forum post created successfully',
-      post: populatedPost,
-    }, { status: 201 });
+    // 6. Return Success Response
+    return NextResponse.json({ message: 'Post created successfully', postId: savedPost._id, post: savedPost }, { status: 201 });
 
   } catch (error) {
-    console.error('Create forum post error:', error);
+    console.error('API_POST_CREATE_ERROR:', error);
+
+    // Handle potential errors (e.g., validation, database errors)
     if (error.name === 'ValidationError') {
-       return NextResponse.json({ error: error.message }, { status: 400 });
-     }
-    return NextResponse.json({ error: 'Failed to create forum post' }, { status: 500 });
+        return NextResponse.json({ error: 'Validation failed', details: error.errors }, { status: 400 });
+    }
+
+    return NextResponse.json({ error: 'Failed to create post', details: error.message }, { status: 500 });
   }
 }
 

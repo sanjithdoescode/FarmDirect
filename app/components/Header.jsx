@@ -181,6 +181,25 @@ export default function Header() {
                         </div>
                       </Link>
                     </motion.div>
+                    
+                    {/* Add Forum Link */}
+                    <motion.div variants={itemVariants}>
+                      <Link 
+                        href="/community/forum" 
+                        className="group flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-50/80 transition-colors"
+                        onClick={() => setCommunityDropdownOpen(false)}
+                      >
+                        <span className="w-8 h-8 mr-3 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 group-hover:bg-indigo-200 transition-colors">
+                          💬
+                        </span>
+                        <div>
+                          <span className="block font-medium">Community Forum</span>
+                          <span className="block text-xs text-gray-500 mt-0.5">Discuss and connect</span>
+                        </div>
+                      </Link>
+                    </motion.div>
+                    {/* End Add Forum Link */}
+                    
                   </motion.div>
                 </motion.div>
               )}
@@ -356,6 +375,24 @@ export default function Header() {
                         Harvest Events
                       </Link>
                     </motion.div>
+                    
+                    {/* Add Forum Link (Mobile) */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <Link 
+                        href="/community/forum" 
+                        className="flex items-center py-2 text-gray-700 hover:text-green-600 transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <span className="w-6 h-6 mr-2 flex items-center justify-center">💬</span>
+                        Community Forum
+                      </Link>
+                    </motion.div>
+                    {/* End Add Forum Link (Mobile) */}
+                    
                   </motion.div>
                 )}
               </AnimatePresence>
