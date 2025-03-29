@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { cookies } from 'next/headers'; // Import cookies
 
 // JWT secrets should be stored in environment variables in production
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
@@ -36,6 +37,8 @@ export function verifyToken(token) {
   try {
     return jwt.verify(token, JWT_SECRET);
   } catch (error) {
+    // Handle specific errors like TokenExpiredError if needed
+    console.error('Token verification failed:', error.message);
     return null;
   }
 }
@@ -97,6 +100,38 @@ export function clearTokenCookies(res) {
   ]);
 }
 
+/**
+ * Get the user from the authorization headers or cookies
+ * @param {Request} request - The incoming request object from Next.js API route
+ * @returns {Object|null} - The decoded user information (payload) or null
+ */
+export function getUserFromToken(request) {
+  // Get access token from cookies
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get('accessToken')?.value;
+
+  // If no token in cookies, try to get it from the Authorization header
+  let token = accessToken;
+  if (!token) {
+    const authHeader = request.headers.get('authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.substring(7);
+    }
+  }
+
+  if (!token) {
+    console.log('No token found in cookies or authorization header');
+    return null;
+  }
+
+  // Verify the token
+  const decoded = verifyToken(token);
+  if (!decoded) {
+    console.log('Token verification failed or token expired');
+  }
+  return decoded; // Returns the payload { id, email, role } or null
+}
+
 export default {
   generateAccessToken,
   generateRefreshToken,
@@ -106,4 +141,5 @@ export default {
   comparePassword,
   setTokenCookies,
   clearTokenCookies,
+  getUserFromToken,
 }; 

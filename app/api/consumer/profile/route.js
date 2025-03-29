@@ -3,34 +3,7 @@ import { cookies } from 'next/headers';
 import { connectToDatabase } from '../../../lib/utils/database';
 import User from '../../../lib/models/User';
 import ConsumerProfile from '../../../lib/models/ConsumerProfile';
-import { verifyToken } from '../../../lib/utils/auth';
-
-/**
- * Get the user from the authorization headers or cookies
- * @param {Request} request - The incoming request object
- * @returns {Object|null} - The decoded user information or null
- */
-async function getUserFromToken(request) {
-  // Get access token from cookies
-  const cookieStore = cookies();
-  const accessToken = cookieStore.get('accessToken')?.value;
-  
-  // If no token in cookies, try to get it from the Authorization header
-  let token = accessToken;
-  if (!token) {
-    const authHeader = request.headers.get('authorization');
-    if (authHeader?.startsWith('Bearer ')) {
-      token = authHeader.substring(7);
-    }
-  }
-  
-  if (!token) {
-    return null;
-  }
-  
-  // Verify the token
-  return verifyToken(token);
-}
+import { getUserFromToken } from '../../../lib/utils/auth';
 
 /**
  * Handler for getting consumer profile
@@ -43,7 +16,7 @@ export async function GET(request) {
     await connectToDatabase();
     
     // Get user information from token
-    const decoded = await getUserFromToken(request);
+    const decoded = getUserFromToken(request);
     if (!decoded) {
       return NextResponse.json(
         { error: 'Authentication required' },
@@ -90,7 +63,7 @@ export async function POST(request) {
     await connectToDatabase();
     
     // Get user information from token
-    const decoded = await getUserFromToken(request);
+    const decoded = getUserFromToken(request);
     if (!decoded) {
       return NextResponse.json(
         { error: 'Authentication required' },
@@ -151,7 +124,7 @@ export async function PUT(request) {
     await connectToDatabase();
     
     // Get user information from token
-    const decoded = await getUserFromToken(request);
+    const decoded = getUserFromToken(request);
     if (!decoded) {
       return NextResponse.json(
         { error: 'Authentication required' },
