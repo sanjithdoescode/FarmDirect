@@ -262,7 +262,7 @@ export default function CropAdoptionPage() {
             <div className="lg:flex">
               {/* Filters Sidebar */}
               <div className="lg:w-1/4 mb-8 lg:mb-0 lg:pr-8">
-                <div className="bg-white rounded-lg shadow-md p-6 sticky top-8">
+                <div className="bg-white rounded-lg shadow-md p-6 sticky top-24 max-h-screen overflow-auto">
                   <h2 className="text-xl font-bold text-gray-900 mb-6">Filter Crops</h2>
                   
                   {/* Crop Type Filter */}
