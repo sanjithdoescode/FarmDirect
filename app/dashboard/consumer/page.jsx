@@ -73,7 +73,7 @@ export default function ConsumerDashboard() {
       name: 'Organic Brown Rice',
       farmer: 'Paddy Organics',
       price: '₹180',
-      image: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6'
+      image: 'https://images.unsplash.com/photo-1613728913341-8f29b02b8253?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     }
   ]);
 
