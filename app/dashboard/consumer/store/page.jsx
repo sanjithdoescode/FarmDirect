@@ -20,6 +20,7 @@ export default function Store() {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
+  const [sortOption, setSortOption] = useState('newest');
 
   // Mock farmer data
   const farmers = [
@@ -270,11 +271,11 @@ export default function Store() {
     setCartItems(updatedCart);
   };
   
-  const handleFilterChange = (filterName, value) => {
-    setFilters({
-      ...filters,
-      [filterName]: value
-    });
+  const handleFilterChange = (filterType, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [filterType]: value,
+    }));
   };
   
   const handleSearchChange = (e) => {
@@ -328,6 +329,23 @@ export default function Store() {
   };
   
   const filteredProducts = filterProducts();
+  
+  const filteredItems = [...filteredProducts].sort((a, b) => {
+    switch(sortOption) {
+      case 'price-low':
+        return a.price - b.price;
+      case 'price-high':
+        return b.price - a.price;
+      case 'rating':
+        return b.rating - a.rating;
+      case 'newest':
+      default:
+        return 0; // Keep original order for newest
+    }
+  });
+  
+  console.log('Current Filters:', filters);
+  console.log('Filtered Products:', filteredProducts);
   
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
@@ -681,22 +699,26 @@ export default function Store() {
             {/* Results Summary */}
             <div className="mb-6 flex justify-between items-center">
               <p className="text-gray-600">
-                Showing <span className="font-medium">{filteredProducts.length}</span> products
+                Showing <span className="font-medium">{filteredItems.length}</span> products
               </p>
               <div className="flex items-center">
                 <span className="text-gray-600 mr-2">Sort by:</span>
-                <select className="border rounded-lg px-3 py-1 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700">
-                  <option>Newest First</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Rating: High to Low</option>
+                <select 
+                  className="border rounded-lg px-3 py-1 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-700"
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
+                >
+                  <option value="newest">Newest First</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Rating: High to Low</option>
                 </select>
               </div>
             </div>
             
             {/* Products */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredProducts.map(product => (
+              {filteredItems.map(product => (
                 <ProductCard 
                   key={product.id} 
                   product={product} 
@@ -704,7 +726,7 @@ export default function Store() {
                 />
               ))}
               
-              {filteredProducts.length === 0 && (
+              {filteredItems.length === 0 && (
                 <div className="col-span-full py-12 text-center">
                   <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 mx-auto mb-4">
                     <FaSearch size={24} />

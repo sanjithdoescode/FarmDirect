@@ -1,13 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import { createPortal } from 'react-dom';
 
 export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [userType, setUserType] = useState('consumer');
+  const [isMounted, setIsMounted] = useState(false);
   const { t } = useLanguage();
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -20,11 +28,41 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    
+    if (isOpen) {
+      window.addEventListener('keydown', handleEscape);
+    }
+    
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+  if (!isOpen || !isMounted) return null;
+
+  // Portal the modal to document.body
+  const modalContent = (
+    <div 
+      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      style={{
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+      }}
+      onClick={onClose}
+    >
+      <div 
+        ref={modalRef}
+        className="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 my-8"
+        style={{
+          maxHeight: '90vh',
+          overflowY: 'auto',
+        }}
+        onClick={e => e.stopPropagation()}
+      >
         {/* Modal Header */}
         <div className="flex border-b">
           <button
@@ -90,6 +128,8 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }
 
 function LoginForm({ t }) {
