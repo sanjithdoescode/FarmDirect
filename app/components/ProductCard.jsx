@@ -118,7 +118,7 @@ export default function ProductCard({ product, onAddToCart }) {
       >
         <FaInfoCircle className="mr-1" size={12} />
         Verify Product
-      </Link>
+      </Link> 
       
       {/* Traceability Modal */}
       {isTraceabilityOpen && (

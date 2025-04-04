@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { FaArrowLeft, FaQrcode, FaLeaf, FaSeedling, FaWater, FaTractor, FaBoxOpen, FaTruck } from 'react-icons/fa';
 import Link from 'next/link';
 import { useLanguage } from '../../context/LanguageContext';
+import Image from 'next/image';
 
 export default function ProductTracePage() {
   const { t } = useLanguage();
@@ -12,90 +13,361 @@ export default function ProductTracePage() {
   const { productId } = params;
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState(null);
+  const [supplyChainData, setSupplyChainData] = useState(null);
   const [activeTab, setActiveTab] = useState('journey');
   
   useEffect(() => {
     // In a real app, we would fetch the product data from an API
     // Here we're simulating that with some mock data
     setTimeout(() => {
-      // Mock product data
-      setProduct({
-        id: productId,
-        name: 'Organic Tomatoes',
-        category: 'vegetables',
-        description: 'Fresh, juicy tomatoes grown without pesticides. Perfect for salads and cooking.',
-        price: 70,
-        unit: 'kg',
-        quantity: 25,
-        farmer: {
-          id: 1,
-          name: 'Lakshmi Farms',
-          location: 'Coimbatore, Tamil Nadu',
-          rating: 4.8
+      // Product database - mock different products based on ID
+      const productDatabase = {
+        '1': {
+          id: '1',
+          name: 'Organic Tomatoes',
+          category: 'vegetables',
+          description: 'Fresh, juicy tomatoes grown without pesticides. Perfect for salads and cooking.',
+          price: 70,
+          unit: 'kg',
+          quantity: 25,
+          farmer: {
+            id: 1,
+            name: 'Lakshmi Farms',
+            location: 'Coimbatore, Tamil Nadu',
+            rating: 4.8
+          },
+          image: 'https://images.unsplash.com/photo-1594057687713-5fd14eed1c17',
+          rating: 4.8,
+          reviews: 24,
+          organic: true,
+          freeDelivery: true,
+          harvestDate: '2023-09-20',
+          batchId: 'LF-TOM-2309-A45',
         },
-        image: 'https://images.unsplash.com/photo-1546104454-c2c86581704e',
-        rating: 4.8,
-        reviews: 24,
-        organic: true,
-        freeDelivery: true,
-        harvestDate: '2023-09-20',
-        batchId: 'LF-TOM-2309-A45',
+        '2': {
+          id: '2',
+          name: 'Fresh Spinach',
+          category: 'vegetables',
+          description: 'Nutrient-rich spinach leaves, harvested fresh from our farm.',
+          price: 40,
+          unit: '500g',
+          quantity: 15,
+          farmer: {
+            id: 2,
+            name: 'Hill Valley Farms',
+            location: 'Ooty, Tamil Nadu',
+            rating: 4.6
+          },
+          image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb',
+          rating: 4.5,
+          reviews: 18,
+          organic: true,
+          freeDelivery: false,
+          harvestDate: '2023-09-21',
+          batchId: 'HV-SPN-2309-B22',
+        },
+        '3': {
+          id: '3',
+          name: 'Organic Mangoes',
+          category: 'fruits',
+          description: 'Sweet and juicy alphonso mangoes, grown organically.',
+          price: 200,
+          unit: 'kg',
+          quantity: 30,
+          farmer: {
+            id: 3,
+            name: 'Paddy Organics',
+            location: 'Thanjavur, Tamil Nadu',
+            rating: 4.9
+          },
+          image: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed',
+          rating: 4.9,
+          reviews: 42,
+          organic: true,
+          freeDelivery: true,
+          harvestDate: '2023-09-18',
+          batchId: 'PO-MNG-2309-C18',
+        },
+        '4': {
+          id: '4',
+          name: 'Farm Fresh Eggs',
+          category: 'dairy',
+          description: 'Free-range eggs from happy hens, rich in nutrients.',
+          price: 120,
+          unit: 'dozen',
+          quantity: 20,
+          farmer: {
+            id: 1,
+            name: 'Lakshmi Farms',
+            location: 'Coimbatore, Tamil Nadu',
+            rating: 4.8
+          },
+          image: 'https://images.unsplash.com/photo-1586802990181-a5771596eaea',
+          rating: 4.7,
+          reviews: 31,
+          organic: false,
+          freeDelivery: true,
+          harvestDate: '2023-09-21',
+          batchId: 'LF-EGG-2309-D31',
+        },
+        '5': {
+          id: '5',
+          name: 'Organic Brown Rice',
+          category: 'grains',
+          description: 'Nutritious brown rice grown using traditional farming methods.',
+          price: 95,
+          unit: 'kg',
+          quantity: 50,
+          farmer: {
+            id: 3,
+            name: 'Paddy Organics',
+            location: 'Thanjavur, Tamil Nadu',
+            rating: 4.9
+          },
+          image: 'https://images.unsplash.com/photo-1613728913341-8f29b02b8253',
+          rating: 4.6,
+          reviews: 27,
+          organic: true,
+          freeDelivery: false,
+          harvestDate: '2023-09-15',
+          batchId: 'PO-RCE-2309-E15',
+        },
+        '6': {
+          id: '6',
+          name: 'Fresh Carrots',
+          category: 'vegetables',
+          description: 'Crunchy and sweet carrots, freshly harvested.',
+          price: 60,
+          unit: 'kg',
+          quantity: 35,
+          farmer: {
+            id: 4,
+            name: 'Green Earth Farm',
+            location: 'Salem, Tamil Nadu',
+            rating: 4.7
+          },
+          image: 'https://images.unsplash.com/photo-1447175008436-054170c2e979',
+          rating: 4.4,
+          reviews: 19,
+          organic: false,
+          freeDelivery: true,
+          harvestDate: '2023-09-19',
+          batchId: 'GE-CRT-2309-F19',
+        },
+        '7': {
+          id: '7',
+          name: 'Strawberries',
+          category: 'fruits',
+          description: 'Sweet and juicy strawberries from our hill farms.',
+          price: 120,
+          unit: '250g',
+          quantity: 15,
+          farmer: {
+            id: 2,
+            name: 'Hill Valley Farms',
+            location: 'Ooty, Tamil Nadu',
+            rating: 4.6
+          },
+          image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6',
+          rating: 4.8,
+          reviews: 36,
+          organic: false,
+          freeDelivery: false,
+          harvestDate: '2023-09-21',
+          batchId: 'HV-STR-2309-G21',
+        },
+        '8': {
+          id: '8',
+          name: 'Organic Honey',
+          category: 'other',
+          description: 'Pure, raw honey collected from our bee farms.',
+          price: 350,
+          unit: '500g',
+          quantity: 10,
+          farmer: {
+            id: 5,
+            name: 'Nature\'s Bounty',
+            location: 'Madurai, Tamil Nadu',
+            rating: 4.5
+          },
+          image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924',
+          rating: 4.9,
+          reviews: 45,
+          organic: true,
+          freeDelivery: true,
+          harvestDate: '2023-09-10',
+          batchId: 'NB-HNY-2309-H10',
+        },
+        '9': {
+          id: '9',
+          name: 'Fresh Potatoes',
+          category: 'vegetables',
+          description: 'Farm fresh potatoes perfect for cooking.',
+          price: 30,
+          unit: 'kg',
+          quantity: 100,
+          farmer: {
+            id: 4,
+            name: 'Green Earth Farm',
+            location: 'Salem, Tamil Nadu',
+            rating: 4.7
+          },
+          image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655',
+          rating: 4.3,
+          reviews: 22,
+          organic: false,
+          freeDelivery: true,
+          harvestDate: '2023-09-17',
+          batchId: 'GE-POT-2309-I17',
+        },
+        '10': {
+          id: '10',
+          name: 'Organic Milk',
+          category: 'dairy',
+          description: 'Fresh, creamy milk from grass-fed cows.',
+          price: 65,
+          unit: 'liter',
+          quantity: 20,
+          farmer: {
+            id: 1,
+            name: 'Lakshmi Farms',
+            location: 'Coimbatore, Tamil Nadu',
+            rating: 4.8
+          },
+          image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150',
+          rating: 4.7,
+          reviews: 33,
+          organic: true,
+          freeDelivery: false,
+          harvestDate: '2023-09-21',
+          batchId: 'LF-MLK-2309-J21',
+        },
+        '11': {
+          id: '11',
+          name: 'Fresh Cucumber',
+          category: 'vegetables',
+          description: 'Crisp and refreshing cucumbers, perfect for salads.',
+          price: 40,
+          unit: 'kg',
+          quantity: 45,
+          farmer: {
+            id: 2,
+            name: 'Hill Valley Farms',
+            location: 'Ooty, Tamil Nadu',
+            rating: 4.6
+          },
+          image: 'https://images.unsplash.com/photo-1449300079323-02e209d9d3a6',
+          rating: 4.4,
+          reviews: 17,
+          organic: false,
+          freeDelivery: true,
+          harvestDate: '2023-09-20',
+          batchId: 'HV-CUC-2309-K20',
+        },
+        '12': {
+          id: '12',
+          name: 'Organic Bananas',
+          category: 'fruits',
+          description: 'Sweet and nutritious bananas grown organically.',
+          price: 80,
+          unit: 'dozen',
+          quantity: 25,
+          farmer: {
+            id: 5,
+            name: 'Nature\'s Bounty',
+            location: 'Madurai, Tamil Nadu',
+            rating: 4.5
+          },
+          image: 'https://images.unsplash.com/photo-1603833665858-e61d17a86224',
+          rating: 4.6,
+          reviews: 28,
+          organic: true,
+          freeDelivery: true,
+          harvestDate: '2023-09-19',
+          batchId: 'NB-BAN-2309-L19',
+        }
+      };
+      
+      // Get the product data based on the ID, or provide a fallback
+      const productData = productDatabase[productId] || {
+        id: productId,
+        name: 'Unknown Product',
+        category: 'other',
+        description: 'Product information not available.',
+        price: 0,
+        unit: '',
+        quantity: 0,
+        farmer: {
+          id: 0,
+          name: 'Unknown Farm',
+          location: 'Unknown Location',
+          rating: 0
+        },
+        image: 'https://images.unsplash.com/photo-1594057687713-5fd14eed1c17',
+        rating: 0,
+        reviews: 0,
+        organic: false,
+        freeDelivery: false,
+        harvestDate: '2023-09-01',
+        batchId: 'UNKNOWN',
+      };
+      
+      setProduct(productData);
+      
+      // Fixed supply chain data
+      setSupplyChainData({
+        journey: [
+          { 
+            id: 1, 
+            stage: 'Harvesting', 
+            date: productData.harvestDate, 
+            location: productData.farmer.location, 
+            description: 'Harvested at optimal ripeness',
+            icon: <FaLeaf className="text-green-500" size={24} />
+          },
+          { 
+            id: 2, 
+            stage: 'Quality Check', 
+            date: new Date(new Date(productData.harvestDate).getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0], 
+            location: productData.farmer.location, 
+            description: 'Inspected for quality and graded',
+            icon: <FaBoxOpen className="text-amber-500" size={24} />
+          },
+          { 
+            id: 3, 
+            stage: 'Transportation', 
+            date: new Date(new Date(productData.harvestDate).getTime() + 48 * 60 * 60 * 1000).toISOString().split('T')[0], 
+            location: 'En route to consumer', 
+            description: 'Transported in temperature-controlled vehicles',
+            icon: <FaTruck className="text-blue-500" size={24} />
+          },
+          { 
+            id: 4, 
+            stage: 'Ready for Delivery', 
+            date: new Date(new Date(productData.harvestDate).getTime() + 72 * 60 * 60 * 1000).toISOString().split('T')[0], 
+            location: 'Local distribution center', 
+            description: 'Prepared for last-mile delivery',
+            icon: <FaBoxOpen className="text-purple-500" size={24} />
+          }
+        ],
+        farming: {
+          method: productData.organic ? 'Organic Farming' : 'Conventional Farming',
+          inputs: productData.organic ? 'Organic compost, natural pest management' : 'Standard fertilizers, pest control as needed',
+          waterSource: 'Rainwater harvesting and drip irrigation',
+          certification: productData.organic ? 'Organic Certified' : 'Standard Quality Certification',
+          sustainability: 'Practices soil conservation and biodiversity protection'
+        },
+        carbon: {
+          farmEmissions: 10, // Fixed value
+          transportEmissions: 15, // Fixed value
+          totalFootprint: 25, // Fixed total (sum of farm + transport)
+          comparisonToAverage: 30 // Fixed percentage lower than average
+        }
       });
       
       setLoading(false);
     }, 1000);
   }, [productId]);
-  
-  // Mock data for supply chain journey
-  const supplyChainData = product ? {
-    journey: [
-      { 
-        id: 1, 
-        stage: 'Harvesting', 
-        date: product.harvestDate, 
-        location: product.farmer.location, 
-        description: 'Harvested at optimal ripeness',
-        icon: <FaLeaf className="text-green-500" size={24} />
-      },
-      { 
-        id: 2, 
-        stage: 'Quality Check', 
-        date: new Date(new Date(product.harvestDate).getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0], 
-        location: product.farmer.location, 
-        description: 'Inspected for quality and graded',
-        icon: <FaBoxOpen className="text-amber-500" size={24} />
-      },
-      { 
-        id: 3, 
-        stage: 'Transportation', 
-        date: new Date(new Date(product.harvestDate).getTime() + 48 * 60 * 60 * 1000).toISOString().split('T')[0], 
-        location: 'En route to consumer', 
-        description: 'Transported in temperature-controlled vehicles',
-        icon: <FaTruck className="text-blue-500" size={24} />
-      },
-      { 
-        id: 4, 
-        stage: 'Ready for Delivery', 
-        date: new Date(new Date(product.harvestDate).getTime() + 72 * 60 * 60 * 1000).toISOString().split('T')[0], 
-        location: 'Local distribution center', 
-        description: 'Prepared for last-mile delivery',
-        icon: <FaBoxOpen className="text-purple-500" size={24} />
-      }
-    ],
-    farming: {
-      method: product.organic ? 'Organic Farming' : 'Conventional Farming',
-      inputs: product.organic ? 'Organic compost, natural pest management' : 'Standard fertilizers, pest control as needed',
-      waterSource: 'Rainwater harvesting and drip irrigation',
-      certification: product.organic ? 'Organic Certified' : 'Standard Quality Certification',
-      sustainability: 'Practices soil conservation and biodiversity protection'
-    },
-    carbon: {
-      farmEmissions: Math.floor(Math.random() * 10) + 5, // Random value between 5-15
-      transportEmissions: Math.floor(Math.random() * 20) + 10, // Random value between 10-30
-      totalFootprint: Math.floor(Math.random() * 30) + 15, // Random value between 15-45
-      comparisonToAverage: Math.floor(Math.random() * 40) + 20, // Random % between 20-60% lower
-    }
-  } : null;
   
   if (loading) {
     return (
@@ -108,7 +380,7 @@ export default function ProductTracePage() {
     );
   }
   
-  if (!product) {
+  if (!product || !supplyChainData) {
     return (
       <div className="min-h-screen bg-green-50 flex items-center justify-center">
         <div className="text-center max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
@@ -148,11 +420,18 @@ export default function ProductTracePage() {
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
-            <div className="md:w-1/3 h-64 md:h-auto">
-              <img 
-                src={`${product.image}?w=400&h=400&fit=crop&crop=faces&auto=compress`} 
-                alt={product.name} 
-                className="w-full h-full object-cover"
+            <div className="md:w-1/3 h-64 md:h-auto relative">
+              <Image 
+                src={product.image} 
+                alt={product.name}
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+                onError={(e) => {
+                  if (e.target.src !== "/fallback-image.jpg") {
+                    e.target.src = "/fallback-image.jpg";
+                  }
+                }}
               />
             </div>
             <div className="p-6 md:w-2/3">
@@ -178,7 +457,7 @@ export default function ProductTracePage() {
               </div>
               <div className="pt-4 border-t border-gray-200">
                 <p className="text-sm text-gray-600">
-                  This information was verified on {new Date().toLocaleDateString()}
+                  Grown with care by {product.farmer.name}
                 </p>
               </div>
             </div>
