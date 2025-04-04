@@ -203,21 +203,6 @@ export default function Features() {
                 {/* Decorative elements */}
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-green-100 rounded-lg -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-green-50 rounded-lg -z-10"></div>
-                
-                {/* Floating product card */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-3 rounded-lg shadow-lg md:flex hidden items-center space-x-3 transform rotate-3">
-                  <div className="w-16 h-16 rounded-md overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-                      alt="Fresh produce" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="text-sm">
-                    <div className="font-medium text-gray-800">Organic Bananas</div>
-                    <div className="text-green-600">₹80 / dozen</div>
-                  </div>
-                </div>
               </div>
             </div>
             <div className="md:w-1/2">
