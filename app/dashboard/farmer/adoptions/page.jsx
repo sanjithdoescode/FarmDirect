@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useLanguage } from '../../../../context/LanguageContext';
+import { useLanguage } from '../../../context/LanguageContext';
 import { FaPlus, FaLeaf, FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 
 export default function FarmerAdoptionsPage() {

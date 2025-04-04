@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLanguage } from '../../../../../context/LanguageContext';
+import { useLanguage } from '../../../../context/LanguageContext';
 import { 
   FaCloudUploadAlt, FaLeaf, FaMapMarkerAlt, FaCalendarAlt, 
   FaRupeeSign, FaInfoCircle, FaImage, FaCheck, FaArrowLeft, 
