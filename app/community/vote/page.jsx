@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Link from 'next/link';
 import { FaVoteYea, FaMapMarkerAlt, FaCalendarAlt, FaInfoCircle, FaUserFriends, FaChartBar, FaStar } from 'react-icons/fa';
 
@@ -139,7 +137,6 @@ export default function CommunityVotePage() {
   
   return (
     <>
-      <Header />
       <main className="bg-gray-50 min-h-screen">
         {/* Hero Section */}
         <section className="relative bg-blue-600 text-white py-16">
@@ -545,7 +542,6 @@ export default function CommunityVotePage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 } 

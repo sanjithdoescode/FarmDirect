@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Link from 'next/link';
 import { FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaSearch, FaFilter, FaRegHeart, FaHeart, FaRegClock } from 'react-icons/fa';
 
@@ -146,7 +144,6 @@ export default function EventsPage() {
   
   return (
     <>
-      <Header />
       <main className="bg-gray-50 min-h-screen">
         {/* Hero Section */}
         <section className="relative bg-orange-500 text-white py-16">
@@ -422,7 +419,6 @@ export default function EventsPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 } 

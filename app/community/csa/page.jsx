@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Link from 'next/link';
 import { FaHandshake, FaMapMarkerAlt, FaCalendarAlt, FaBox, FaShoppingBasket, FaLeaf, FaRupeeSign, FaCheck, FaArrowRight } from 'react-icons/fa';
 
@@ -189,7 +187,6 @@ export default function CSAPage() {
   
   return (
     <>
-      <Header />
       <main className="bg-gray-50 min-h-screen">
         {/* Hero Section */}
         <section className="relative bg-purple-600 text-white py-16">
@@ -620,7 +617,6 @@ export default function CSAPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 } 
