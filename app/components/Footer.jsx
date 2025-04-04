@@ -1,15 +1,12 @@
 'use client';
 
-import { useLanguage } from '../context/LanguageContext';
 import Link from 'next/link';
 
 export default function Footer() {
-  const { t, language, changeLanguage } = useLanguage();
-
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Logo and description */}
           <div className="col-span-1">
             <div className="flex items-center mb-4">
@@ -41,40 +38,15 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links groups */}
-          <div className="flex justify-center">
+          {/* Explore section - now right-aligned */}
+          <div className="col-span-1 flex justify-end">
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-center">Explore</h3>
+              <h3 className="text-lg font-semibold mb-4">Explore</h3>
               <ul className="space-y-2">
                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
                 <li><Link href="/farmer" className="text-gray-400 hover:text-white transition-colors">For Farmers</Link></li>
                 <li><Link href="/consumer" className="text-gray-400 hover:text-white transition-colors">For Consumers</Link></li>
               </ul>
-            </div>
-          </div>
-          
-          {/* Language section */}
-          <div className="flex justify-end">
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-right">{t.language}</h3>
-              <div className="flex flex-col space-y-2">
-                <button 
-                  onClick={() => changeLanguage('en')}
-                  className={`px-4 py-2 rounded-md text-left ${
-                    language === 'en' ? 'bg-green-700 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                >
-                  {t.english}
-                </button>
-                <button 
-                  onClick={() => changeLanguage('ta')}
-                  className={`px-4 py-2 rounded-md text-left ${
-                    language === 'ta' ? 'bg-green-700 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                >
-                  {t.tamil}
-                </button>
-              </div>
             </div>
           </div>
         </div>
