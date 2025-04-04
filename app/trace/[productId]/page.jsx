@@ -28,6 +28,12 @@ export default function ProductTracePage() {
           category: 'vegetables',
           description: 'Fresh, juicy tomatoes grown without pesticides. Perfect for salads and cooking.',
           price: 70,
+          priceBreakdown: {
+            farmGate: 45,
+            processing: 5,
+            transportation: 10,
+            retailMargin: 10
+          },
           unit: 'kg',
           quantity: 25,
           farmer: {
@@ -43,6 +49,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-20',
           batchId: 'LF-TOM-2309-A45',
+          processed: false,
+          valueScore: 4.6,
+          badges: ['Farm Traceable', 'Zero Adulteration']
         },
         '2': {
           id: '2',
@@ -50,6 +59,12 @@ export default function ProductTracePage() {
           category: 'vegetables',
           description: 'Nutrient-rich spinach leaves, harvested fresh from our farm.',
           price: 40,
+          priceBreakdown: {
+            farmGate: 25,
+            processing: 3,
+            transportation: 7,
+            retailMargin: 5
+          },
           unit: '500g',
           quantity: 15,
           farmer: {
@@ -65,6 +80,9 @@ export default function ProductTracePage() {
           freeDelivery: false,
           harvestDate: '2023-09-21',
           batchId: 'HV-SPN-2309-B22',
+          processed: false,
+          valueScore: 4.7,
+          badges: ['Farm Traceable', 'Zero Adulteration', 'Minimal Processing']
         },
         '3': {
           id: '3',
@@ -72,6 +90,12 @@ export default function ProductTracePage() {
           category: 'fruits',
           description: 'Sweet and juicy alphonso mangoes, grown organically.',
           price: 200,
+          priceBreakdown: {
+            farmGate: 140,
+            processing: 10,
+            transportation: 25,
+            retailMargin: 25
+          },
           unit: 'kg',
           quantity: 30,
           farmer: {
@@ -87,6 +111,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-18',
           batchId: 'PO-MNG-2309-C18',
+          processed: false,
+          valueScore: 4.9,
+          badges: ['Farm Traceable', 'Zero Adulteration', 'Farmer-Friendly']
         },
         '4': {
           id: '4',
@@ -94,6 +121,12 @@ export default function ProductTracePage() {
           category: 'dairy',
           description: 'Free-range eggs from happy hens, rich in nutrients.',
           price: 120,
+          priceBreakdown: {
+            farmGate: 85,
+            processing: 5,
+            transportation: 15,
+            retailMargin: 15
+          },
           unit: 'dozen',
           quantity: 20,
           farmer: {
@@ -109,6 +142,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-21',
           batchId: 'LF-EGG-2309-D31',
+          processed: false,
+          valueScore: 4.5,
+          badges: ['Farm Traceable', 'Farmer-Friendly']
         },
         '5': {
           id: '5',
@@ -116,6 +152,12 @@ export default function ProductTracePage() {
           category: 'grains',
           description: 'Nutritious brown rice grown using traditional farming methods.',
           price: 95,
+          priceBreakdown: {
+            farmGate: 60,
+            processing: 15,
+            transportation: 10,
+            retailMargin: 10
+          },
           unit: 'kg',
           quantity: 50,
           farmer: {
@@ -131,6 +173,9 @@ export default function ProductTracePage() {
           freeDelivery: false,
           harvestDate: '2023-09-15',
           batchId: 'PO-RCE-2309-E15',
+          processed: true,
+          valueScore: 4.7,
+          badges: ['Verified Processor', 'Zero Adulteration', 'Farm Traceable', 'Traditional Processing']
         },
         '6': {
           id: '6',
@@ -138,6 +183,12 @@ export default function ProductTracePage() {
           category: 'vegetables',
           description: 'Crunchy and sweet carrots, freshly harvested.',
           price: 60,
+          priceBreakdown: {
+            farmGate: 35,
+            processing: 5,
+            transportation: 10,
+            retailMargin: 10
+          },
           unit: 'kg',
           quantity: 35,
           farmer: {
@@ -153,6 +204,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-19',
           batchId: 'GE-CRT-2309-F19',
+          processed: false,
+          valueScore: 4.3,
+          badges: ['Farm Traceable', 'Minimal Processing']
         },
         '7': {
           id: '7',
@@ -160,6 +214,12 @@ export default function ProductTracePage() {
           category: 'fruits',
           description: 'Sweet and juicy strawberries from our hill farms.',
           price: 120,
+          priceBreakdown: {
+            farmGate: 80,
+            processing: 10,
+            transportation: 15,
+            retailMargin: 15
+          },
           unit: '250g',
           quantity: 15,
           farmer: {
@@ -175,6 +235,9 @@ export default function ProductTracePage() {
           freeDelivery: false,
           harvestDate: '2023-09-21',
           batchId: 'HV-STR-2309-G21',
+          processed: false,
+          valueScore: 4.5,
+          badges: ['Farm Traceable', 'Zero Adulteration']
         },
         '8': {
           id: '8',
@@ -182,6 +245,12 @@ export default function ProductTracePage() {
           category: 'other',
           description: 'Pure, raw honey collected from our bee farms.',
           price: 350,
+          priceBreakdown: {
+            farmGate: 250,
+            processing: 40,
+            transportation: 30,
+            retailMargin: 30
+          },
           unit: '500g',
           quantity: 10,
           farmer: {
@@ -197,6 +266,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-10',
           batchId: 'NB-HNY-2309-H10',
+          processed: true,
+          valueScore: 4.8,
+          badges: ['Verified Processor', 'Farm Traceable', 'Zero Adulteration', 'Traditional Processing']
         },
         '9': {
           id: '9',
@@ -204,6 +276,12 @@ export default function ProductTracePage() {
           category: 'vegetables',
           description: 'Farm fresh potatoes perfect for cooking.',
           price: 30,
+          priceBreakdown: {
+            farmGate: 18,
+            processing: 2,
+            transportation: 5,
+            retailMargin: 5
+          },
           unit: 'kg',
           quantity: 100,
           farmer: {
@@ -219,6 +297,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-17',
           batchId: 'GE-POT-2309-I17',
+          processed: false,
+          valueScore: 4.6,
+          badges: ['Farm Traceable', 'Minimal Processing']
         },
         '10': {
           id: '10',
@@ -226,6 +307,12 @@ export default function ProductTracePage() {
           category: 'dairy',
           description: 'Fresh, creamy milk from grass-fed cows.',
           price: 65,
+          priceBreakdown: {
+            farmGate: 40,
+            processing: 10,
+            transportation: 8,
+            retailMargin: 7
+          },
           unit: 'liter',
           quantity: 20,
           farmer: {
@@ -241,6 +328,9 @@ export default function ProductTracePage() {
           freeDelivery: false,
           harvestDate: '2023-09-21',
           batchId: 'LF-MLK-2309-J21',
+          processed: true,
+          valueScore: 4.6,
+          badges: ['Verified Processor', 'Zero Adulteration', 'Farm Traceable', 'Minimal Processing']
         },
         '11': {
           id: '11',
@@ -248,6 +338,12 @@ export default function ProductTracePage() {
           category: 'vegetables',
           description: 'Crisp and refreshing cucumbers, perfect for salads.',
           price: 40,
+          priceBreakdown: {
+            farmGate: 25,
+            processing: 3,
+            transportation: 7,
+            retailMargin: 5
+          },
           unit: 'kg',
           quantity: 45,
           farmer: {
@@ -263,6 +359,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-20',
           batchId: 'HV-CUC-2309-K20',
+          processed: false,
+          valueScore: 4.2,
+          badges: ['Farm Traceable', 'Minimal Processing']
         },
         '12': {
           id: '12',
@@ -270,6 +369,12 @@ export default function ProductTracePage() {
           category: 'fruits',
           description: 'Sweet and nutritious bananas grown organically.',
           price: 80,
+          priceBreakdown: {
+            farmGate: 50,
+            processing: 5,
+            transportation: 15,
+            retailMargin: 10
+          },
           unit: 'dozen',
           quantity: 25,
           farmer: {
@@ -285,6 +390,9 @@ export default function ProductTracePage() {
           freeDelivery: true,
           harvestDate: '2023-09-19',
           batchId: 'NB-BAN-2309-L19',
+          processed: false,
+          valueScore: 4.7,
+          badges: ['Farm Traceable', 'Zero Adulteration', 'Farmer-Friendly']
         }
       };
       
@@ -436,11 +544,38 @@ export default function ProductTracePage() {
             </div>
             <div className="p-6 md:w-2/3">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h2>
-              <div className="flex items-center mb-4">
-                <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Verified</span>
+              <div className="flex flex-wrap items-center mb-4">
+                <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2 mb-2">Verified</span>
                 {product.organic && (
-                  <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Organic</span>
+                  <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2 mb-2">Organic</span>
                 )}
+                {product.badges.map((badge, index) => (
+                  <span key={index} className={`text-sm px-2 py-1 rounded-full mr-2 mb-2 ${
+                    badge.includes('Verified') ? 'bg-blue-100 text-blue-800' :
+                    badge.includes('Zero') ? 'bg-purple-100 text-purple-800' :
+                    badge.includes('Farmer-Friendly') ? 'bg-amber-100 text-amber-800' :
+                    badge.includes('Farm Traceable') ? 'bg-green-100 text-green-800' :
+                    badge.includes('Minimal') ? 'bg-teal-100 text-teal-800' :
+                    badge.includes('Traditional') ? 'bg-indigo-100 text-indigo-800' :
+                    'bg-gray-100 text-gray-800'
+                  }`}>
+                    {badge}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-center mb-4">
+                <div className="bg-green-100 text-green-800 px-2 py-1 rounded-lg flex items-center mr-3">
+                  <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                  <span>Value Score: {product.valueScore}/5</span>
+                </div>
+                <div className="bg-green-100 text-green-800 px-2 py-1 rounded-lg flex items-center">
+                  <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>₹{product.price}/{product.unit}</span>
+                </div>
               </div>
               <p className="text-gray-700 mb-4">{product.description}</p>
               <div className="mb-4">
@@ -468,7 +603,7 @@ export default function ProductTracePage() {
       {/* Tabs */}
       <div className="container mx-auto px-4 mt-8">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="flex border-b">
+          <div className="flex border-b overflow-x-auto">
             <button 
               className={`py-4 px-6 font-medium ${activeTab === 'journey' ? 'text-green-600 border-b-2 border-green-600 bg-green-50' : 'text-gray-500'}`}
               onClick={() => setActiveTab('journey')}
@@ -487,6 +622,20 @@ export default function ProductTracePage() {
             >
               Carbon Footprint
             </button>
+            <button 
+              className={`py-4 px-6 font-medium ${activeTab === 'pricing' ? 'text-green-600 border-b-2 border-green-600 bg-green-50' : 'text-gray-500'}`}
+              onClick={() => setActiveTab('pricing')}
+            >
+              Price Breakdown
+            </button>
+            {product.processed && (
+              <button 
+                className={`py-4 px-6 font-medium ${activeTab === 'processing' ? 'text-green-600 border-b-2 border-green-600 bg-green-50' : 'text-gray-500'}`}
+                onClick={() => setActiveTab('processing')}
+              >
+                Processing Details
+              </button>
+            )}
           </div>
           
           <div className="p-6">
@@ -619,6 +768,159 @@ export default function ProductTracePage() {
                 </div>
               </div>
             )}
+            
+            {/* Price Breakdown Tab */}
+            {activeTab === 'pricing' && (
+              <div className="space-y-6">
+                <div className="bg-green-50 p-6 rounded-lg">
+                  <div className="flex justify-between items-center mb-6">
+                    <h4 className="text-xl font-medium text-gray-800">Price Breakdown</h4>
+                    <span className="px-4 py-1 bg-green-200 text-green-800 rounded-full text-sm font-medium">
+                      Value Score: {product.valueScore}/5
+                    </span>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-gray-600">Farm Gate Price</span>
+                        <span className="text-gray-600 font-medium">₹{product.priceBreakdown.farmGate}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className="bg-green-500 h-3 rounded-full" style={{ width: `${(product.priceBreakdown.farmGate / product.price) * 100}%` }}></div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Amount paid directly to the farmer</p>
+                    </div>
+                    
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-gray-600">Processing Cost</span>
+                        <span className="text-gray-600 font-medium">₹{product.priceBreakdown.processing}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className="bg-blue-500 h-3 rounded-full" style={{ width: `${(product.priceBreakdown.processing / product.price) * 100}%` }}></div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Cost of cleaning, sorting, and packaging</p>
+                    </div>
+                    
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-gray-600">Transportation</span>
+                        <span className="text-gray-600 font-medium">₹{product.priceBreakdown.transportation}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className="bg-amber-500 h-3 rounded-full" style={{ width: `${(product.priceBreakdown.transportation / product.price) * 100}%` }}></div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Cost of delivery from farm to market</p>
+                    </div>
+                    
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-gray-600">Retail Margin</span>
+                        <span className="text-gray-600 font-medium">₹{product.priceBreakdown.retailMargin}</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className="bg-purple-500 h-3 rounded-full" style={{ width: `${(product.priceBreakdown.retailMargin / product.price) * 100}%` }}></div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Retail operating costs and profit</p>
+                    </div>
+                    
+                    <div className="pt-4 border-t border-gray-200">
+                      <div className="flex justify-between mb-1">
+                        <span className="text-gray-800 font-medium">Final Price</span>
+                        <span className="text-gray-800 font-medium">₹{product.price}/{product.unit}</span>
+                      </div>
+                      <p className="text-xs text-gray-600 mt-1">
+                        {Math.round((product.priceBreakdown.farmGate / product.price) * 100)}% of your payment goes directly to farmers
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-6 border border-green-200 rounded-lg">
+                  <h4 className="text-xl font-medium text-gray-800 mb-3">Value for Money</h4>
+                  <div className="flex items-center mb-4">
+                    <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center text-2xl font-bold text-green-600 mr-4">
+                      {product.valueScore}
+                    </div>
+                    <div>
+                      <p className="text-gray-700">
+                        This score combines quality, price, nutritional value, and ethical sourcing. Higher scores mean better value for your money.
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Compared to similar products, this item offers {product.valueScore >= 4.5 ? 'excellent' : product.valueScore >= 4 ? 'very good' : 'good'} value.
+                  </p>
+                </div>
+              </div>
+            )}
+            
+            {/* Processing Details Tab */}
+            {activeTab === 'processing' && product.processed && (
+              <div className="space-y-6">
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h4 className="text-xl font-medium text-gray-800 mb-4">Processing Information</h4>
+                  <p className="text-gray-700 mb-4">
+                    This product has undergone processing to maintain quality and extend shelf life. All processing methods maintain the nutritional integrity and quality of the product.
+                  </p>
+                  
+                  <div className="space-y-4 mt-6">
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="text-lg font-medium text-gray-800">Quality Control</h5>
+                        <p className="text-gray-600 mt-1">Rigorous testing at every stage ensures safety and quality</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="text-lg font-medium text-gray-800">Processing Method</h5>
+                        <p className="text-gray-600 mt-1">{product.badges.includes('Traditional Processing') ? 'Traditional methods passed down through generations' : 'Modern minimal processing techniques'}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h5 className="text-lg font-medium text-gray-800">Additives & Preservatives</h5>
+                        <p className="text-gray-600 mt-1">{product.badges.includes('Zero Adulteration') ? 'No artificial additives or preservatives' : 'Minimal preservatives used to maintain freshness'}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-6 border border-blue-200 rounded-lg">
+                  <h4 className="text-xl font-medium text-gray-800 mb-4">Processor Information</h4>
+                  <div className="flex items-center">
+                    <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">Local Processing Facility</p>
+                      <p className="text-sm text-gray-600">Located within 50km of farm</p>
+                      <p className="text-sm text-gray-600 mt-1">Certified for food safety and quality</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         
@@ -628,7 +930,7 @@ export default function ProductTracePage() {
           <p className="text-gray-700 mb-4">
             Help spread awareness about sustainable food sources and transparent supply chains.
           </p>
-          <div className="flex space-x-4">
+          <div className="flex flex-wrap gap-4">
             <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
               Share on Facebook
             </button>
@@ -637,6 +939,72 @@ export default function ProductTracePage() {
             </button>
             <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
               Share via WhatsApp
+            </button>
+          </div>
+        </div>
+        
+        {/* Report Section */}
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mt-8 p-6">
+          <h3 className="text-xl font-medium text-gray-800 mb-4">Report an Issue</h3>
+          <p className="text-gray-700 mb-4">
+            Found misleading information or have concerns about this product? Let us know.
+          </p>
+          
+          <div className="bg-yellow-50 p-4 rounded-lg mb-6">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-yellow-800">Your report helps everyone</h3>
+                <div className="mt-1 text-sm text-yellow-700">
+                  <p>Reports are reviewed by our team to ensure accuracy and honesty in our marketplace.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="report-type" className="block text-sm font-medium text-gray-700 mb-1">Issue Type</label>
+              <select 
+                id="report-type" 
+                className="w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+              >
+                <option value="">Select an issue type</option>
+                <option value="misleading">Misleading Information</option>
+                <option value="quality">Product Quality Issue</option>
+                <option value="certification">Certification Concerns</option>
+                <option value="price">Price Discrepancy</option>
+                <option value="other">Other Issue</option>
+              </select>
+            </div>
+            
+            <div>
+              <label htmlFor="report-details" className="block text-sm font-medium text-gray-700 mb-1">Details</label>
+              <textarea 
+                id="report-details" 
+                rows="4" 
+                className="w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+                placeholder="Please provide details about the issue..."
+              ></textarea>
+            </div>
+            
+            <div className="flex items-center">
+              <input 
+                id="report-anonymous" 
+                type="checkbox" 
+                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500" 
+              />
+              <label htmlFor="report-anonymous" className="ml-2 block text-sm text-gray-700">
+                Submit anonymously
+              </label>
+            </div>
+            
+            <button className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors mt-2">
+              Submit Report
             </button>
           </div>
         </div>

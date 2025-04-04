@@ -11,12 +11,10 @@ const inter = Inter({
 
 export default function TraceLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased`}>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
-      </body>
-    </html>
+    <LanguageProvider>
+      <div className={`${inter.variable} antialiased`}>
+        {children}
+      </div>
+    </LanguageProvider>
   );
 } 
