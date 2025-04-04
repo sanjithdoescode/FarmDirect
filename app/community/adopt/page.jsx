@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Link from 'next/link';
 import { FaSeedling, FaMapMarkerAlt, FaTree, FaSearch, FaRegHeart, FaHeart, FaCamera, FaCalendarAlt } from 'react-icons/fa';
 
@@ -190,7 +188,6 @@ export default function CropAdoptionPage() {
   
   return (
     <>
-      <Header />
       <main className="bg-gray-50 min-h-screen">
         {/* Hero Section */}
         <section className="relative bg-amber-500 text-white py-16">
@@ -200,18 +197,20 @@ export default function CropAdoptionPage() {
               Forge a personal connection with your food by adopting a plant, tree, or plot. Receive exclusive produce and updates directly from your farmer.
             </p>
             
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaSearch className="text-gray-400" />
+            {/* Search bar */}
+            <div className="max-w-xl mx-auto relative">
+              <div className="flex items-center bg-white rounded-lg overflow-hidden shadow-md">
+                <div className="p-4 text-amber-500">
+                  <FaSearch />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search by crop name, farmer, or farm..."
+                  className="w-full p-4 text-gray-700 focus:outline-none"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
               </div>
-              <input
-                type="text"
-                className="w-full pl-10 pr-4 py-3 rounded-lg text-gray-800 focus:ring-2 focus:ring-amber-600 focus:outline-none"
-                placeholder="Search by crop name, farmer, or farm..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
             </div>
           </div>
         </section>
@@ -559,7 +558,6 @@ export default function CropAdoptionPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 } 
