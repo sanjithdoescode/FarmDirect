@@ -19,7 +19,7 @@ export default function CSAPage() {
       id: 1,
       title: "Seasonal Vegetable Share",
       farm: "Heritage Farms",
-      farmer: "Lakshmi Velan",
+      farmer: "Saranya",
       location: "Thanjavur",
       image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       description: "A diverse weekly box of our finest seasonal vegetables, grown using traditional organic methods.",
@@ -41,9 +41,9 @@ export default function CSAPage() {
       id: 2,
       title: "Premium Fruit Subscription",
       farm: "Sunshine Orchards",
-      farmer: "Ravi Patel",
+      farmer: "Muthuramalingam",
       location: "Ratnagiri",
-      image: "https://images.unsplash.com/photo-1519096845289-95806ee03fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://plus.unsplash.com/premium_photo-1689596510917-d337f077d559",
       description: "Enjoy a curated selection of seasonal fruits from our orchard, harvested at peak ripeness for maximum flavor.",
       price: 8000,
       duration: "6 months",
@@ -63,7 +63,7 @@ export default function CSAPage() {
       id: 3,
       title: "Mixed Farm Share",
       farm: "Green Thumb Farms",
-      farmer: "Anjali Krishnan",
+      farmer: "Sasikala",
       location: "Coimbatore",
       image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       description: "A comprehensive farm share with vegetables, fruits, herbs, and occasional value-added products from our cooperative.",
@@ -86,7 +86,7 @@ export default function CSAPage() {
       id: 4,
       title: "Rice & Grains Share",
       farm: "Paddy Organics",
-      farmer: "Muthu Velan",
+      farmer: "Ragul",
       location: "Thanjavur",
       image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       description: "A monthly supply of heritage rice varieties and traditional grains grown using ancient farming practices.",
@@ -109,7 +109,7 @@ export default function CSAPage() {
       id: 5,
       title: "Small Family Vegetable Share",
       farm: "Family First Farms",
-      farmer: "Rajesh Kumar",
+      farmer: "Senthil Kumar",
       location: "Salem",
       image: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       description: "A perfectly sized vegetable share for small families or couples, with flexible delivery options.",
@@ -131,9 +131,9 @@ export default function CSAPage() {
       id: 6,
       title: "Artisanal Farm Products",
       farm: "Heritage Homestead",
-      farmer: "Priya Sharma",
+      farmer: "Velammal",
       location: "Madurai",
-      image: "https://images.unsplash.com/photo-1509492923474-7fc2a8f18567?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1640348784724-93f7b14d8047",
       description: "A monthly box of handcrafted farm products including preserves, pickles, oils, and specialty items.",
       price: 9000,
       duration: "6 months",
@@ -513,7 +513,7 @@ export default function CSAPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Rajesh Kumar</h3>
+                    <h3 className="font-bold text-gray-900">Senthil Kumar</h3>
                     <p className="text-gray-600 text-sm">CSA Member for 2 years</p>
                   </div>
                 </div>
@@ -532,7 +532,7 @@ export default function CSAPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Anita Desai</h3>
+                    <h3 className="font-bold text-gray-900">Saranya</h3>
                     <p className="text-gray-600 text-sm">First-time CSA Subscriber</p>
                   </div>
                 </div>
@@ -551,7 +551,7 @@ export default function CSAPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Muthu Velan</h3>
+                    <h3 className="font-bold text-gray-900">Muthuramalingam</h3>
                     <p className="text-gray-600 text-sm">CSA Farmer</p>
                   </div>
                 </div>
