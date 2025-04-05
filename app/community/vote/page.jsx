@@ -207,6 +207,92 @@ export default function CommunityVotePage() {
           </div>
         </section>
         
+        {/* Community Voting Guidelines */}
+        <section className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-blue-600 py-6 px-8">
+                <h2 className="text-3xl font-bold text-white flex items-center">
+                  <span className="mr-3">🌾</span> Community Crop Voting Guidelines
+                </h2>
+                <p className="text-blue-100 text-xl mt-2">Help decide what crops grow next – responsibly!</p>
+              </div>
+              
+              <div className="p-8">
+                <p className="text-gray-700 mb-8">
+                  We believe in putting the power of choice in the hands of our community. Your vote matters – but too much of the same choice can lead to problems like overproduction and price drops. That's why we've added smart features to keep things fair and sustainable for everyone.
+                </p>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                  <span className="text-green-600 mr-2">✅</span> How It Works:
+                </h3>
+                
+                <div className="space-y-6 mb-8">
+                  <div className="bg-blue-50 rounded-lg p-5 border-l-4 border-blue-500">
+                    <h4 className="font-bold text-gray-900 mb-2">1. Personalized Polls</h4>
+                    <p className="text-gray-700">
+                      You'll see crop options based on your preferences, location, and past orders. This keeps things relevant – and avoids over-influencing large groups.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-blue-50 rounded-lg p-5 border-l-4 border-blue-500">
+                    <h4 className="font-bold text-gray-900 mb-2">2. Balanced Voting (Invisible Crop Limits)</h4>
+                    <p className="text-gray-700">
+                      Each crop has a hidden participation cap. Once enough people have voted for a crop, it stops appearing in new polls. This encourages crop variety while keeping it fair and community-led.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-blue-50 rounded-lg p-5 border-l-4 border-blue-500">
+                    <h4 className="font-bold text-gray-900 mb-2">3. Anonymous, Location-Based Crop Trend Summary</h4>
+                    <p className="text-gray-700">
+                      Want to know what people near you are voting for? We'll show anonymized trend summaries, so you can stay informed – without being swayed by names or numbers.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-blue-50 rounded-lg p-5 border-l-4 border-blue-500">
+                    <h4 className="font-bold text-gray-900 mb-2">4. Promoting Crop Diversity</h4>
+                    <p className="text-gray-700">
+                      Our system gently nudges communities toward diverse crop choices. If too many people in your area choose one crop, we'll highlight other viable crops – supporting sustainability and better pricing for farmers.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <span className="mr-2">🌿</span> Why This Matters:
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <p className="font-bold text-gray-900 mb-2 flex items-center">
+                        <span className="mr-2">👨‍🌾</span> Farmers
+                      </p>
+                      <p className="text-gray-700">
+                        Benefit from steady prices and less risk of surplus.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 mb-2 flex items-center">
+                        <span className="mr-2">🛒</span> Consumers
+                      </p>
+                      <p className="text-gray-700">
+                        Get variety and consistent quality.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 mb-2 flex items-center">
+                        <span className="mr-2">🌍</span> Planet
+                      </p>
+                      <p className="text-gray-700">
+                        Benefits from healthier soil and crop cycles.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         {/* Votes Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
