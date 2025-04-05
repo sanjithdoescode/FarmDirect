@@ -15,7 +15,7 @@ export default function CommunityVotePage() {
     {
       id: 1,
       title: "Fall Vegetables Selection",
-      farmer: "Lakshmi Velan",
+      farmer: "Lakshmi",
       farm: "Heritage Farms",
       location: "Thanjavur",
       deadline: "July 30, 2023",
@@ -32,7 +32,7 @@ export default function CommunityVotePage() {
     {
       id: 2,
       title: "New Fruit Tree Variety",
-      farmer: "Ravi Patel",
+      farmer: "Shivam",
       farm: "Sunshine Orchards",
       location: "Ratnagiri",
       deadline: "August 5, 2023",
@@ -49,7 +49,7 @@ export default function CommunityVotePage() {
     {
       id: 3,
       title: "Herb Garden Focus",
-      farmer: "Anjali Krishnan",
+      farmer: "Annamaa",
       farm: "Green Thumb Farms",
       location: "Coimbatore",
       deadline: "July 25, 2023",

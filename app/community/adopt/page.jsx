@@ -143,6 +143,111 @@ export default function CropAdoptionPage() {
       ],
       nextUpdate: "August 2, 2023"
     },
+    {
+      id: 7,
+      name: "Avocado Tree",
+      farmer: "Priya Sharma",
+      farm: "Exotic Orchards",
+      location: "Kodaikanal",
+      price: 2200,
+      currency: "₹",
+      duration: "12 months",
+      cropType: "exotic fruit",
+      image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Adopt a Hass avocado tree grown in the cool climate of Kodaikanal hills. Experience the journey of this nutrient-rich superfood from our farm to your table.",
+      benefits: [
+        "Monthly photo updates of your tree",
+        "4kg of premium avocados over the season",
+        "Virtual farm tour and care demonstration",
+        "Certificate of adoption with GPS coordinates",
+        "Exclusive avocado recipes collection"
+      ],
+      nextUpdate: "August 10, 2023"
+    },
+    {
+      id: 8,
+      name: "Passion Fruit Vines",
+      farmer: "Arvind Nair",
+      farm: "Tropical Paradise Farms",
+      location: "Wayanad",
+      price: 1600,
+      currency: "₹",
+      duration: "8 months",
+      cropType: "exotic fruit",
+      image: "https://images.unsplash.com/photo-1604495772376-9657f0035eb5",
+      description: "Adopt a cluster of passion fruit vines growing in the lush hills of Wayanad. These exotic fruits are known for their unique flavor and numerous health benefits.",
+      benefits: [
+        "Bi-weekly growth and flowering updates",
+        "3kg of fresh passion fruits during harvest season",
+        "Passion fruit processing workshop (virtual)",
+        "Custom name tag on your vine cluster",
+        "Plant care and propagation guide"
+      ],
+      nextUpdate: "July 25, 2023"
+    },
+    {
+      id: 9,
+      name: "Dragon Fruit Farm Plot",
+      farmer: "Rajesh Menon",
+      farm: "Future Fruits",
+      location: "Madurai",
+      price: 1800,
+      currency: "₹",
+      duration: "10 months",
+      cropType: "exotic fruit",
+      image: "https://images.unsplash.com/photo-1527325678964-54921661f888?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Adopt a section of our innovative dragon fruit farm. These vibrant cacti produce stunning flowers and nutritious fruits with a mild, refreshing taste.",
+      benefits: [
+        "Monthly updates with night-blooming flower photos",
+        "2kg of premium dragon fruits over the season",
+        "Invitation to night-blooming event (seasonal)",
+        "Certificate of adoption with plot coordinates",
+        "Dragon fruit recipes and preservation guide"
+      ],
+      nextUpdate: "August 5, 2023"
+    },
+    {
+      id: 10,
+      name: "Organic Broccoli Plot",
+      farmer: "Sunita Reddy",
+      farm: "Green Hills Organics",
+      location: "Ooty",
+      price: 900,
+      currency: "₹",
+      duration: "3 months",
+      cropType: "vegetable",
+      image: "https://images.unsplash.com/photo-1583663848850-46af132dc08e",
+      description: "Adopt a plot of organic broccoli growing in the cool climate of Ooty. This nutritious vegetable is grown using sustainable practices without chemical pesticides.",
+      benefits: [
+        "Weekly growth updates and photos",
+        "3kg of fresh organic broccoli over the season",
+        "Virtual harvest experience",
+        "Certificate of organic growing practices",
+        "Exclusive broccoli recipe collection"
+      ],
+      nextUpdate: "July 18, 2023"
+    },
+    {
+      id: 11,
+      name: "Zucchini Garden",
+      farmer: "Vikram Choudhury",
+      farm: "Valley Fresh Farms",
+      location: "Dehradun",
+      price: 850,
+      currency: "₹",
+      duration: "3 months",
+      cropType: "vegetable",
+      image: "https://images.unsplash.com/photo-1615485499978-1279c3d6302f",
+      description: "Adopt a section of our zucchini garden in the foothills of the Himalayas. Experience the rapid growth and abundant harvest of this versatile summer squash.",
+      benefits: [
+        "Weekly growth reports with measurements",
+        "4kg of fresh zucchini over the growing season",
+        "Zucchini flower culinary guide",
+        "Invitation to virtual harvest day",
+        "Certificate of adoption"
+      ],
+      nextUpdate: "July 15, 2023"
+    },
   ];
   
   // Filter crops based on search and filters

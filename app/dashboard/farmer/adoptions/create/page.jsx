@@ -223,10 +223,12 @@ export default function CreateAdoptionListing() {
                         required
                       >
                         <option value="fruit">Fruit</option>
+                        <option value="exotic fruit">Exotic Fruit</option>
                         <option value="vegetable">Vegetable</option>
                         <option value="grain">Grain/Rice</option>
                         <option value="spice">Spice</option>
                         <option value="herb">Herb</option>
+                        <option value="beverage">Beverage</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
