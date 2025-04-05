@@ -232,7 +232,7 @@ export default function CropAdoptionPage() {
       name: "Zucchini Garden",
       farmer: "Vikram Choudhury",
       farm: "Valley Fresh Farms",
-      location: "Dehradun",
+      location: "Kodaikanal",
       price: 850,
       currency: "₹",
       duration: "3 months",
