@@ -17,14 +17,9 @@ export default function Home() {
   useEffect(() => {
     // Check for auth parameters in URL
     const authParam = searchParams.get('auth');
-    const typeParam = searchParams.get('type');
-    
     if (authParam === 'login' || authParam === 'register') {
       setInitialAuthTab(authParam);
       setIsAuthModalOpen(true);
-      
-      // Optional: If type=farmer is specified, we could set default user type
-      // This would require modifying the AuthModal component to accept initialUserType
     }
   }, [searchParams]);
 
@@ -35,7 +30,7 @@ export default function Home() {
       <ProcessSteps />
       <Features />
       <Footer />
-      
+
       {/* Auth Modal */}
       <AuthModal
         isOpen={isAuthModalOpen}

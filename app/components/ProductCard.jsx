@@ -5,6 +5,7 @@ import { FaShoppingCart, FaHeart, FaStar, FaLeaf, FaTruck, FaQrcode, FaInfoCircl
 import ProductTraceability from './ProductTraceability';
 import { useLanguage } from '../context/LanguageContext';
 import Link from 'next/link';
+import TrustBadge from './TrustBadge';
 
 export default function ProductCard({ product, onAddToCart }) {
   const { t } = useLanguage();
@@ -80,7 +81,8 @@ export default function ProductCard({ product, onAddToCart }) {
             alt={product.farmer.name}
             className="w-6 h-6 rounded-full mr-2 border border-gray-200"
           />
-          <span className="text-sm text-gray-700">{product.farmer.name}</span>
+          <span className="text-sm text-gray-700 mr-2">{product.farmer.name}</span>
+          {product.farmer.trustTier && <TrustBadge tier={product.farmer.trustTier} />}
         </div>
         
         <div className="flex justify-between items-center">

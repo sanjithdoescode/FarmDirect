@@ -6,6 +6,7 @@ import { FaArrowLeft, FaQrcode, FaLeaf, FaSeedling, FaWater, FaTractor, FaBoxOpe
 import Link from 'next/link';
 import { useLanguage } from '../../context/LanguageContext';
 import Image from 'next/image';
+import TrustBadge from '../../components/TrustBadge';
 
 export default function ProductTracePage() {
   const { t } = useLanguage();
@@ -40,7 +41,8 @@ export default function ProductTracePage() {
             id: 1,
             name: 'Lakshmi Farms',
             location: 'Coimbatore, Tamil Nadu',
-            rating: 4.8
+            rating: 4.8,
+            trustTier: 1
           },
           image: 'https://images.unsplash.com/photo-1594057687713-5fd14eed1c17',
           rating: 4.8,
@@ -71,7 +73,8 @@ export default function ProductTracePage() {
             id: 2,
             name: 'Hill Valley Farms',
             location: 'Ooty, Tamil Nadu',
-            rating: 4.6
+            rating: 4.6,
+            trustTier: 2
           },
           image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb',
           rating: 4.5,
@@ -102,7 +105,8 @@ export default function ProductTracePage() {
             id: 3,
             name: 'Paddy Organics',
             location: 'Thanjavur, Tamil Nadu',
-            rating: 4.9
+            rating: 4.9,
+            trustTier: 1
           },
           image: 'https://images.unsplash.com/photo-1591073113125-e46713c829ed',
           rating: 4.9,
@@ -133,7 +137,8 @@ export default function ProductTracePage() {
             id: 1,
             name: 'Lakshmi Farms',
             location: 'Coimbatore, Tamil Nadu',
-            rating: 4.8
+            rating: 4.8,
+            trustTier: 1
           },
           image: 'https://images.unsplash.com/photo-1586802990181-a5771596eaea',
           rating: 4.7,
@@ -164,7 +169,8 @@ export default function ProductTracePage() {
             id: 3,
             name: 'Paddy Organics',
             location: 'Thanjavur, Tamil Nadu',
-            rating: 4.9
+            rating: 4.9,
+            trustTier: 1
           },
           image: 'https://images.unsplash.com/photo-1613728913341-8f29b02b8253',
           rating: 4.6,
@@ -195,7 +201,8 @@ export default function ProductTracePage() {
             id: 4,
             name: 'Green Earth Farm',
             location: 'Salem, Tamil Nadu',
-            rating: 4.7
+            rating: 4.7,
+            trustTier: 3
           },
           image: 'https://images.unsplash.com/photo-1447175008436-054170c2e979',
           rating: 4.4,
@@ -226,7 +233,8 @@ export default function ProductTracePage() {
             id: 2,
             name: 'Hill Valley Farms',
             location: 'Ooty, Tamil Nadu',
-            rating: 4.6
+            rating: 4.6,
+            trustTier: 2
           },
           image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6',
           rating: 4.8,
@@ -580,14 +588,26 @@ export default function ProductTracePage() {
               <p className="text-gray-700 mb-4">{product.description}</p>
               <div className="mb-4">
                 <h3 className="text-lg font-medium text-gray-800 mb-2">Farmer</h3>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3">
-                    {product.farmer.name.charAt(0)}
-                  </div>
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(product.farmer.name)}&background=e9f5f0&color=16a34a&size=64`}
+                    alt={product.farmer.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full border border-gray-200"
+                  />
                   <div>
-                    <p className="font-medium text-gray-800">{product.farmer.name}</p>
+                    <div className="text-lg font-medium text-gray-900 flex items-center">
+                      {product.farmer.name}
+                      <span className="ml-2">
+                        <TrustBadge tier={product.farmer.trustTier} />
+                      </span>
+                    </div>
                     <p className="text-sm text-gray-600">{product.farmer.location}</p>
                   </div>
+                </div>
+                <div className="flex items-center text-yellow-500">
+                  <span className="text-sm text-gray-700 ml-1">({product.farmer.rating} avg rating)</span>
                 </div>
               </div>
               <div className="pt-4 border-t border-gray-200">
