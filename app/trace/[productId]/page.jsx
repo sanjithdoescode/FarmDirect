@@ -597,12 +597,12 @@ export default function ProductTracePage() {
                     className="rounded-full border border-gray-200"
                   />
                   <div>
-                    <p className="text-lg font-medium text-gray-900 flex items-center">
+                    <div className="text-lg font-medium text-gray-900 flex items-center">
                       {product.farmer.name}
                       <span className="ml-2">
                         <TrustBadge tier={product.farmer.trustTier} />
                       </span>
-                    </p>
+                    </div>
                     <p className="text-sm text-gray-600">{product.farmer.location}</p>
                   </div>
                 </div>
